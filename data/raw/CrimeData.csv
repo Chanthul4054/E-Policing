@@ -1,0 +1,1606 @@
+crime,location,date,sex,victim nationality,victim age,time
+burglary,mulgampola,31.12.2019,F,Muslim,54,8:17
+burglary,car park,04.01.2020,M,Sinhala,42,2:00
+theft,panideniya bus stand,08.01.2020,F,Sinhala,20,21:01
+vehicle theft,aniwatte,10.01.2020,M,Sinhala,29,12:10
+robbery,dutugamunu mawatha,11.01.2020,M,Sinhala,59,2:39
+burglary,car park,12.01.2020,M,Sinhala,42,1:19
+vehicle theft,bus stand ,15.01.2020,M,Sinhala,45,19:57
+robbery,mahamaya primary,16.01.2020,M,Sinhala,36,9:18
+burglary,bahirawakanda,18.01.2020,F,Sinhala,47,10:58
+theft,thannekumbura,18.01.2020,M,Sinhala,27,16:13
+drugs,dangolla junction,19.01.2020,M,muslim,26,10:39
+robbery,KCC,19.01.2020,M,Sinhala,51,12:45
+robbery,lewella bangalaawatte,20.01.2020,M,Sinhala,73,10:47
+robbery,meekanuwa watarauma ,22.01.2020,F,Sinhala,30,0:15
+theft,wattaranthanne ground,24.01.2020,M,Sinhala,42,7:42
+burglary,asgiriya stadium,24.01.2020,M,Sinhala,25,22:43
+drugs,gatambe junction,26.01.2020,M,Sinhala,21,22:44
+theft,dalada maligawa,27.01.2020,M,Sinhala,36,8:10
+drugs,yatinuwara street,27.01.2020,M,Sinhala,25,8:28
+drugs,hanathane kadurata malshalawa,29.01.2020,M,Muslim,26,11:06
+drugs,pattiyakale watte,31.01.2020,M,Sinhala,17,21:09
+theft,pattiyakale watte,01.02.2020,M,Sinhala,21,19:42
+drugs,pattiyakale watte,03.02.2020,M,Sinhala,17,20:21
+vehicle theft,Municipal indoor sports complex,08.02.2020,F,sinhala,44,5:30
+theft,bogambara bus stand,08.02.2020,M,tamil ,42,23:39
+stabbing,yatinuwara street,15.02.2020,M,Sinhala,18,1:02
+robbery,pathanawatte heerassagala,16.02.2020,M,Sinhala,30,4:01
+robbery,ogastawatte,19.02.2020,F,Sinhala,31,3:33
+robbery,mahaiyawa,20.02.2020,M,Muslim,52,3:35
+robbery,gatambe bridge,20.02.2020,M,sinhala,33,21:56
+theft,yatinuwara street,21.02.2020,M,Sinhala,51,5:33
+theft,dodamwela,21.02.2020,M,sinhala,72,18:09
+stabbing,bus stand,23.02.2020,M,Sinhala,43,16:52
+stabbing,dalada maligawa,25.02.2020,M,Sinhala,45,15:50
+robbery,buwelikada junction,29.02.2020,M,Muslim,24,18:23
+burglary,bus stand,01.03.2020,F,Sinhala,52,0:14
+robbery,buwelikada junction,02.03.2020,M,Muslim,24,1:47
+theft,kotugodalla road,05.03.2020,M,Sinhala,40,23:14
+theft,ampitiya,06.03.2020,M,tamil ,17,8:29
+theft,bowalawatte,07.03.2020,M,Sinhala,30,6:14
+robbery,kotugodalla road,09.03.2020,M,Sinhala,26,5:00
+burglary,thalaathuoya road,12.03.2020,F,Sinhala,57,8:19
+theft,peradeniya road,17.03.2020,M,sinhala,35,0:34
+stabbing,heerassagala junction,17.03.2020,F,Sinhala,53,4:18
+theft,ampitiya,22.03.2020,foreign couple,Sinhala,19,13:31
+stabbing,udabowala,26.03.2020,M,tamil ,28,7:49
+stabbing,post office,28.03.2020,M,muslim,40,0:40
+stabbing,Municipal indoor sports complex,06.04.2020,F,Sinhala,38,19:19
+stabbing,pathanawatte heerassagala,07.04.2020,M,muslim,33,7:06
+burglary,people's bank,07.04.2020,M,muslim,40,12:31
+stabbing,kandy hospital,07.04.2020,M,muslim,43,21:07
+stabbing,kandy hospital,07.04.2020,M,muslim,43,22:08
+robbery,hewaheta,08.04.2020,M,Sinhala,43,12:59
+burglary,train station,08.04.2020,M,Sinhala,46,13:36
+robbery,galkaduwa junction,09.04.2020,M,Sinhala,20,15:55
+burglary,sri wickramasinghe mawatha,10.04.2020,M,Sinhala,44,5:05
+stabbing,goerge.E.Silva lane,13.04.2020,M,Sinhala,37,21:44
+burglary,hanthane watte,14.04.2020,M,Muslim,31,6:39
+robbery,peradeniya road,16.04.2020,M,Sinhala,45,4:49
+burglary,william gopallawa lane,17.04.2020,M,Sinhala,33,22:16
+burglary,common market complex,20.04.2020,F,Sinhala,68,15:59
+vehicle theft,mada bowala angampitiya,25.04.2020,M,Sinhala,42,22:02
+drugs,yatinuwara street,26.04.2020,M,Sinhala,58,11:29
+burglary,common market complex,26.04.2020,F,Sinhala,68,21:23
+drugs,bogambara,27.04.2020,F,Sinhala,41,1:38
+vehicle theft,mada bowala angampitiya,27.04.2020,M,Sinhala,42,12:25
+drugs,nuwarawela ampitiya,29.04.2020,M,Sinhala,35,9:49
+robbery,nagasthanne,29.04.2020,M,Sinhala,37,19:49
+burglary,welikanda,03.05.2020,M,Sinhala,36,23:08
+theft,aniwatte,04.05.2020,M,Sinhala,51,6:40
+stabbing,new queens hotel,10.05.2020,M,Sinhala,76,6:27
+robbery,Police Station - Kandy,10.05.2020,F,tamil ,34,12:46
+vehicle theft,sirimawo bandaranayake lane,12.05.2020,M,Sinhala,63,2:05
+robbery,ampitiya,18.05.2020,M,Sinhala,30,22:48
+stabbing,new queens hotel,21.05.2020,M,Sinhala,76,22:01
+stabbing,asgiriya stadium,23.05.2020,F,Sinhala,72,19:52
+robbery,katugasthota road,24.05.2020,M,Sinhala,47,7:35
+vehicle theft,KCC,25.05.2020,M,Sinhala,31,23:40
+theft,polgolla,30.05.2020,M,Sinhala,29,12:13
+stabbing,dharmapala road lewella,31.05.2020,F,Sinhala,46,1:50
+stabbing,lewella bangalaawatte,04.06.2020,M,Sinhala,30,15:22
+theft,watapuluwa,05.06.2020,M,sinhala,29,4:36
+theft,hanthane,06.06.2020,M,Sinhala,23,14:04
+burglary,suduhumpola,06.06.2020,M,Sinhala,50,20:11
+burglary,lake house hotel,07.06.2020,M,Sinhala,24,16:33
+theft,heerassagala,08.06.2020,M,tamil ,55,17:34
+burglary,thalaathuoya road,09.06.2020,M,sinhala,30,15:13
+burglary,2nd rajasinghe lane,10.06.2020,M,Sinhala,47,8:49
+burglary,gatambe bridge,15.06.2020,F,Sinhala,56,5:09
+burglary,yatinuwara street,15.06.2020,M,Sinhala,39,23:31
+vehicle theft,nuwarawela ampitiya,18.06.2020,M,Sinhala,36,12:14
+burglary,2nd rajasinghe lane,20.06.2020,M,Sinhala,28,5:33
+drugs,rajapihilla lane,20.06.2020,M,Sinhala,42,22:19
+robbery,ogastawatte,28.06.2020,M,Sinhala,25,22:52
+theft,bogambara official police stayhouse,29.06.2020,M,sinhala,34,9:50
+drugs,train station,29.06.2020,M,sinhala,34,19:45
+burglary,peradeniya road,03.07.2020,M,Sinhala,30,6:11
+burglary,peradeniya road,05.07.2020,M,Sinhala,30,2:30
+robbery,hewaheta road,05.07.2020,F,Sinhala,74,21:34
+stabbing,pattiyakale watte,12.07.2020,M,muslim,51,13:55
+theft,mulgampola,16.07.2020,M,sinhala,42,20:20
+robbery,katugasthota road,16.07.2020,F,tamil ,58,23:27
+drugs,asgiriya   ,20.07.2020,M,Sinhala,46,12:05
+stabbing,walespark,21.07.2020,M,Sinhala,61,5:00
+theft,goerge.E. silva lane,21.07.2020,F,Sinhala,46,18:22
+drugs,Municipal indoor sports complex,22.07.2020,M,Muslim,75,3:33
+stabbing,Municipal indoor sports complex,22.07.2020,M,sinhala,61,18:58
+burglary,hanthane,24.07.2020,F,Sinhala,54,19:26
+robbery,katugasthota road,28.07.2020,F,tamil ,58,13:30
+theft,maligawa,28.07.2020,F,Sinhala,48,16:07
+theft,thannekumbura,28.07.2020,F,Sinhala,23,22:25
+stabbing,yatinuwara street,02.08.2020,M,Sinhala,49,4:27
+theft,D.S senanayake lane,06.08.2020,F,Sinhala,29,6:07
+drugs,mada bowala angampitiya,08.08.2020,F,Sinhala,30,21:59
+drugs,Primrose gardens,08.08.2020,M,Sinhala,49,22:25
+robbery,yatinuwara street,09.08.2020,M,sinhala,35,9:02
+theft,rajapihilla road,09.08.2020,M,Muslim,47,17:37
+drugs,dalada maligawa,10.08.2020,M,sinhala,30,14:26
+theft,train station,11.08.2020,foreign couple,muslim,28,19:05
+theft,rajapihilla road,12.08.2020,M,Muslim,47,16:36
+burglary,mahaiyawa cemetary,12.08.2020,F,Sinhala,31,20:09
+drugs,mada bowala angampitiya,13.08.2020,M,Sinhala,44,10:38
+drugs,old peradeniya road,13.08.2020,M,Sinhala,59,16:09
+drugs,Primrose gardens,13.08.2020,M,Sinhala,49,17:53
+burglary,Municipal indoor sports complex,15.08.2020,F,Sinhala,61,21:53
+vehicle theft,Municipal indoor sports complex,16.08.2020,M,muslim,63,3:05
+vehicle theft,dangolla,17.08.2020,M,sinhala,21,20:06
+stabbing,mahaiyawa,18.08.2020,F,sinhala,33,20:12
+stabbing,rajapihilla road,21.08.2020,M,Sinhala,29,5:27
+drugs,hanthane,23.08.2020,F,Sinhala,53,12:58
+drugs,Police Station - Kandy,26.08.2020,F,Sinhala,50,13:34
+burglary,hanthane,01.09.2020,F,Sinhala,60,1:30
+burglary,peradeniya road,01.09.2020,M,Sinhala,66,17:57
+drugs,central market,03.09.2020,F,Sinhala,30,11:47
+drugs,gatambe bridge,05.09.2020,M,Sinhala,15,10:11
+burglary,hanthane,05.09.2020,F,Sinhala,60,12:50
+stabbing,yatinuwara street,11.09.2020,M,Sinhala,34,14:23
+robbery,post office,13.09.2020,F,Sinhala,61,15:04
+robbery,panideniya bus stand,16.09.2020,F,muslim,36,20:40
+theft,nuwarawela ampitiya,18.09.2020,M,sinhala,43,20:09
+drugs,Municipal indoor sports complex,21.09.2020,F,Sinhala,64,16:54
+burglary,bogambara bus stand,26.09.2020,M,Sinhala,30,10:32
+burglary,D.S senanayake lane,27.09.2020,M,Sinhala,46,6:42
+theft,sky gate hotel,28.09.2020,M,Sinhala,29,15:37
+stabbing,hanthane road,28.09.2020,M,Sinhala,20,23:12
+stabbing,hanthane road,29.09.2020,M,Sinhala,20,4:43
+vehicle theft,dodamwela,01.10.2020,M,Sinhala,41,4:50
+drugs,kandy,08.10.2020,M,Sinhala,70,8:42
+robbery,hanthane,09.10.2020,M,Sinhala,52,15:37
+robbery,2nd rajasinghe lane,11.10.2020,F,Sinhala,73,17:14
+robbery,dharmasena lane,12.10.2020,M,Sinhala,63,10:31
+burglary,mahaiyawa,13.10.2020,M,tamil ,73,10:04
+theft,joy boat,15.10.2020,M,Sinhala,49,6:17
+drugs,galkaduwa junction,18.10.2020,M,Sinhala,36,12:40
+burglary,mahaiyawa,18.10.2020,M,tamil ,73,13:35
+stabbing,peradeniya,20.10.2020,M,Sinhala,50,13:32
+theft,dalada maligawa,21.10.2020,M,Sinhala,37,5:49
+burglary,maligawa,23.10.2020,M,Sinhala,50,11:50
+burglary,goerge.E.Silva lane,28.10.2020,M,Sinhala,36,22:59
+burglary,kandy city mosk,29.10.2020,F,Sinhala,46,14:51
+stabbing,nuwarawela ampitiya,30.10.2020,M,Sinhala,57,18:10
+robbery,golden crown,01.11.2020,F,Sinhala,55,1:58
+vehicle theft,paradise park,02.11.2020,F,Sinhala,56,2:54
+burglary,bus stand ,04.11.2020,F,Sinhala,26,11:45
+theft,peradeniya,05.11.2020,F,Sinhala,42,7:14
+burglary,bus stand ,06.11.2020,F,Sinhala,26,13:09
+drugs,walespark,07.11.2020,M,sinhala,37,4:19
+burglary,aruppala,10.11.2020,M,Sinhala,41,0:58
+burglary,kotugodalla street,10.11.2020,M,sinhala,29,5:11
+drugs,kandy hospital,10.11.2020,M,Sinhala,48,20:51
+burglary,dalada street,14.11.2020,M,Sinhala,57,15:47
+drugs,colombo street ,21.11.2020,M,Sinhala,26,4:58
+theft,katugasthota road,26.11.2020,M,Sinhala,35,20:26
+drugs,Lady golden road,27.11.2020,M,Sinhala,39,0:59
+robbery,dharmapala road lewella,27.11.2020,M,Sinhala,21,13:57
+burglary,aniwatte,28.11.2020,M,Sinhala,38,12:22
+robbery,mahaiyawa cemetary,30.11.2020,M,sinhala,38,11:13
+burglary,bogambara bus stand ,04.12.2020,F,sinhala,27,20:16
+drugs,goerge.E. silva lane,08.12.2020,M,sinhala,30,1:21
+robbery,lewella,08.12.2020,M,sinhala,56,9:14
+theft,joy boat,09.12.2020,M,Sinhala,34,17:45
+theft,thannekumbura,09.12.2020,F,Sinhala,60,23:59
+vehicle theft,dalada maligawa,12.12.2020,M,Sinhala,55,10:10
+robbery,lewella bangalaawatte,18.12.2020,M,muslim,50,6:36
+stabbing,dodamwela bridge,20.12.2020,M,sinhala,18,4:34
+robbery,lewella bangalaawatte,20.12.2020,M,muslim,50,10:09
+stabbing,dalada maligawa,24.12.2020,F,Sinhala,58,20:26
+stabbing,hanthane,25.12.2020,M,Sinhala,43,17:30
+vehicle theft,bowalawatte,27.12.2020,M,sinhala,17,7:52
+theft,peradeniya road,28.12.2020,F,Sinhala,39,3:23
+burglary,gurudeniya,31.12.2020,F,sinhala,37,2:45
+vehicle theft,bowalawatte,31.12.2020,M,sinhala,17,6:36
+stabbing,peradeniya,31.12.2020,M,sinhala,45,9:13
+theft,Lady golden road,31.12.2020,M,Sinhala,50,13:32
+burglary,thannekumbura,31.12.2020,M,sinhala,28,14:52
+robbery,Municipal indoor sports complex,31.12.2020,F,Sinhala,43,18:58
+stabbing,kotugodalla road,31.12.2020,M,Sinhala,35,22:03
+burglary,mulgampola,04.01.2021,F,Muslim,54,18:51
+stabbing,highschool,11.01.2021,M,Muslim,57,4:25
+theft,sky gate hotel,14.01.2021,M,sinhala,44,5:00
+burglary,dalada maligawa,14.01.2021,M,Sinhala,26,6:22
+drugs,ampitiya,14.01.2021,M,Sinhala,54,17:47
+robbery,mahamaya primary,17.01.2021,M,Sinhala,36,9:47
+robbery,KCC,17.01.2021,M,Sinhala,51,13:19
+theft,sky gate hotel,19.01.2021,M,sinhala,44,14:05
+stabbing,lake house hotel,19.01.2021,F,muslim,27,19:52
+robbery,kingswood,23.01.2021,M,muslim,30,7:21
+burglary,yatinuwara street,25.01.2021,M,Sinhala,73,16:38
+burglary,in front of post office,26.01.2021,M,Sinhala,41,13:14
+drugs,thannekumbura,28.01.2021,M,Sinhala,24,1:07
+burglary,2nd rajasinghe lane,28.01.2021,M,tamil ,26,3:43
+burglary,2nd rajasinghe lane,28.01.2021,F,Sinhala,34,9:52
+theft,kotugodalla road,28.01.2021,M,muslim,45,15:47
+robbery,sri wickramasinghe mawatha,01.02.2021,M,sinhala,25,3:32
+theft,mulgampola,01.02.2021,M,Sinhala,53,6:32
+theft,mulgampola,04.02.2021,M,Sinhala,53,5:11
+drugs,hanathane kadurata malshalawa,04.02.2021,M,Muslim,26,23:56
+robbery,Municipal indoor sports complex,10.02.2021,F,muslim,34,16:28
+stabbing,in front of post office,11.02.2021,M,Sinhala,32,7:20
+robbery,bowala,14.02.2021,M,muslim,40,3:38
+theft,hanthane watte,14.02.2021,M,Muslim,19,13:32
+theft,in front train station,19.02.2021,F,Sinhala,66,20:34
+theft,bus stand,21.02.2021,M,Sinhala,40,22:11
+robbery,katukale,23.02.2021,F,Sinhala,24,5:37
+drugs,mada bowala angampitiya,25.02.2021,M,Sinhala,60,11:21
+stabbing,bus stand,25.02.2021,M,Sinhala,43,13:47
+burglary,bogambara,25.02.2021,M,sinhala,65,23:23
+drugs,mada bowala angampitiya,27.02.2021,M,Sinhala,60,12:50
+theft,gatambe junction,28.02.2021,M,Muslim,57,3:46
+theft,watapuluwa,01.03.2021,M,Sinhala,58,16:57
+burglary,bowalawatte,02.03.2021,M,Sinhala,60,9:20
+stabbing,dalada maligawa,03.03.2021,M,Sinhala,45,15:15
+burglary,dalada maligawa,04.03.2021,M,Sinhala,25,10:16
+robbery,dutugamunu mawatha,04.03.2021,M,Sinhala,21,15:04
+burglary,bus stand,05.03.2021,F,Sinhala,52,7:40
+theft,gatambe,10.03.2021,M,Sinhala,74,6:39
+stabbing,dutugamunu mawatha,14.03.2021,F,tamil ,35,21:48
+burglary,peradeniya,15.03.2021,M,Sinhala,56,17:32
+robbery,hospital street,19.03.2021,M,Sinhala,55,19:26
+burglary,suduhumpola,22.03.2021,M,Sinhala,36,1:58
+burglary,bowala,24.03.2021,M,Sinhala,48,23:23
+theft,mada bowala angampitiya,30.03.2021,M,sinhala,29,22:35
+vehicle theft,peradeniya road,31.03.2021,M,Sinhala,54,3:47
+robbery,watapuluwa,31.03.2021,M,Sinhala,27,6:52
+robbery,highschool,31.03.2021,M,Sinhala,66,22:37
+burglary,mahaiyawa cemetary,02.04.2021,M,Sinhala,41,20:21
+drugs,Municipal indoor sports complex,03.04.2021,M,Sinhala,49,0:20
+burglary,udabowala,06.04.2021,M,Sinhala,45,15:44
+burglary,sri sumangala mawatha,07.04.2021,M,muslim,42,19:31
+burglary,sri wickramasinghe mawatha,10.04.2021,M,Sinhala,44,10:30
+burglary,panideniya bus stand,13.04.2021,F,Sinhala,63,9:26
+burglary,people's bank,13.04.2021,M,muslim,40,14:58
+burglary,hanthane road,13.04.2021,M,Sinhala,37,18:50
+burglary,deiyanwela,14.04.2021,M,Sinhala,41,9:58
+burglary,goodshed bus stand,14.04.2021,M,sinhala,17,10:53
+drugs,sirimawo bandaranayake lane,14.04.2021,M,Sinhala,38,17:37
+drugs,rajapihilla lane,14.04.2021,M,tamil ,30,23:28
+drugs,dalada maligawa,17.04.2021,F,sinhala,54,14:37
+drugs,dalada maligawa,18.04.2021,F,sinhala,54,9:24
+stabbing,yatinuwara lane,18.04.2021,M,Sinhala,22,15:12
+burglary,hewaheta,20.04.2021,M,Sinhala,44,19:27
+drugs,in front of post office,21.04.2021,M,Sinhala,42,11:18
+drugs,KCC commercial bank,25.04.2021,F,Sinhala,52,14:07
+drugs,peradeniya,25.04.2021,M,Sinhala,29,16:13
+burglary,polgolla,27.04.2021,M,Muslim,52,5:53
+theft,aniwatte,28.04.2021,F,Sinhala,40,0:27
+burglary,polgolla,28.04.2021,M,Muslim,52,2:17
+vehicle theft,mada bowala angampitiya,30.04.2021,M,Sinhala,42,0:59
+vehicle theft,yatinuwara street,01.05.2021,M,Sinhala,39,22:42
+drugs,hospital street,03.05.2021,F,muslim,43,7:20
+drugs,nuwarawela ampitiya,03.05.2021,M,Sinhala,35,16:31
+theft,aniwatte,04.05.2021,M,Sinhala,51,21:53
+robbery,watapuluwa,06.05.2021,M,Sinhala,23,0:37
+burglary,gatambe,08.05.2021,M,Sinhala,15,1:47
+vehicle theft,sirimawo bandaranayake lane,08.05.2021,M,Sinhala,63,16:40
+burglary,hanthane,12.05.2021,M,sinhala,60,8:53
+stabbing,nuwarawela ampitiya,12.05.2021,M,Sinhala,32,16:51
+robbery,ampitiya,14.05.2021,F,Sinhala,27,7:07
+burglary,car park,16.05.2021,M,Sinhala,51,1:51
+robbery,ampitiya,18.05.2021,F,Sinhala,27,3:40
+theft,asgiriya   ,18.05.2021,M,sinhala,61,4:34
+burglary,polgolla,20.05.2021,M,Muslim,44,17:52
+robbery,hanthane,21.05.2021,M,Sinhala,46,7:50
+theft,2nd rajasinghe lane,22.05.2021,M,tamil ,49,17:20
+robbery,pattiyakale watte,23.05.2021,M,muslim,32,0:30
+burglary,aruppala,24.05.2021,M,muslim,42,10:15
+theft,rajapihilla lane,24.05.2021,M,Sinhala,23,19:52
+theft,2nd rajasinghe lane,25.05.2021,M,tamil ,49,20:26
+burglary,dharmapala road lewella,28.05.2021,M,Sinhala,69,20:48
+burglary,gatambe bridge,28.05.2021,F,Sinhala,56,23:15
+burglary,Municipal indoor sports complex,31.05.2021,M,Sinhala,39,0:59
+burglary,dodamwela bridge,01.06.2021,F,Sinhala,40,8:42
+drugs,lakeround,05.06.2021,M,Sinhala,30,14:17
+theft,mahamaya primary,06.06.2021,M,Sinhala,41,14:10
+robbery,yatinuwara street,07.06.2021,M,Sinhala,44,16:04
+vehicle theft,thannekumbura,08.06.2021,M,Sinhala,34,13:38
+burglary,kingswood,10.06.2021,M,tamil ,42,5:44
+burglary,gatambe bridge,11.06.2021,F,Sinhala,56,6:56
+drugs,Municipal indoor sports complex,14.06.2021,F,Sinhala,55,1:56
+stabbing,new queens hotel,14.06.2021,M,Sinhala,45,14:43
+burglary,uda peradeniya bowalawatte,16.06.2021,F,Sinhala,51,9:11
+burglary,yatinuwara lane,17.06.2021,F,Sinhala,53,7:45
+theft,car park,17.06.2021,F,Sinhala,57,12:48
+stabbing,urawela junction,18.06.2021,F,sinhala,49,2:14
+burglary,udabowala,18.06.2021,M,Sinhala,35,20:44
+burglary,thalaathuoya road,19.06.2021,M,sinhala,30,5:17
+burglary,peradeniya road,20.06.2021,M,Sinhala,35,9:55
+burglary,yatinuwara lane,20.06.2021,F,Sinhala,53,10:46
+theft,peradeniya KFC,21.06.2021,M,Sinhala,61,18:07
+drugs,train station,24.06.2021,M,sinhala,34,3:13
+burglary,Municipal indoor sports complex,25.06.2021,M,Sinhala,34,15:58
+stabbing,peradeniya KFC,25.06.2021,M,muslim,45,16:43
+robbery,pathanawatte heerassagala,28.06.2021,F,Sinhala,45,18:37
+drugs,thilakawardhana,29.06.2021,M,Sinhala,50,9:07
+robbery,ogastawatte,30.06.2021,M,Sinhala,25,7:37
+theft,aniwatte,02.07.2021,M,Sinhala,52,14:51
+theft,aniwatte,03.07.2021,M,Sinhala,52,1:00
+burglary,buwelikada junction,04.07.2021,M,tamil ,51,7:09
+burglary,ampitiya,05.07.2021,M,tamil ,47,19:59
+burglary,hanthane,07.07.2021,M,Sinhala,47,14:03
+burglary,dharmasena lane,07.07.2021,M,Sinhala,37,15:44
+vehicle theft,hanathane kadurata malshalawa,09.07.2021,M,Sinhala,41,0:09
+burglary,ampitiya,11.07.2021,M,tamil ,47,5:31
+burglary,suduhumpola,16.07.2021,M,Sinhala,58,13:47
+theft,sky gate hotel,16.07.2021,M,Sinhala,35,22:53
+stabbing,walespark,18.07.2021,M,Sinhala,61,16:39
+drugs,urawela junction,19.07.2021,M,Sinhala,56,6:55
+stabbing,walespark,19.07.2021,M,Sinhala,61,22:57
+burglary,hanthane,20.07.2021,M,Sinhala,68,1:20
+theft,aniwatte,20.07.2021,F,sinhala,50,9:07
+drugs,new queens hotel,20.07.2021,M,Sinhala,77,13:17
+theft,post office,25.07.2021,F,Sinhala,39,13:02
+drugs,walespark,26.07.2021,M,Sinhala,65,15:05
+theft,maligawa,26.07.2021,F,Sinhala,48,15:39
+theft,post office,28.07.2021,F,Sinhala,39,18:00
+drugs,udabowala,28.07.2021,F,Sinhala,22,23:33
+theft,thannekumbura,30.07.2021,F,Sinhala,23,21:52
+drugs,bogambara prison,30.07.2021,M,Sinhala,42,22:43
+theft,maligawa,01.08.2021,F,Sinhala,48,6:18
+burglary,meekanuwa watarauma ,01.08.2021,M,sinhala,78,6:30
+burglary,Apiit campus,02.08.2021,M,sinhala,65,4:28
+vehicle theft,yatinuwara street,02.08.2021,F,muslim,15,5:51
+burglary,heerassagala,03.08.2021,M,Sinhala,49,14:07
+robbery,wewathanne road,04.08.2021,M,Sinhala,34,5:56
+robbery,mahaiyawa,09.08.2021,M,tamil ,40,11:42
+robbery,watapuluwa,11.08.2021,M,Sinhala,32,6:09
+burglary,Municipal indoor sports complex,16.08.2021,F,Sinhala,61,0:52
+burglary,Municipal indoor sports complex,17.08.2021,F,Sinhala,61,21:23
+drugs,aruppala,18.08.2021,F,Sinhala,57,3:04
+theft,peradeniya road,20.08.2021,M,Sinhala,33,20:09
+robbery,boowelikada,22.08.2021,M,Sinhala,54,11:57
+robbery,yatinuwara street,22.08.2021,M,Sinhala,41,20:16
+drugs,suduhumpola,24.08.2021,F,Sinhala,66,21:30
+drugs,hanthane,27.08.2021,F,Sinhala,53,1:54
+vehicle theft,goodshed bus stand,27.08.2021,F,Sinhala,59,16:41
+robbery,wattegama,29.08.2021,M,Sinhala,65,18:52
+stabbing,rajapihilla road,02.09.2021,foreign couple,sinhala,49,0:17
+theft,katugasthota,03.09.2021,M,Sinhala,38,3:24
+theft,william gopallawa lane,03.09.2021,M,sinhala,41,16:38
+robbery,wattegama,03.09.2021,M,Sinhala,65,21:17
+drugs,mulgampola,04.09.2021,M,tamil ,46,21:54
+theft,watapuluwa,04.09.2021,M,Sinhala,53,22:32
+drugs,dharmasena lane,06.09.2021,M,Sinhala,42,9:28
+stabbing,malwatte,06.09.2021,M,muslim,30,21:30
+stabbing,rajapihilla road,08.09.2021,foreign couple,sinhala,49,0:29
+theft,william gopallawa lane,08.09.2021,M,sinhala,41,6:35
+stabbing,sri wickramasinghe mawatha,09.09.2021,M,Sinhala,28,22:45
+drugs,mulgampola,10.09.2021,M,tamil ,46,14:23
+burglary,asgiriya   ,11.09.2021,F,Sinhala,48,22:38
+burglary,colombo street ,12.09.2021,F,Sinhala,50,23:20
+stabbing,Municipal indoor sports complex,14.09.2021,F,Sinhala,24,11:27
+burglary,kandy hospital,15.09.2021,M,Sinhala,76,23:13
+burglary,pitakanda kanaththa,16.09.2021,M,Sinhala,55,7:17
+stabbing,bogambara prison,17.09.2021,M,Sinhala,34,22:52
+burglary,Municipal indoor sports complex,18.09.2021,M,Sinhala,53,12:39
+theft,watapuluwa,19.09.2021,M,Sinhala,53,4:23
+theft,kingswood,19.09.2021,M,Sinhala,57,14:33
+burglary,pitakanda kanaththa,22.09.2021,M,Sinhala,55,6:08
+theft,amaya hotel,23.09.2021,M,sinhala,44,6:18
+robbery,lake house hotel,24.09.2021,F,Sinhala,40,19:19
+robbery,lake house hotel,25.09.2021,F,Sinhala,40,13:52
+burglary,ampitiya,27.09.2021,F,sinhala,40,2:17
+burglary,2nd rajasinghe lane,27.09.2021,M,Muslim,46,13:22
+burglary,ampitiya,29.09.2021,F,sinhala,40,19:03
+burglary,udabowala,29.09.2021,M,Sinhala,25,19:07
+drugs,asgiriya stadium,30.09.2021,M,Muslim,60,9:44
+vehicle theft,sahas uyana,30.09.2021,M,sinhala,37,14:53
+drugs,bus stand,01.10.2021,F,Sinhala,23,5:27
+burglary,Sri Dalada Maligawa,03.10.2021,M,Sinhala,39,18:03
+burglary,aruppala,05.10.2021,M,Muslim,27,17:47
+theft,goodshed bus stand,05.10.2021,F,Sinhala,59,23:42
+robbery,hanthane,07.10.2021,M,Sinhala,52,0:18
+burglary,ampitiya,07.10.2021,M,Sinhala,33,11:29
+drugs,asgiriya stadium,08.10.2021,M,Muslim,60,6:30
+robbery,hanthane,09.10.2021,M,Sinhala,52,11:58
+burglary,lakeround,11.10.2021,M,Sinhala,32,15:16
+stabbing,rajapihilla road,11.10.2021,M,sinhala,33,17:19
+drugs,sangamiththa college,11.10.2021,M,sinhala,46,20:24
+vehicle theft,dalada maligawa,14.10.2021,M,Sinhala,45,2:01
+theft,wagolla lewella,14.10.2021,M,Muslim,33,3:28
+stabbing,post office,16.10.2021,F,Sinhala,57,15:33
+theft,rajapihilla junction,17.10.2021,M,sinhala,47,19:37
+burglary,suduhumpola,18.10.2021,M,Sinhala,22,12:31
+burglary,ampitiya,21.10.2021,M,sinhala,42,18:03
+robbery,golden crown,25.10.2021,F,Sinhala,55,5:44
+robbery,golden crown,26.10.2021,F,Sinhala,55,6:43
+drugs,kotugodalla road,27.10.2021,F,Sinhala,48,5:50
+theft,heerassagala junction,28.10.2021,M,Sinhala,23,10:58
+burglary,goerge.E.Silva lane,28.10.2021,M,Sinhala,36,15:54
+vehicle theft,gatambe junction,30.10.2021,M,Sinhala,35,11:30
+stabbing,meekanuwa watarauma ,31.10.2021,F,sinhala,28,6:51
+burglary,bus stand ,01.11.2021,F,Sinhala,26,15:08
+robbery,car park,03.11.2021,M,Sinhala,48,9:43
+robbery,bogambara bus stand,03.11.2021,M,Sinhala,37,16:29
+burglary,Municipal indoor sports complex,05.11.2021,M,Sinhala,54,13:31
+burglary,rajapihilla lane,07.11.2021,F,Sinhala,48,2:05
+robbery,bogambara bus stand,07.11.2021,M,Sinhala,37,9:28
+stabbing,mahaiyawa,08.11.2021,F,muslim,39,11:40
+robbery,new queens hotel,10.11.2021,M,muslim,46,1:12
+drugs,sangamiththa college,11.11.2021,F,Sinhala,33,8:17
+robbery,walespark,11.11.2021,M,Sinhala,44,12:53
+burglary,dalada street,14.11.2021,M,Sinhala,57,10:47
+burglary,thannekumbura,18.11.2021,M,Sinhala,47,1:11
+drugs,yatinuwara street,20.11.2021,M,tamil ,17,3:53
+stabbing,aniwatte,21.11.2021,M,Sinhala,38,7:13
+drugs,panideniya bus stand,21.11.2021,F,Sinhala,36,16:14
+drugs,kandy hospital,22.11.2021,M,Sinhala,21,4:56
+stabbing,joy boat,22.11.2021,M,Sinhala,31,22:03
+burglary,lewella,24.11.2021,M,Sinhala,60,10:04
+theft,katugasthota road,27.11.2021,M,Sinhala,35,10:49
+stabbing,new queens hotel,30.11.2021,M,Sinhala,27,22:37
+burglary,gatambe junction,01.12.2021,M,Sinhala,39,1:52
+robbery,dharmapala road lewella,01.12.2021,M,Sinhala,21,17:20
+theft,lewella gangaramaya,04.12.2021,M,Sinhala,50,9:43
+burglary,2nd rajasinghe lane,05.12.2021,F,Muslim,48,5:43
+theft,thannekumbura,11.12.2021,F,sinhala,47,2:57
+theft,buwelikada junction,14.12.2021,M,tamil ,46,20:04
+burglary,rajapihilla road,15.12.2021,M,Sinhala,63,19:06
+robbery,ampitiya udawela kanda,16.12.2021,M,Sinhala,28,16:58
+burglary,boowelikada,18.12.2021,M,sinhala,36,4:56
+robbery,lewella bangalaawatte,20.12.2021,M,muslim,50,4:04
+theft,meekanuwa watarauma ,20.12.2021,F,sinhala,43,10:47
+stabbing,hanthane,21.12.2021,M,Sinhala,43,21:14
+theft,joy boat,22.12.2021,F,sinhala,34,0:39
+stabbing,katukale,23.12.2021,M,Muslim,50,23:09
+theft,Lady golden road,26.12.2021,M,Sinhala,50,6:48
+robbery,boowelikada,27.12.2021,M,Sinhala,29,17:18
+robbery,hospital street,29.12.2021,M,Sinhala,18,10:55
+burglary,gurudeniya,29.12.2021,F,sinhala,37,15:20
+vehicle theft,bowalawatte,01.01.2022,M,sinhala,17,6:42
+drugs,thannekumbura,01.01.2022,M,Sinhala,35,15:46
+stabbing,hospital street,01.01.2022,F,Sinhala,38,20:32
+burglary,peradeniya,02.01.2022,F,Muslim,61,5:43
+drugs,car park,04.01.2022,M,Sinhala,15,11:37
+burglary,mulgampola,05.01.2022,F,Muslim,54,8:39
+stabbing,kotugodalla road,07.01.2022,M,Sinhala,35,22:20
+robbery,Municipal indoor sports complex,10.01.2022,F,Sinhala,43,19:11
+burglary,pathanawatte heerassagala,11.01.2022,F,Sinhala,60,5:26
+drugs,dodamwela bridge,11.01.2022,M,Sinhala,30,14:11
+theft,panideniya bus stand,12.01.2022,F,Sinhala,20,4:27
+stabbing,highschool,12.01.2022,M,Muslim,57,13:41
+robbery,panideniya bus stand,15.01.2022,F,Muslim,42,3:57
+stabbing,katugasthota,18.01.2022,F,Sinhala,25,18:11
+theft,Torrington,20.01.2022,M,Sinhala,34,11:57
+stabbing,paradeniya road,21.01.2022,M,Sinhala,46,4:13
+burglary,lewella,21.01.2022,M,Sinhala,26,14:07
+robbery,KCC,21.01.2022,M,Sinhala,51,16:33
+theft,highschool,22.01.2022,M,Muslim,50,3:48
+burglary,bus stand,22.01.2022,M,Sinhala,22,17:59
+theft,dalada maligawa,22.01.2022,M,Sinhala,36,22:16
+vehicle theft,heerassagala,23.01.2022,M,Muslim,47,20:50
+burglary,in front of post office,24.01.2022,M,Sinhala,41,14:11
+burglary,asgiriya stadium,24.01.2022,M,Sinhala,25,14:54
+drugs,thannekumbura,29.01.2022,M,Sinhala,24,20:52
+drugs,gatambe junction,30.01.2022,F,Muslim,70,9:17
+theft,maligawa,31.01.2022,M,muslim,48,21:28
+drugs,hanathane kadurata malshalawa,01.02.2022,M,Muslim,26,12:42
+burglary,hospital street,03.02.2022,M,Sinhala,54,16:35
+burglary,peradeniya road,03.02.2022,M,sinhala,42,22:35
+theft,mulgampola,04.02.2022,M,Sinhala,53,13:53
+theft,wewathanne road,04.02.2022,M,Sinhala,19,18:09
+theft,panideniya bus stand,07.02.2022,M,Muslim,61,14:03
+theft,rosawatte,08.02.2022,M,Sinhala,46,11:13
+robbery,Lady golden road,09.02.2022,M,muslim,48,21:13
+theft,people's bank,11.02.2022,M,Sinhala,27,12:36
+robbery,ogastawatte,11.02.2022,M,sinhala,58,22:21
+stabbing,malwatte,14.02.2022,M,Sinhala,35,16:20
+stabbing,bus stand,15.02.2022,M,Sinhala,58,12:11
+stabbing,yatinuwara street,15.02.2022,M,Sinhala,18,20:31
+burglary,2nd rajasinghe lane,16.02.2022,M,Sinhala,28,13:03
+burglary,Torrington,17.02.2022,M,tamil ,36,22:47
+robbery,mahaiyawa,20.02.2022,M,Muslim,52,3:39
+theft,dodamwela,20.02.2022,M,sinhala,72,9:19
+drugs,highschool,23.02.2022,M,Sinhala,22,21:43
+burglary,sri wickramasinghe mawatha,24.02.2022,M,Muslim,39,8:47
+drugs,in front train station,25.02.2022,F,Sinhala,31,20:10
+stabbing,sirimawo bandaranayake lane,25.02.2022,M,sinhala,36,21:33
+burglary,2nd rajasinghe lane,26.02.2022,F,Muslim,77,8:32
+robbery,kandy city mosk,26.02.2022,M,muslim,62,8:37
+burglary,bowalawatte,28.02.2022,M,Sinhala,60,18:17
+drugs,rosawatte,01.03.2022,M,Sinhala,45,15:45
+vehicle theft,mada bowala angampitiya,05.03.2022,F,Sinhala,34,3:27
+burglary,kandy hospital,05.03.2022,F,muslim,30,13:43
+theft,Primrose gardens,10.03.2022,M,Sinhala,40,4:57
+stabbing,peradeniya road,10.03.2022,M,sinhala,45,15:20
+stabbing,hewaheta road,14.03.2022,M,Sinhala,44,13:42
+burglary,thalaathuoya road,15.03.2022,F,Sinhala,57,13:52
+burglary,thalaathuoya road,19.03.2022,M,Sinhala,60,21:35
+burglary,malwatte,21.03.2022,F,sinhala,43,14:41
+burglary,bogambara prison,21.03.2022,M,Sinhala,26,22:21
+drugs,bogambara official police stayhouse,22.03.2022,M,Sinhala,25,5:41
+theft,golden crown,22.03.2022,M,Sinhala,61,16:50
+drugs,sahas uyana,25.03.2022,M,Sinhala,25,20:39
+drugs,yatinuwara street,26.03.2022,M,Sinhala,60,22:25
+drugs,joy boat,28.03.2022,F,sinhala,54,19:09
+stabbing,post office,01.04.2022,M,muslim,40,21:18
+theft,mahaiyawa cemetary,02.04.2022,M,Sinhala,33,10:55
+burglary,udabowala,03.04.2022,F,Sinhala,51,12:25
+burglary,train station,04.04.2022,M,Sinhala,46,12:23
+burglary,hanathane kadurata malshalawa,04.04.2022,M,Sinhala,32,13:26
+burglary,sri wickramasinghe mawatha,05.04.2022,M,Sinhala,44,6:14
+robbery,galkaduwa junction,09.04.2022,M,Sinhala,20,20:00
+theft,widyarthe college,11.04.2022,M,sinhala,30,15:31
+stabbing,kandy hospital,11.04.2022,M,muslim,43,21:02
+stabbing,kingswood,11.04.2022,M,muslim,39,21:25
+burglary,sri sumangala mawatha,13.04.2022,M,muslim,42,7:53
+stabbing,polgolla,13.04.2022,M,sinhala,33,9:25
+burglary,goodshed bus stand,15.04.2022,M,sinhala,17,13:43
+drugs,dalada maligawa,15.04.2022,F,sinhala,54,20:16
+burglary,people's bank,16.04.2022,M,muslim,40,23:05
+burglary,hanthane watte,17.04.2022,M,Muslim,31,6:28
+drugs,in front of post office,18.04.2022,M,Sinhala,42,7:39
+burglary,goerge.E. silva lane,19.04.2022,M,Sinhala,38,5:27
+theft,Sri Dalada Maligawa,19.04.2022,M,Sinhala,33,23:09
+burglary,asgiriya   ,23.04.2022,M,Sinhala,58,5:48
+drugs,hanthane watte,23.04.2022,M,Sinhala,40,6:23
+burglary,D.S senanayake lane,23.04.2022,M,Sinhala,63,19:04
+stabbing,kandy,23.04.2022,F,Sinhala,39,23:40
+stabbing,hospital street,24.04.2022,M,tamil ,41,16:51
+drugs,KCC commercial bank,25.04.2022,F,Sinhala,52,13:09
+drugs,hospital street,26.04.2022,F,muslim,43,5:59
+burglary,polgolla,26.04.2022,M,Muslim,52,14:25
+burglary,KCC,30.04.2022,M,Sinhala,38,14:50
+robbery,goerge.E.Silva lane,01.05.2022,M,Sinhala,26,19:58
+theft,aniwatte,03.05.2022,M,Sinhala,51,20:13
+stabbing,dodamwela bridge,05.05.2022,M,sinhala,35,16:03
+robbery,nagasthanne,05.05.2022,M,Sinhala,37,22:02
+drugs,2nd rajasinghe lane,06.05.2022,M,Sinhala,41,13:11
+stabbing,Municipal indoor sports complex,06.05.2022,M,Sinhala,29,14:42
+burglary,katukale,07.05.2022,F,muslim,55,7:52
+burglary,wadugodapitiya,07.05.2022,M,Sinhala,35,13:03
+drugs,provincial education department,13.05.2022,M,Sinhala,24,6:35
+burglary,gatambe,13.05.2022,M,Sinhala,15,8:31
+burglary,car park,13.05.2022,M,Sinhala,51,16:43
+vehicle theft,kotugodalla road,14.05.2022,M,Sinhala,34,12:47
+burglary,hanthane,14.05.2022,M,sinhala,60,13:27
+robbery,ampitiya,15.05.2022,F,Sinhala,27,21:24
+burglary,sahas uyana,15.05.2022,M,tamil ,35,22:50
+drugs,train station,17.05.2022,F,Sinhala,29,9:38
+robbery,hanthane,18.05.2022,M,Sinhala,46,14:16
+burglary,peradeniya,22.05.2022,F,Sinhala,34,14:51
+stabbing,thalaathuoya road,22.05.2022,M,Muslim,49,16:04
+drugs,Municipal indoor sports complex,22.05.2022,M,Sinhala,39,16:22
+stabbing,new queens hotel,24.05.2022,M,tamil ,43,8:51
+robbery,katugasthota,24.05.2022,F,sinhala,37,9:43
+burglary,bowala ,25.05.2022,F,Sinhala,35,15:54
+drugs,panideniya bus stand,26.05.2022,M,Sinhala,21,11:33
+robbery,pattiyakale watte,26.05.2022,M,muslim,32,13:49
+drugs,pathanawatte heerassagala,28.05.2022,M,Sinhala,35,1:00
+robbery,heerassagala junction,29.05.2022,M,sinhala,31,14:24
+theft,rajapihilla lane,29.05.2022,M,Sinhala,38,22:54
+burglary,pattiyakale watte,30.05.2022,M,sinhala,32,22:01
+vehicle theft,mahaiyawa,01.06.2022,M,Sinhala,49,10:59
+robbery,peradeniya road,04.06.2022,M,sinhala,44,8:24
+theft,D.S senanayake lane,06.06.2022,M,Sinhala,32,10:48
+burglary,buwelikada junction,06.06.2022,M,Sinhala,34,20:30
+theft,mahamaya primary,08.06.2022,M,Sinhala,41,19:10
+drugs,sky gate hotel,09.06.2022,F,Sinhala,78,19:33
+drugs,bowalawatte,10.06.2022,M,sinhala,36,19:44
+stabbing,Bogambara Bus Stand,11.06.2022,M,muslim,47,15:18
+theft,gatambe junction,11.06.2022,M,Sinhala,16,18:55
+drugs,D.S senanayake lane,11.06.2022,M,tamil ,28,19:23
+theft,Bogambara Bus Stand,12.06.2022,M,Sinhala,36,19:19
+stabbing,sahas uyana,13.06.2022,F,sinhala,42,9:09
+burglary,gatambe bridge,14.06.2022,F,Sinhala,56,4:01
+theft,gatambe junction,14.06.2022,F,sinhala,34,5:25
+theft,ampitiyaa,14.06.2022,M,sinhala,39,15:39
+burglary,udabowala,14.06.2022,M,Sinhala,59,18:53
+burglary,thalaathuoya road,15.06.2022,M,sinhala,30,22:27
+stabbing,hewaheta,17.06.2022,F,Sinhala,56,8:59
+burglary,dharmapala road lewella,17.06.2022,M,Sinhala,44,10:49
+stabbing,urawela junction,18.06.2022,F,sinhala,49,9:04
+drugs,uda peradeniya bowalawatte,18.06.2022,M,Sinhala,34,17:20
+drugs,katukale,19.06.2022,foreign couple,Muslim,39,16:11
+theft,car park,20.06.2022,F,Sinhala,57,20:22
+burglary,2nd rajasinghe lane,21.06.2022,M,Sinhala,28,16:32
+burglary,kingswood,24.06.2022,M,tamil ,42,7:35
+robbery,uda peradeniya bowalawatte,25.06.2022,M,tamil ,33,8:52
+theft,asgiriya stadium,26.06.2022,M,Sinhala,38,20:23
+robbery,pathanawatte heerassagala,28.06.2022,F,Sinhala,45,17:07
+theft,colombo street ,29.06.2022,M,sinhala,70,11:26
+theft,bogambara official police stayhouse,29.06.2022,M,sinhala,34,11:34
+drugs,train station,29.06.2022,M,sinhala,34,23:11
+burglary,mahaiyawa cemetary,30.06.2022,M,Sinhala,27,15:53
+robbery,ogastawatte,01.07.2022,M,Sinhala,25,10:02
+burglary,dalada maligawa,02.07.2022,M,Sinhala,26,11:33
+burglary,peradeniya road,03.07.2022,M,Sinhala,30,11:33
+theft,lakeround,04.07.2022,M,tamil ,50,16:07
+burglary,peradeniya road,05.07.2022,F,Sinhala,35,7:56
+burglary,dharmasena lane,05.07.2022,M,Sinhala,37,13:25
+theft,common market complex,06.07.2022,F,sinhala,28,5:55
+burglary,ampitiya,07.07.2022,M,tamil ,47,15:12
+drugs,wagolla lewella,09.07.2022,F,Sinhala,52,18:32
+robbery,hewaheta road,11.07.2022,F,Sinhala,74,9:36
+stabbing,bogambara bus stand ,14.07.2022,M,sinhala,41,11:38
+theft,lakeround,15.07.2022,M,tamil ,50,11:34
+theft,dalada maligawa,15.07.2022,M,Muslim,63,15:56
+burglary,dalada street,15.07.2022,M,Sinhala,58,18:01
+drugs,KCC,17.07.2022,M,muslim,63,19:26
+robbery,in front of post office,19.07.2022,M,tamil ,49,15:17
+robbery,katugasthota road,20.07.2022,F,tamil ,58,8:27
+drugs,new queens hotel,20.07.2022,M,Sinhala,77,15:36
+drugs,Municipal indoor sports complex,22.07.2022,M,Muslim,75,11:07
+drugs,asgiriya   ,22.07.2022,M,Sinhala,46,18:27
+stabbing,Municipal indoor sports complex,24.07.2022,M,sinhala,61,15:23
+burglary,Apiit campus,29.07.2022,M,sinhala,65,17:50
+drugs,2nd rajasinghe lane,29.07.2022,F,tamil ,25,21:22
+theft,provincial education department,29.07.2022,F,Sinhala,27,22:50
+drugs,galkaduwa junction,30.07.2022,M,sinhala,31,19:23
+theft,golden crown,31.07.2022,M,Sinhala,20,20:56
+burglary,meekanuwa watarauma ,01.08.2022,M,sinhala,78,20:14
+stabbing,hanthane road,03.08.2022,F,muslim,39,2:33
+burglary,common market complex,03.08.2022,F,Sinhala,40,15:16
+drugs,sri sumangala mawatha,04.08.2022,F,Sinhala,29,9:20
+stabbing,colombo street ,04.08.2022,M,Sinhala,43,10:55
+burglary,kingswood,04.08.2022,M,Sinhala,60,16:57
+burglary,thannekumbura,04.08.2022,M,Sinhala,51,20:35
+robbery,mahaiyawa,05.08.2022,M,sinhala,25,19:26
+stabbing,ampitiya,06.08.2022,F,Sinhala,43,9:39
+burglary,mada bowala angampitiya,07.08.2022,M,Sinhala,58,10:09
+theft,D.S senanayake lane,07.08.2022,F,Sinhala,29,11:57
+robbery,mahaiyawa,07.08.2022,M,tamil ,40,19:27
+burglary,bowala,07.08.2022,M,sinhala,53,20:23
+robbery,wewathanne road,08.08.2022,M,Sinhala,34,13:00
+robbery,pattiyakale watte,09.08.2022,M,tamil ,25,11:56
+vehicle theft,Municipal indoor sports complex,12.08.2022,M,muslim,63,10:06
+drugs,watapuluwa prithi mawatha,13.08.2022,M,Sinhala,50,11:01
+drugs,bogambara bus stand,13.08.2022,M,tamil ,26,19:28
+theft,katukale,14.08.2022,M,Sinhala,20,14:54
+drugs,suduhumpola,16.08.2022,F,Sinhala,66,17:47
+drugs,aruppala,17.08.2022,F,Sinhala,57,20:20
+theft,gatambe junction,18.08.2022,M,Sinhala,52,15:57
+theft,kandy hospital,18.08.2022,M,Sinhala,61,18:20
+burglary,Municipal indoor sports complex,18.08.2022,M,Sinhala,30,18:21
+vehicle theft,KCC commercial bank,19.08.2022,F,Sinhala,41,22:48
+vehicle theft,dangolla,23.08.2022,M,sinhala,21,11:06
+burglary,watapuluwa,23.08.2022,M,Sinhala,46,18:40
+stabbing,mahaiyawa,24.08.2022,F,sinhala,33,20:51
+robbery,boowelikada,26.08.2022,M,Sinhala,54,15:36
+burglary,bogambara official police stayhouse,27.08.2022,F,muslim,55,4:38
+burglary,hospital street,27.08.2022,F,Sinhala,44,19:40
+stabbing,bus stand,02.09.2022,F,tamil ,32,16:21
+stabbing,dutugamunu mawatha,02.09.2022,M,Sinhala,48,17:00
+robbery,udabowala,03.09.2022,M,Sinhala,41,18:05
+theft,Bogambara Bus Stand,05.09.2022,M,Sinhala,29,16:47
+stabbing,bogambara bus stand,06.09.2022,F,Sinhala,19,15:54
+drugs,gatambe bridge,08.09.2022,M,Sinhala,15,7:12
+robbery,2nd rajasinghe lane,08.09.2022,M,Sinhala,40,16:09
+drugs,mulgampola,08.09.2022,M,tamil ,46,19:34
+robbery,panideniya bus stand,10.09.2022,F,muslim,36,3:56
+burglary,Apiit campus,10.09.2022,M,Sinhala,66,20:05
+vehicle theft,malwatte,11.09.2022,M,sinhala,15,4:54
+robbery,mahaiyawa,12.09.2022,M,Sinhala,37,18:57
+theft,watapuluwa,13.09.2022,M,Sinhala,53,23:30
+stabbing,Municipal indoor sports complex,15.09.2022,F,Sinhala,24,10:52
+robbery,bowala ,17.09.2022,M,sinhala,63,14:57
+burglary,ampitiya udawela kanda,18.09.2022,M,sinhala,66,8:09
+burglary,pitakanda kanaththa,18.09.2022,M,Sinhala,55,14:25
+burglary,peradeniya KFC,20.09.2022,M,Sinhala,41,11:55
+burglary,kandy hospital,20.09.2022,M,Sinhala,76,13:07
+burglary,dalada maligawa,23.09.2022,M,sinhala,49,8:31
+burglary,thilakawardhana,23.09.2022,M,Sinhala,50,17:13
+burglary,dodamwela,25.09.2022,F,Sinhala,44,13:51
+drugs,bus stand,25.09.2022,F,tamil ,40,15:55
+robbery,william gopallawa lane,26.09.2022,M,tamil ,32,11:50
+burglary,2nd rajasinghe lane,27.09.2022,M,Muslim,46,11:45
+burglary,udabowala,02.10.2022,M,Sinhala,25,6:00
+burglary,goerge.E. silva lane,02.10.2022,M,Muslim,34,21:25
+burglary,Sri Dalada Maligawa,03.10.2022,M,Sinhala,39,20:31
+drugs,bus stand,03.10.2022,F,Sinhala,23,21:12
+robbery,hewaheta road,07.10.2022,M,Sinhala,23,1:31
+theft,mulgampola,08.10.2022,M,sinhala,51,7:36
+drugs,asgiriya stadium,09.10.2022,M,Muslim,60,10:13
+drugs,kandy,09.10.2022,M,Sinhala,70,10:20
+vehicle theft,bogambara prison,10.10.2022,M,Sinhala,34,8:34
+robbery,dharmasena lane,11.10.2022,M,Sinhala,63,22:54
+theft,galkaduwa junction,12.10.2022,F,sinhala,36,3:42
+drugs,sangamiththa college,12.10.2022,M,sinhala,46,9:40
+vehicle theft,rajapihilla road,12.10.2022,M,Sinhala,53,17:34
+stabbing,lake house hotel,12.10.2022,M,Sinhala,23,20:28
+robbery,gatambe,14.10.2022,M,sinhala,40,17:29
+vehicle theft,dalada maligawa,15.10.2022,M,Sinhala,45,19:04
+theft,peradeniya road,17.10.2022,M,Sinhala,54,16:09
+burglary,poornawatte,19.10.2022,F,Sinhala,64,10:30
+theft,joy boat,19.10.2022,M,Sinhala,49,22:07
+theft,rajapihilla junction,20.10.2022,M,sinhala,47,15:00
+drugs,Municipal indoor sports complex,20.10.2022,M,tamil ,78,16:45
+stabbing,lakeround,21.10.2022,M,Sinhala,55,13:39
+burglary,boowelikada,21.10.2022,M,Sinhala,32,19:02
+burglary,peradeniya road,21.10.2022,M,Sinhala,64,19:08
+burglary,bogambara bus stand ,21.10.2022,M,Sinhala,40,21:14
+stabbing,Sri Dalada Maligawa,22.10.2022,M,Sinhala,46,15:25
+burglary,2nd rajasinghe lane,22.10.2022,F,sinhala,55,21:17
+burglary,goodshed bus stand,23.10.2022,M,Sinhala,41,7:46
+robbery,amaya hotel,23.10.2022,F,Sinhala,19,8:09
+drugs,ogastawatte,23.10.2022,foreign couple,tamil ,46,8:47
+robbery,lakeround,23.10.2022,F,Sinhala,22,21:27
+burglary,heerassagala junction,25.10.2022,F,Sinhala,29,12:09
+burglary,colombo street ,25.10.2022,M,tamil ,33,20:33
+robbery,bogambara bus stand ,27.10.2022,M,Sinhala,43,11:34
+stabbing,nuwarawela ampitiya,27.10.2022,M,Sinhala,57,17:02
+theft,hanthane,27.10.2022,M,Sinhala,26,17:16
+theft,katugasthota road,29.10.2022,M,Sinhala,24,1:08
+burglary,common market complex,29.10.2022,F,Sinhala,73,7:21
+robbery,golden crown,29.10.2022,F,Sinhala,55,13:14
+robbery,dangolla junction,29.10.2022,M,Sinhala,27,15:18
+stabbing,meekanuwa watarauma ,31.10.2022,F,sinhala,28,2:52
+theft,heerassagala junction,31.10.2022,M,Sinhala,23,10:51
+stabbing,bus stand,01.11.2022,M,Muslim,48,8:05
+robbery,heerassagala junction,05.11.2022,F,Sinhala,39,22:33
+drugs,walespark,07.11.2022,M,sinhala,37,15:23
+theft,goerge.E. silva lane,07.11.2022,M,Sinhala,40,20:33
+drugs,goodshed bus stand,08.11.2022,M,sinhala,52,17:19
+theft,aniwatte,10.11.2022,F,Sinhala,24,12:25
+burglary,rajapihilla lane,11.11.2022,F,Sinhala,48,17:31
+burglary,yatinuwara street,13.11.2022,F,Sinhala,55,17:48
+burglary,kotugodalla street,13.11.2022,M,sinhala,29,18:03
+burglary,hanthane,13.11.2022,M,muslim,26,20:35
+robbery,new queens hotel,14.11.2022,M,muslim,46,8:55
+stabbing,joy boat,14.11.2022,M,Sinhala,31,23:36
+stabbing,asgiriya stadium,15.11.2022,F,Sinhala,42,8:52
+burglary,watapuluwa,16.11.2022,M,Sinhala,28,15:33
+burglary,thannekumbura,17.11.2022,M,Sinhala,47,18:49
+vehicle theft,bowala,18.11.2022,M,Sinhala,39,11:24
+theft,dangolla,19.11.2022,M,Sinhala,25,14:45
+theft,Police Station - Kandy,22.11.2022,M,Sinhala,19,8:35
+drugs,yatinuwara street,22.11.2022,M,tamil ,17,15:22
+burglary,rosawatte,23.11.2022,M,Sinhala,39,18:30
+stabbing,aniwatte,24.11.2022,M,Sinhala,38,8:24
+drugs,bus stand,25.11.2022,M,Sinhala,35,7:34
+theft,mahaiyawa cemetary,25.11.2022,F,muslim,21,11:58
+burglary,bogambara official police stayhouse,25.11.2022,M,Sinhala,66,20:31
+stabbing,watapuluwa,27.11.2022,M,sinhala,21,8:47
+robbery,mahamaya primary,27.11.2022,M,sinhala,50,8:47
+drugs,Lady golden road,28.11.2022,M,Sinhala,39,9:06
+burglary,gatambe junction,28.11.2022,M,Sinhala,39,11:40
+robbery,hanthane road,28.11.2022,M,Sinhala,21,12:34
+burglary,colombo street ,30.11.2022,M,Sinhala,63,12:42
+robbery,kandy hospital,01.12.2022,M,sinhala,31,2:25
+burglary,2nd rajasinghe lane,02.12.2022,F,Muslim,48,7:45
+burglary,kandy hospital,02.12.2022,M,Sinhala,53,18:42
+theft,thannekumbura,02.12.2022,F,Sinhala,60,22:59
+theft,sahas uyana,03.12.2022,M,tamil ,35,8:48
+drugs,meekanuwa watarauma ,03.12.2022,M,sinhala,28,19:21
+robbery,mahaiyawa cemetary,04.12.2022,M,sinhala,38,8:19
+robbery,car park,05.12.2022,F,Muslim,49,4:12
+robbery,goodshed bus stand,05.12.2022,M,Sinhala,55,14:27
+burglary,bogambara bus stand ,05.12.2022,F,sinhala,27,15:59
+robbery,mahaiyawa cemetary,08.12.2022,F,sinhala,28,11:55
+robbery,sahas uyana,10.12.2022,M,Sinhala,78,14:41
+vehicle theft,lewella bangalaawatte,11.12.2022,M,muslim,35,14:20
+burglary,boowelikada,12.12.2022,M,sinhala,36,7:06
+theft,peradeniya road,13.12.2022,M,Sinhala,40,8:32
+vehicle theft,ampitiya,13.12.2022,M,tamil ,64,15:03
+theft,buwelikada junction,13.12.2022,M,tamil ,46,15:31
+drugs,goerge.E. silva lane,14.12.2022,M,sinhala,30,7:51
+stabbing,dodamwela bridge,15.12.2022,M,sinhala,18,6:22
+burglary,goerge.E.Silva lane,17.12.2022,F,Sinhala,40,12:50
+burglary,william gopallawa lane,17.12.2022,M,Sinhala,41,12:59
+stabbing,udabowala,17.12.2022,F,Sinhala,40,17:05
+stabbing,Lady golden road,19.12.2022,M,sinhala,44,15:22
+drugs,ampitiya,20.12.2022,M,Sinhala,42,14:03
+robbery,boowelikada,21.12.2022,M,Sinhala,29,16:09
+stabbing,dalada maligawa,22.12.2022,F,Sinhala,58,16:00
+burglary,bowala ,22.12.2022,M,tamil ,74,18:09
+drugs,hanthane,22.12.2022,M,Sinhala,18,19:20
+stabbing,hanthane,22.12.2022,M,Sinhala,43,23:17
+robbery,lewella bangalaawatte,23.12.2022,M,muslim,50,14:24
+theft,joy boat,23.12.2022,F,sinhala,34,15:06
+theft,goerge.E. silva lane,24.12.2022,F,sinhala,31,14:13
+burglary,william gopallawa lane,25.12.2022,M,Sinhala,38,18:19
+burglary,hospital street,25.12.2022,F,sinhala,54,20:09
+robbery,peradeniya road,26.12.2022,F,Sinhala,24,14:16
+stabbing,katukale,27.12.2022,M,Muslim,50,9:24
+burglary,ampitiya,27.12.2022,F,Sinhala,38,10:47
+burglary,paradise park,31.12.2022,M,Sinhala,51,4:48
+vehicle theft,people's bank,31.12.2022,M,sinhala,25,7:45
+vehicle theft,Municipal indoor sports complex,31.12.2022,M,Sinhala,19,12:28
+burglary,thannekumbura,01.01.2023,M,sinhala,28,15:00
+drugs,uda peradeniya bowalawatte,02.01.2023,M,sinhala,42,9:52
+stabbing,peradeniya,04.01.2023,M,sinhala,45,8:50
+drugs,heerassagala junction,05.01.2023,F,Sinhala,43,2:51
+burglary,hospital street,05.01.2023,M,sinhala,51,11:31
+theft,in front train station,05.01.2023,F,Sinhala,41,13:47
+drugs,william gopallawa lane,06.01.2023,M,sinhala,20,2:03
+theft,aruppala,06.01.2023,F,tamil ,34,15:12
+stabbing,colombo street ,06.01.2023,M,sinhala,66,15:19
+robbery,dutugamunu mawatha,10.01.2023,M,Sinhala,59,13:46
+robbery,poornawatte,11.01.2023,M,tamil ,44,8:18
+drugs,yatinuwara street,11.01.2023,M,Sinhala,47,12:05
+burglary,rosawatte,11.01.2023,M,Sinhala,61,13:58
+burglary,buwelikada junction,11.01.2023,M,Sinhala,17,17:04
+burglary,lewella gangaramaya,12.01.2023,F,Sinhala,57,13:49
+burglary,in front of post office,13.01.2023,F,Sinhala,46,11:51
+stabbing,thannekumbura,14.01.2023,M,Sinhala,38,8:07
+theft,sky gate hotel,17.01.2023,M,sinhala,44,14:40
+stabbing,deiyanwela,17.01.2023,M,Sinhala,71,16:02
+burglary,bowalawatte,18.01.2023,M,sinhala,56,9:49
+vehicle theft,polgolla,20.01.2023,M,Sinhala,61,17:30
+theft,goodshed bus stand,21.01.2023,M,Sinhala,18,14:02
+theft,paradeniya road,21.01.2023,M,tamil ,34,15:47
+robbery,bowalawatte,23.01.2023,F,Muslim,41,9:16
+robbery,kingswood,23.01.2023,M,muslim,30,14:34
+drugs,yatinuwara street,24.01.2023,M,Sinhala,25,12:02
+drugs,dangolla junction,25.01.2023,M,muslim,26,8:16
+burglary,nagasthanne,25.01.2023,M,Sinhala,52,9:16
+theft,dangolla,26.01.2023,foreign couple,Sinhala,15,3:19
+theft,kotugodalla street,27.01.2023,M,Sinhala,53,2:51
+robbery,sri wickramasinghe mawatha,27.01.2023,M,sinhala,25,10:46
+theft,kotugodalla road,28.01.2023,M,muslim,45,14:34
+theft,ampitiyaa,01.02.2023,F,Sinhala,27,19:27
+theft,pattiyakale watte,01.02.2023,M,Sinhala,21,22:58
+burglary,watapuluwa,02.02.2023,M,Sinhala,30,16:48
+theft,train station,02.02.2023,M,sinhala,44,21:56
+vehicle theft,Municipal indoor sports complex,05.02.2023,F,sinhala,44,13:31
+burglary,dalada maligawa,05.02.2023,M,Sinhala,21,14:12
+drugs,pattiyakale watte,06.02.2023,M,Sinhala,17,15:20
+vehicle theft,ogastawatte,09.02.2023,M,Sinhala,19,6:59
+robbery,Municipal indoor sports complex,09.02.2023,F,muslim,34,15:09
+drugs,highschool,10.02.2023,M,sinhala,29,3:25
+vehicle theft,goerge.E.Silva lane,11.02.2023,M,Sinhala,22,15:27
+vehicle theft,wagolla lewella,12.02.2023,foreign couple,Sinhala,78,14:26
+theft,hanthane watte,13.02.2023,M,Muslim,19,8:42
+theft,bogambara,13.02.2023,M,Sinhala,53,19:39
+theft,rajapihilla lane,14.02.2023,F,Sinhala,34,11:59
+robbery,colombo street ,14.02.2023,M,Sinhala,41,13:09
+burglary,central market,15.02.2023,M,Sinhala,33,2:39
+robbery,kandy hospital,15.02.2023,F,Sinhala,40,14:27
+theft,in front train station,16.02.2023,F,Sinhala,66,12:11
+theft,poornawatte,16.02.2023,M,sinhala,48,21:43
+drugs,kandy hospital,17.02.2023,M,Sinhala,45,9:15
+stabbing,dharmasena lane,17.02.2023,F,Sinhala,40,18:21
+vehicle theft,watapuluwa prithi mawatha,18.02.2023,F,Sinhala,39,9:57
+theft,nagasthanne,19.02.2023,M,Muslim,64,14:19
+stabbing,Municipal indoor sports complex,19.02.2023,F,Sinhala,31,16:26
+burglary,dharmasena lane,20.02.2023,F,tamil ,50,19:59
+robbery,pathanawatte heerassagala,21.02.2023,M,Sinhala,30,15:34
+burglary,suduhumpola,22.02.2023,M,Sinhala,60,13:11
+stabbing,bus stand,22.02.2023,M,Sinhala,43,14:29
+stabbing,lewella bangalaawatte,23.02.2023,M,Sinhala,26,9:06
+theft,gatambe junction,26.02.2023,M,Muslim,57,13:54
+theft,watapuluwa,27.02.2023,M,Sinhala,58,15:37
+vehicle theft,hanthane road,01.03.2023,F,tamil ,70,21:29
+burglary,kotugodalla road,02.03.2023,M,Sinhala,53,1:50
+robbery,dharmapala road lewella,02.03.2023,F,tamil ,53,2:21
+burglary,bogambara bus stand,04.03.2023,M,Sinhala,47,5:51
+robbery,buwelikada junction,04.03.2023,M,Muslim,24,9:02
+burglary,bus stand,04.03.2023,F,Sinhala,52,21:48
+burglary,dalada maligawa,05.03.2023,M,Sinhala,25,10:28
+burglary,watapuluwa,08.03.2023,M,Sinhala,68,21:57
+burglary,peradeniya,09.03.2023,M,Sinhala,56,16:05
+drugs,panideniya bus stand,10.03.2023,M,Sinhala,52,8:35
+stabbing,dutugamunu mawatha,11.03.2023,F,tamil ,35,2:10
+burglary,kotugodalla road,13.03.2023,F,Sinhala,42,7:23
+theft,kotugodalla road,13.03.2023,M,Sinhala,40,11:26
+theft,peradeniya road,13.03.2023,M,sinhala,35,19:27
+burglary,thannekumbura,14.03.2023,M,Sinhala,39,5:22
+theft,ogastawatte,14.03.2023,M,muslim,24,18:33
+robbery,william gopallawa lane,15.03.2023,M,Sinhala,37,17:10
+stabbing,mapanawathura,17.03.2023,M,Sinhala,54,0:07
+theft,ampitiya,19.03.2023,foreign couple,Sinhala,19,3:51
+robbery,mapanawathura,20.03.2023,M,Sinhala,58,14:06
+stabbing,udabowala,21.03.2023,M,tamil ,28,8:29
+stabbing,dalada street,22.03.2023,F,muslim,41,18:26
+theft,post office,23.03.2023,M,muslim,45,22:18
+burglary,suduhumpola,24.03.2023,M,Sinhala,36,13:14
+drugs,people's bank,25.03.2023,M,Sinhala,25,10:20
+theft,Police Station - Kandy,26.03.2023,M,Sinhala,52,5:07
+burglary,new queens hotel,26.03.2023,M,Sinhala,42,13:43
+theft,mada bowala angampitiya,27.03.2023,M,sinhala,29,11:10
+robbery,hanthane watte,27.03.2023,M,Sinhala,35,15:04
+robbery,watapuluwa,29.03.2023,M,Sinhala,27,15:01
+stabbing,kingswood,29.03.2023,F,Sinhala,45,15:11
+robbery,highschool,29.03.2023,M,Sinhala,66,17:49
+theft,katugasthota road,29.03.2023,F,Sinhala,35,22:18
+burglary,walespark,30.03.2023,F,sinhala,44,10:46
+theft,mahaiyawa,30.03.2023,M,sinhala,32,19:28
+vehicle theft,asgiriya stadium,31.03.2023,M,tamil ,19,2:37
+vehicle theft,bus stand ,01.04.2023,F,sinhala,44,12:43
+theft,Lady golden road,01.04.2023,M,muslim,25,18:58
+burglary,mahaiyawa cemetary,02.04.2023,M,Sinhala,41,16:13
+drugs,bogambara bus stand,04.04.2023,F,Sinhala,32,14:42
+stabbing,lake house hotel,05.04.2023,M,muslim,49,15:10
+burglary,Municipal indoor sports complex,06.04.2023,M,Sinhala,50,16:48
+stabbing,people's bank,06.04.2023,M,Sinhala,48,19:25
+stabbing,Municipal indoor sports complex,06.04.2023,F,Sinhala,38,20:06
+robbery,goerge.E. silva lane,07.04.2023,M,Sinhala,26,11:21
+stabbing,goerge.E.Silva lane,07.04.2023,M,Sinhala,37,15:58
+stabbing,pathanawatte heerassagala,07.04.2023,M,muslim,33,18:05
+burglary,panideniya bus stand,07.04.2023,F,Sinhala,63,19:16
+stabbing,wewathanne road,08.04.2023,F,sinhala,29,11:16
+burglary,hewaheta,09.04.2023,M,tamil ,53,4:05
+robbery,hanathane kadurata malshalawa,10.04.2023,F,Sinhala,15,17:28
+robbery,hewaheta,11.04.2023,M,Sinhala,43,12:59
+drugs,dalada maligawa,11.04.2023,F,Sinhala,41,18:31
+theft,hanathane kadurata malshalawa,12.04.2023,F,sinhala,60,21:46
+stabbing,hanthane watte,12.04.2023,F,Sinhala,38,21:51
+stabbing,yatinuwara lane,16.04.2023,M,Sinhala,22,17:49
+drugs,colombo street ,17.04.2023,M,Sinhala,23,12:32
+stabbing,heerassagala,18.04.2023,M,Sinhala,51,21:52
+drugs,rajapihilla lane,19.04.2023,M,tamil ,30,9:53
+drugs,ampitiya,20.04.2023,F,Sinhala,31,13:18
+theft,hanathane kadurata malshalawa,21.04.2023,M,Sinhala,17,6:24
+drugs,bogambara,23.04.2023,F,Sinhala,41,9:09
+theft,lewella gangaramaya,23.04.2023,M,Muslim,59,14:02
+theft,bogambara,23.04.2023,F,Sinhala,25,16:27
+vehicle theft,yatinuwara street,27.04.2023,M,Sinhala,39,3:05
+vehicle theft,kotugodalla road,28.04.2023,M,Muslim,15,7:25
+vehicle theft,mada bowala angampitiya,28.04.2023,M,Sinhala,42,10:13
+burglary,dalada street,29.04.2023,M,Sinhala,61,12:55
+drugs,amaya hotel,29.04.2023,F,tamil ,35,18:17
+robbery,ampitiya road,29.04.2023,F,tamil ,36,18:35
+drugs,asgiriya stadium,29.04.2023,M,Sinhala,41,19:21
+drugs,kotugodalla road,29.04.2023,M,Sinhala,21,19:33
+robbery,panideniya bus stand,01.05.2023,M,Sinhala,29,18:46
+robbery,watapuluwa,01.05.2023,M,Sinhala,23,22:44
+burglary,ampitiya,02.05.2023,M,Sinhala,20,8:28
+drugs,hanthane road,02.05.2023,M,Sinhala,42,14:00
+theft,mahaiyawa,03.05.2023,M,sinhala,51,14:11
+stabbing,Apiit campus,04.05.2023,M,Sinhala,34,15:29
+robbery,Police Station - Kandy,06.05.2023,F,tamil ,34,13:59
+theft,in front of post office,06.05.2023,F,Sinhala,32,14:00
+burglary,colombo street ,07.05.2023,F,Sinhala,34,11:49
+burglary,welikanda,07.05.2023,M,Sinhala,36,17:01
+burglary,bogambara prison,10.05.2023,F,Sinhala,32,5:39
+stabbing,nuwarawela ampitiya,10.05.2023,M,Sinhala,32,11:43
+drugs,hewaheta road,12.05.2023,M,Sinhala,15,5:46
+theft,sirimawo bandaranayake lane,14.05.2023,M,sinhala,48,17:47
+vehicle theft,dutugamunu mawatha,15.05.2023,M,Sinhala,24,7:13
+robbery,gatambe,15.05.2023,F,Sinhala,74,11:34
+robbery,kotugodalla street,15.05.2023,M,Sinhala,20,15:38
+theft,bus stand,17.05.2023,F,muslim,30,18:00
+theft,asgiriya   ,18.05.2023,M,sinhala,61,11:45
+robbery,goodshed bus stand,18.05.2023,M,Sinhala,35,16:20
+burglary,dharmapala road lewella,20.05.2023,F,Sinhala,32,14:34
+stabbing,poornawatte,21.05.2023,M,Sinhala,67,11:06
+burglary,aruppala,21.05.2023,M,muslim,42,18:50
+burglary,D.S senanayake lane,22.05.2023,F,muslim,42,21:15
+robbery,katugasthota road,23.05.2023,M,Sinhala,47,11:52
+burglary,Municipal indoor sports complex,23.05.2023,M,Sinhala,27,17:50
+theft,peradeniya road,24.05.2023,F,Sinhala,32,7:12
+theft,bogambara,24.05.2023,M,Sinhala,42,9:41
+vehicle theft,KCC,25.05.2023,M,Sinhala,31,15:32
+theft,peradeniya road,25.05.2023,M,sinhala,29,17:32
+burglary,Municipal indoor sports complex,27.05.2023,M,Sinhala,39,19:25
+theft,polgolla,28.05.2023,M,Sinhala,29,11:39
+robbery,bus stand,29.05.2023,F,Sinhala,64,12:35
+burglary,Municipal indoor sports complex,29.05.2023,F,Sinhala,40,15:13
+burglary,yatinuwara street,30.05.2023,M,Sinhala,37,11:06
+burglary,dharmapala road lewella,30.05.2023,M,Sinhala,69,15:10
+robbery,katugasthota road,30.05.2023,F,Muslim,42,16:26
+vehicle theft,paradeniya road,30.05.2023,F,Sinhala,38,18:19
+drugs,lakeround,04.06.2023,M,Sinhala,30,11:19
+stabbing,dharmasena lane,04.06.2023,M,Sinhala,44,18:17
+stabbing,mada bowala angampitiya,04.06.2023,M,Sinhala,53,21:10
+burglary,suduhumpola,05.06.2023,M,Sinhala,50,10:32
+burglary,dodamwela bridge,05.06.2023,F,Sinhala,40,18:07
+robbery,suduhumpola,07.06.2023,F,Sinhala,28,15:17
+vehicle theft,train station,08.06.2023,M,Muslim,55,14:23
+stabbing,lewella bangalaawatte,08.06.2023,M,Sinhala,30,16:14
+theft,heerassagala,08.06.2023,M,tamil ,55,18:27
+theft,hanthane,09.06.2023,M,Sinhala,23,9:49
+burglary,mulgampola,09.06.2023,M,Sinhala,61,19:25
+robbery,hanthane road,10.06.2023,F,Sinhala,37,11:17
+drugs,watapuluwa,10.06.2023,M,Sinhala,35,13:00
+drugs,boowelikada,10.06.2023,F,Sinhala,25,17:11
+drugs,ogastawatte,10.06.2023,M,Sinhala,40,19:41
+burglary,ampitiya,11.06.2023,M,Sinhala,40,10:03
+burglary,watapuluwa,11.06.2023,M,Muslim,46,15:04
+vehicle theft,thannekumbura,12.06.2023,M,Sinhala,34,12:07
+vehicle theft,Lady golden road,13.06.2023,M,Sinhala,52,11:21
+drugs,buwelikada junction,14.06.2023,M,muslim,71,19:54
+stabbing,galkaduwa junction,14.06.2023,M,Sinhala,53,20:03
+robbery,dutugamunu mawatha,15.06.2023,M,tamil ,63,11:18
+burglary,yatinuwara street,15.06.2023,M,Sinhala,39,11:21
+stabbing,peradeniya road,15.06.2023,M,Sinhala,69,14:04
+theft,paradeniya road,15.06.2023,M,Sinhala,27,16:56
+theft,kandy,16.06.2023,M,Sinhala,50,13:24
+robbery,pathanawatte heerassagala,17.06.2023,F,Sinhala,37,13:50
+vehicle theft,provincial education department,17.06.2023,F,Sinhala,40,17:25
+burglary,uda peradeniya bowalawatte,19.06.2023,F,Sinhala,51,17:32
+drugs,Municipal indoor sports complex,21.06.2023,M,Sinhala,44,13:34
+burglary,udabowala,21.06.2023,M,Sinhala,35,14:27
+burglary,bowala,22.06.2023,M,Sinhala,37,8:45
+robbery,sky gate hotel,22.06.2023,M,Sinhala,32,18:40
+vehicle theft,nuwarawela ampitiya,22.06.2023,M,Sinhala,36,19:50
+drugs,rajapihilla lane,23.06.2023,M,Sinhala,42,15:42
+stabbing,peradeniya KFC,23.06.2023,M,muslim,45,16:31
+stabbing,ampitiya,24.06.2023,F,Muslim,36,15:54
+burglary,Municipal indoor sports complex,27.06.2023,M,Sinhala,34,16:20
+stabbing,meekanuwa watarauma ,01.07.2023,M,muslim,42,16:02
+theft,Municipal indoor sports complex,02.07.2023,M,muslim,39,2:35
+burglary,hewaheta,02.07.2023,M,Sinhala,47,11:49
+theft,train station,03.07.2023,F,Sinhala,49,15:58
+drugs,yatinuwara lane,05.07.2023,M,Sinhala,36,21:28
+vehicle theft,ampitiya,05.07.2023,M,Sinhala,53,21:32
+robbery,hanthane road,06.07.2023,M,Sinhala,46,8:29
+drugs,common market complex,06.07.2023,F,Muslim,37,15:50
+burglary,buwelikada junction,06.07.2023,M,tamil ,51,17:56
+theft,gurudeniya,06.07.2023,M,Sinhala,39,18:51
+burglary,hanthane,08.07.2023,M,Sinhala,47,17:37
+drugs,colombo street ,12.07.2023,M,Sinhala,54,8:31
+burglary,lewella,13.07.2023,M,Sinhala,32,17:02
+theft,yatinuwara street,14.07.2023,M,Sinhala,20,17:12
+stabbing,pattiyakale watte,15.07.2023,M,muslim,51,15:21
+burglary,pitakanda kanaththa,16.07.2023,M,Sinhala,32,16:36
+drugs,urawela junction,18.07.2023,M,Sinhala,56,18:13
+theft,sky gate hotel,20.07.2023,M,Sinhala,35,10:06
+theft,gurudeniya,20.07.2023,M,Sinhala,44,19:15
+burglary,hanthane,20.07.2023,M,Sinhala,68,20:46
+theft,aniwatte,21.07.2023,F,sinhala,50,21:49
+burglary,bogambara,23.07.2023,M,Sinhala,51,12:26
+burglary,hanthane,23.07.2023,M,Sinhala,41,13:42
+drugs,kotugodalla street,24.07.2023,F,Sinhala,40,18:52
+drugs,bogambara prison,25.07.2023,M,Sinhala,42,3:33
+theft,goerge.E. silva lane,25.07.2023,F,Sinhala,46,20:07
+burglary,hanthane,27.07.2023,F,Sinhala,54,15:54
+burglary,old peradeniya road,28.07.2023,F,Muslim,41,15:24
+drugs,udabowala,28.07.2023,F,Sinhala,22,16:40
+burglary,thannekumbura,29.07.2023,M,tamil ,70,10:43
+theft,maligawa,30.07.2023,F,Sinhala,48,14:42
+theft,hanthane,30.07.2023,M,Sinhala,64,15:46
+stabbing,yatinuwara street,01.08.2023,M,Sinhala,49,16:39
+burglary,ampitiya,02.08.2023,M,Sinhala,15,10:32
+stabbing,lakeround,02.08.2023,F,Sinhala,51,16:06
+robbery,yatinuwara street,02.08.2023,M,Sinhala,39,16:24
+burglary,ogastawatte,03.08.2023,M,sinhala,68,19:45
+robbery,train station,04.08.2023,M,sinhala,23,10:13
+drugs,buwelikada junction,04.08.2023,F,Sinhala,56,16:03
+burglary,central market,04.08.2023,F,sinhala,28,22:38
+drugs,mada bowala angampitiya,05.08.2023,F,Sinhala,30,17:02
+drugs,dalada maligawa,07.08.2023,M,sinhala,30,16:22
+theft,colombo street ,07.08.2023,M,Muslim,51,21:49
+robbery,yatinuwara street,09.08.2023,M,sinhala,35,10:00
+drugs,Primrose gardens,09.08.2023,M,Sinhala,49,16:34
+theft,maligawa,10.08.2023,F,Sinhala,50,17:13
+theft,thalaathuoya road,10.08.2023,M,Sinhala,17,20:46
+theft,peradeniya road,12.08.2023,M,Sinhala,33,13:11
+theft,hewaheta,12.08.2023,M,Sinhala,31,17:28
+theft,nuwarawela ampitiya,13.08.2023,M,Sinhala,29,17:47
+robbery,watapuluwa,13.08.2023,M,Sinhala,32,18:03
+robbery,colombo street ,13.08.2023,F,Sinhala,27,20:30
+theft,rajapihilla road,14.08.2023,M,Muslim,47,14:02
+burglary,Municipal indoor sports complex,17.08.2023,F,Sinhala,61,14:00
+robbery,yatinuwara street,17.08.2023,M,Sinhala,41,15:05
+theft,ampitiya,21.08.2023,M,tamil ,27,2:05
+drugs,polgolla,21.08.2023,M,sinhala,47,20:38
+stabbing,dangolla,22.08.2023,M,Sinhala,52,8:06
+robbery,bus stand,22.08.2023,M,Sinhala,31,19:01
+drugs,hanthane,24.08.2023,F,Sinhala,53,14:42
+burglary,ogastawatte,25.08.2023,M,Sinhala,76,11:57
+burglary,poornawatte,27.08.2023,M,Sinhala,57,11:21
+stabbing,rajapihilla road,28.08.2023,M,Sinhala,29,10:29
+drugs,rajapihilla junction,29.08.2023,foreign couple,tamil ,78,9:39
+drugs,Police Station - Kandy,30.08.2023,F,Sinhala,50,12:27
+vehicle theft,katukale,31.08.2023,M,Sinhala,33,18:24
+robbery,mulgampola,03.09.2023,M,Sinhala,46,14:54
+drugs,central market,05.09.2023,F,Sinhala,30,17:38
+stabbing,rajapihilla road,07.09.2023,foreign couple,sinhala,49,9:02
+drugs,dharmasena lane,07.09.2023,M,Sinhala,42,9:33
+burglary,peradeniya road,08.09.2023,M,Sinhala,43,13:19
+burglary,KCC,08.09.2023,M,Sinhala,41,15:08
+theft,william gopallawa lane,09.09.2023,M,sinhala,41,8:14
+burglary,maligawa,09.09.2023,M,Sinhala,42,14:20
+stabbing,yatinuwara street,09.09.2023,M,Sinhala,34,17:37
+vehicle theft,thannekumbura,10.09.2023,M,Sinhala,66,13:15
+stabbing,malwatte,10.09.2023,M,muslim,30,18:16
+drugs,panideniya bus stand,11.09.2023,M,sinhala,54,19:43
+stabbing,katukale,11.09.2023,F,Sinhala,57,22:06
+theft,dalada maligawa,11.09.2023,M,Muslim,32,22:12
+burglary,yatinuwara street,13.09.2023,M,Sinhala,39,8:39
+burglary,heerassagala junction,14.09.2023,M,Sinhala,62,12:22
+theft,katugasthota road,15.09.2023,M,Muslim,39,13:31
+burglary,william gopallawa lane,15.09.2023,M,Sinhala,33,22:34
+stabbing,bogambara prison,16.09.2023,M,Sinhala,34,7:57
+burglary,colombo street ,16.09.2023,F,Sinhala,50,15:08
+burglary,central market,16.09.2023,F,Sinhala,35,21:32
+theft,nuwarawela ampitiya,19.09.2023,M,sinhala,43,9:02
+theft,hanthane,19.09.2023,M,Sinhala,44,12:46
+burglary,wattegama,20.09.2023,F,Sinhala,50,12:23
+burglary,watapuluwa,23.09.2023,M,tamil ,41,15:32
+drugs,kandy hospital,23.09.2023,M,Sinhala,37,15:40
+burglary,bus stand,24.09.2023,M,Sinhala,59,7:58
+theft,highschool,24.09.2023,foreign couple,sinhala,53,8:17
+theft,amaya hotel,24.09.2023,M,sinhala,44,9:40
+burglary,D.S senanayake lane,24.09.2023,M,Sinhala,46,14:08
+stabbing,dharmasena lane,27.09.2023,M,Sinhala,45,11:41
+burglary,ampitiyaa,27.09.2023,M,Sinhala,56,14:01
+theft,nagasthanne,27.09.2023,M,sinhala,41,18:34
+burglary,colombo street ,01.10.2023,M,Sinhala,72,12:16
+theft,old peradeniya road,01.10.2023,M,Sinhala,73,15:34
+burglary,bogambara bus stand,02.10.2023,M,Sinhala,30,7:36
+theft,sky gate hotel,02.10.2023,M,Sinhala,29,16:55
+burglary,D.S senanayake lane,03.10.2023,F,Sinhala,46,12:14
+stabbing,hanthane road,03.10.2023,M,Sinhala,20,16:04
+theft,wewathanne road,04.10.2023,F,Sinhala,41,16:16
+drugs,dodamwela bridge,05.10.2023,F,Sinhala,29,16:29
+theft,goodshed bus stand,07.10.2023,F,Sinhala,59,12:05
+theft,kotugodalla road,07.10.2023,M,Muslim,19,16:47
+vehicle theft,hanthane,07.10.2023,M,Sinhala,38,17:03
+robbery,peradeniya road,08.10.2023,F,Sinhala,23,13:23
+robbery,hanthane watte,09.10.2023,M,Sinhala,63,7:59
+stabbing,rajapihilla road,09.10.2023,M,sinhala,33,18:08
+burglary,ampitiya,10.10.2023,M,Sinhala,33,8:23
+robbery,heerassagala,11.10.2023,M,sinhala,29,13:20
+burglary,lakeround,11.10.2023,M,Sinhala,32,15:02
+stabbing,yatinuwara street,11.10.2023,M,Sinhala,30,17:32
+robbery,nagasthanne,12.10.2023,M,Sinhala,43,0:51
+burglary,buwelikada junction,12.10.2023,F,Sinhala,54,16:07
+vehicle theft,yatinuwara street,12.10.2023,M,Sinhala,29,16:48
+burglary,mahaiyawa,12.10.2023,M,tamil ,73,19:44
+theft,peradeniya road,13.10.2023,foreign couple,sinhala,74,7:38
+vehicle theft,william gopallawa lane,14.10.2023,M,sinhala,55,17:15
+stabbing,yatinuwara street,15.10.2023,M,Sinhala,57,9:19
+robbery,sangamiththa college,15.10.2023,M,tamil ,28,20:52
+burglary,old peradeniya road,15.10.2023,M,Sinhala,60,22:18
+drugs,meekanuwa watarauma ,16.10.2023,M,Sinhala,33,10:07
+theft,dalada maligawa,16.10.2023,M,Sinhala,37,18:16
+stabbing,peradeniya,18.10.2023,M,Sinhala,50,6:07
+burglary,ampitiya,18.10.2023,M,sinhala,42,16:19
+burglary,Primrose gardens,19.10.2023,M,Sinhala,21,10:27
+burglary,suduhumpola,21.10.2023,M,Sinhala,22,6:43
+burglary,dangolla junction,21.10.2023,F,Sinhala,27,8:57
+vehicle theft,lewella bangalaawatte,22.10.2023,M,Sinhala,56,15:11
+theft,in front train station,22.10.2023,M,Sinhala,45,21:56
+robbery,dangolla junction,25.10.2023,M,Sinhala,36,4:55
+burglary,maligawa,25.10.2023,M,Sinhala,50,6:01
+burglary,sirimawo bandaranayake lane,25.10.2023,M,Muslim,43,10:12
+drugs,hewaheta,28.10.2023,M,Sinhala,67,13:51
+vehicle theft,paradise park,29.10.2023,F,Sinhala,56,18:09
+drugs,dodamwela bridge,30.10.2023,M,Sinhala,15,11:00
+vehicle theft,gatambe junction,01.11.2023,M,Sinhala,35,11:43
+drugs,bogambara official police stayhouse,03.11.2023,F,Sinhala,46,5:30
+burglary,bus stand ,03.11.2023,F,Sinhala,26,9:12
+theft,peradeniya,04.11.2023,F,Sinhala,42,21:29
+burglary,kandy city mosk,05.11.2023,F,Sinhala,46,9:57
+theft,paradeniya road,05.11.2023,M,sinhala,41,17:08
+drugs,suduhumpola,05.11.2023,M,Sinhala,37,17:18
+burglary,dalada street,07.11.2023,M,Sinhala,57,6:57
+theft,peradeniya road,07.11.2023,M,Sinhala,40,11:21
+robbery,walespark,08.11.2023,M,Sinhala,44,12:07
+drugs,common market complex,09.11.2023,F,Sinhala,35,17:06
+drugs,thalaathuoya road,12.11.2023,M,Muslim,42,15:39
+stabbing,gurudeniya,12.11.2023,M,sinhala,45,20:25
+drugs,gatambe bridge,13.11.2023,M,Sinhala,43,16:57
+drugs,bus stand ,14.11.2023,F,Sinhala,15,14:26
+theft,ampitiya,15.11.2023,M,Sinhala,27,10:49
+burglary,dalada maligawa,15.11.2023,F,Sinhala,50,12:07
+drugs,train station,15.11.2023,M,Sinhala,40,15:45
+burglary,bogambara official police stayhouse,15.11.2023,M,tamil ,60,16:52
+theft,peradeniya road,16.11.2023,M,Sinhala,46,18:40
+robbery,bowala,16.11.2023,F,Sinhala,49,22:27
+drugs,colombo street ,17.11.2023,M,Sinhala,26,4:27
+robbery,urawela junction,18.11.2023,M,sinhala,68,19:22
+theft,nagasthanne,18.11.2023,M,Sinhala,59,19:49
+robbery,pitakanda kanaththa,19.11.2023,M,sinhala,57,16:49
+robbery,highschool,20.11.2023,M,Sinhala,28,10:14
+burglary,lewella,20.11.2023,M,Sinhala,51,15:38
+stabbing,Police Station - Kandy,21.11.2023,M,tamil ,45,18:03
+burglary,watapuluwa,21.11.2023,M,Sinhala,56,20:05
+burglary,ampitiya udawela kanda,21.11.2023,M,Sinhala,18,22:23
+drugs,D.S senanayake lane,22.11.2023,M,Sinhala,38,9:35
+burglary,bogambara,22.11.2023,F,tamil ,28,22:16
+theft,peradeniya road,23.11.2023,M,Sinhala,41,18:50
+stabbing,mahaiyawa cemetary,23.11.2023,M,muslim,25,21:43
+theft,dalada maligawa,25.11.2023,M,Sinhala,29,10:12
+burglary,suduhumpola,26.11.2023,F,Sinhala,52,14:44
+robbery,yatinuwara street,28.11.2023,M,Sinhala,25,21:05
+burglary,kandy town,29.11.2023,M,Sinhala,45,11:03
+robbery,aniwatte,29.11.2023,M,sinhala,53,20:11
+burglary,dalada street,30.11.2023,M,Sinhala,21,17:46
+drugs,bogambara bus stand ,01.12.2023,M,sinhala,55,15:30
+stabbing,mapanawathura,02.12.2023,M,Sinhala,28,12:34
+robbery,rosawatte,02.12.2023,M,muslim,59,21:41
+burglary,thannekumbura,03.12.2023,M,sinhala,39,20:12
+burglary,kandy hospital,04.12.2023,F,Sinhala,54,8:08
+vehicle theft,dalada maligawa,04.12.2023,M,Sinhala,55,22:06
+robbery,meekanuwa watarauma ,05.12.2023,M,tamil ,59,16:29
+burglary,ogastawatte,07.12.2023,M,Sinhala,29,8:37
+theft,joy boat,08.12.2023,M,Sinhala,34,17:28
+robbery,lewella,09.12.2023,M,sinhala,56,15:41
+burglary,bogambara,10.12.2023,M,Sinhala,20,12:59
+burglary,ampitiya,12.12.2023,M,sinhala,61,15:53
+stabbing,dangolla,13.12.2023,M,Sinhala,42,11:49
+vehicle theft,yatinuwara street,13.12.2023,M,Sinhala,50,16:10
+drugs,poornawatte,14.12.2023,M,tamil ,52,19:39
+robbery,ampitiya udawela kanda,16.12.2023,M,Sinhala,28,7:29
+burglary,aniwatte,16.12.2023,M,Sinhala,27,20:10
+stabbing,uda peradeniya bowalawatte,17.12.2023,M,Sinhala,29,11:10
+stabbing,katugasthota road,17.12.2023,M,Sinhala,61,18:00
+burglary,rajapihilla road,21.12.2023,M,Sinhala,63,17:35
+theft,people's bank,21.12.2023,M,Sinhala,71,18:56
+robbery,deiyanwela,22.12.2023,M,Sinhala,53,8:08
+burglary,hanthane,22.12.2023,F,Sinhala,35,15:59
+theft,Lady golden road,25.12.2023,M,Sinhala,50,13:22
+burglary,hospital street,27.12.2023,M,sinhala,37,10:20
+drugs,mapanawathura,27.12.2023,F,Sinhala,44,15:45
+drugs,bowala,29.12.2023,M,Sinhala,35,14:12
+drugs,gurudeniya,29.12.2023,M,Sinhala,53,15:34
+drugs,thannekumbura,30.12.2023,M,Sinhala,35,15:47
+robbery,dalada street,31.12.2023,F,Sinhala,49,15:06
+drugs,goodshed bus stand,02.01.2024,M,muslim,55,15:08
+stabbing,mahaiyawa cemetary,03.01.2024,F,Sinhala,21,4:16
+theft,common market complex,04.01.2024,M,muslim,36,21:06
+burglary,car park,06.01.2024,M,Sinhala,42,16:17
+vehicle theft,dodamwela,07.01.2024,M,Sinhala,32,11:39
+robbery,goerge.E. silva lane,08.01.2024,M,Sinhala,37,15:28
+burglary,kandy hospital,09.01.2024,F,Sinhala,28,22:23
+burglary,dalada maligawa,12.01.2024,M,Sinhala,26,15:17
+robbery,nagasthanne,12.01.2024,F,Sinhala,42,16:58
+burglary,kotugodalla street,13.01.2024,M,tamil ,57,15:13
+robbery,polgolla,13.01.2024,M,sinhala,45,22:10
+drugs,ampitiya,14.01.2024,M,Sinhala,54,9:12
+robbery,mahamaya primary,14.01.2024,M,Sinhala,36,13:31
+burglary,poornawatte,14.01.2024,F,Sinhala,54,20:04
+stabbing,bogambara official police stayhouse,16.01.2024,M,Sinhala,21,19:57
+vehicle theft,katugasthota road,17.01.2024,M,Sinhala,22,10:49
+burglary,aniwatte,17.01.2024,M,Sinhala,58,13:05
+burglary,galkaduwa junction,17.01.2024,M,tamil ,65,15:23
+robbery,mahaiyawa cemetary,17.01.2024,M,sinhala,15,22:19
+stabbing,lake house hotel,18.01.2024,F,muslim,27,4:23
+burglary,bahirawakanda,18.01.2024,F,Sinhala,47,14:21
+robbery,hewaheta,19.01.2024,F,Sinhala,33,12:58
+theft,thannekumbura,19.01.2024,M,Sinhala,27,20:59
+robbery,dharmapala road lewella,20.01.2024,F,Sinhala,50,16:21
+vehicle theft,yatinuwara street,21.01.2024,M,Sinhala,66,17:42
+robbery,lewella bangalaawatte,22.01.2024,M,Sinhala,73,3:28
+burglary,D.S senanayake lane,22.01.2024,M,Sinhala,52,14:16
+theft,wattaranthanne ground,23.01.2024,M,Sinhala,42,15:01
+burglary,2nd rajasinghe lane,24.01.2024,M,tamil ,26,22:04
+robbery,meekanuwa watarauma ,26.01.2024,F,Sinhala,30,11:02
+drugs,bogambara bus stand,26.01.2024,F,Sinhala,40,12:58
+drugs,gatambe junction,26.01.2024,M,Sinhala,21,19:16
+burglary,2nd rajasinghe lane,28.01.2024,F,Sinhala,34,6:57
+theft,yatinuwara street,28.01.2024,M,Sinhala,50,16:02
+burglary,dharmapala road lewella,30.01.2024,M,Sinhala,32,14:18
+burglary,mapanawathura,31.01.2024,F,Sinhala,49,20:36
+robbery,galkaduwa junction,03.02.2024,F,Sinhala,35,18:46
+theft,mulgampola,03.02.2024,M,Sinhala,46,21:05
+vehicle theft,people's bank,03.02.2024,M,Sinhala,38,22:06
+drugs,thalaathuoya road,05.02.2024,F,Sinhala,61,14:47
+drugs,amaya hotel,06.02.2024,F,Sinhala,47,7:31
+theft,bogambara bus stand,06.02.2024,M,tamil ,42,18:45
+stabbing,in front of post office,08.02.2024,M,Sinhala,32,9:52
+theft,train station,08.02.2024,M,Sinhala,36,23:05
+burglary,2nd rajasinghe lane,09.02.2024,M,Sinhala,43,6:43
+robbery,dalada maligawa,09.02.2024,M,Sinhala,45,12:07
+robbery,bowala,13.02.2024,M,muslim,40,21:42
+theft,yatinuwara street,15.02.2024,M,Sinhala,51,22:35
+drugs,suduhumpola,16.02.2024,F,Sinhala,20,18:02
+drugs,bus stand,16.02.2024,M,Sinhala,25,23:15
+stabbing,dalada maligawa,17.02.2024,M,Sinhala,45,23:38
+robbery,ogastawatte,18.02.2024,F,Sinhala,31,9:00
+drugs,rajapihilla road,18.02.2024,M,sinhala,30,10:52
+robbery,katukale,18.02.2024,F,Sinhala,24,17:35
+burglary,dodamwela,19.02.2024,M,Sinhala,50,18:13
+robbery,Apiit campus,20.02.2024,F,Sinhala,33,9:59
+robbery,gatambe bridge,20.02.2024,M,sinhala,33,10:44
+robbery,Municipal indoor sports complex,20.02.2024,M,Sinhala,41,16:17
+theft,bus stand,20.02.2024,M,Sinhala,40,21:05
+burglary,Police Station - Kandy,20.02.2024,F,Sinhala,39,21:27
+burglary,bogambara,22.02.2024,M,sinhala,65,13:11
+robbery,Municipal indoor sports complex,23.02.2024,M,Sinhala,23,19:00
+stabbing,D.S senanayake lane,23.02.2024,M,Sinhala,28,21:29
+robbery,hanthane,24.02.2024,M,Sinhala,73,15:16
+drugs,peradeniya road,25.02.2024,M,Sinhala,33,18:50
+vehicle theft,bowala,27.02.2024,F,Sinhala,39,14:43
+robbery,Apiit campus,02.03.2024,M,muslim,50,17:11
+burglary,aniwatte,02.03.2024,M,Sinhala,39,18:22
+robbery,dutugamunu mawatha,03.03.2024,M,Sinhala,21,7:34
+drugs,bowala,03.03.2024,M,sinhala,23,11:06
+theft,ampitiya,04.03.2024,M,tamil ,17,10:57
+drugs,mada bowala angampitiya,04.03.2024,M,Sinhala,60,12:19
+theft,bowalawatte,06.03.2024,M,Sinhala,30,10:16
+stabbing,hanthane,06.03.2024,M,tamil ,26,10:51
+vehicle theft,Sri Dalada Maligawa,06.03.2024,F,Sinhala,52,17:15
+robbery,kotugodalla road,07.03.2024,M,Sinhala,26,12:23
+theft,gatambe,07.03.2024,M,Sinhala,74,16:39
+burglary,bogambara bus stand,08.03.2024,M,Sinhala,53,13:14
+stabbing,watapuluwa prithi mawatha,09.03.2024,F,Sinhala,27,12:16
+drugs,mulgampola,09.03.2024,M,Sinhala,28,13:08
+theft,aniwatte,11.03.2024,F,Sinhala,44,16:25
+stabbing,gatambe,11.03.2024,F,sinhala,27,18:22
+stabbing,dalada maligawa,12.03.2024,M,sinhala,33,10:51
+stabbing,heerassagala junction,14.03.2024,F,Sinhala,53,8:20
+robbery,peradeniya KFC,14.03.2024,M,Sinhala,31,12:30
+stabbing,mapanawathura,15.03.2024,F,Sinhala,68,10:05
+burglary,hanthane,16.03.2024,M,Sinhala,57,13:42
+theft,thilakawardhana,17.03.2024,M,Sinhala,39,13:26
+robbery,hospital street,17.03.2024,M,Sinhala,55,17:57
+theft,bus stand,17.03.2024,M,Sinhala,71,18:33
+robbery,wattegama,18.03.2024,M,Sinhala,42,12:42
+theft,katugasthota road,19.03.2024,M,Sinhala,31,14:09
+drugs,colombo street ,20.03.2024,M,sinhala,53,18:21
+drugs,ampitiya,20.03.2024,M,Sinhala,34,22:27
+theft,kandy hospital,21.03.2024,M,tamil ,54,4:07
+stabbing,heerassagala,22.03.2024,M,tamil ,39,10:44
+burglary,bowala,22.03.2024,M,Sinhala,48,14:01
+robbery,katugasthota,23.03.2024,M,sinhala,42,18:34
+burglary,ampitiya road,23.03.2024,M,Sinhala,37,20:44
+stabbing,dharmapala road lewella,28.03.2024,F,Sinhala,40,1:20
+drugs,hanathane kadurata malshalawa,28.03.2024,F,Sinhala,60,7:35
+drugs,dalada maligawa,28.03.2024,M,Sinhala,64,16:38
+burglary,gatambe junction,31.03.2024,M,Sinhala,49,20:00
+vehicle theft,aniwatte,01.04.2024,M,Sinhala,46,12:57
+drugs,bogambara bus stand ,01.04.2024,M,Sinhala,56,13:00
+theft,bogambara bus stand,02.04.2024,M,Sinhala,45,18:38
+stabbing,lewella,02.04.2024,M,Sinhala,48,18:44
+burglary,colombo street ,03.04.2024,F,Sinhala,33,6:48
+vehicle theft,peradeniya road,03.04.2024,M,Sinhala,54,13:46
+theft,asgiriya   ,03.04.2024,M,Sinhala,67,14:13
+burglary,bogambara,04.04.2024,M,Muslim,67,15:37
+burglary,udabowala,05.04.2024,M,Sinhala,45,17:36
+theft,nagasthanne,06.04.2024,M,Sinhala,23,3:07
+drugs,Municipal indoor sports complex,06.04.2024,M,Sinhala,49,9:41
+theft,dalada street,06.04.2024,M,muslim,35,21:39
+robbery,peradeniya road,11.04.2024,M,Sinhala,45,14:35
+drugs,lakeround,12.04.2024,M,Sinhala,31,8:25
+stabbing,Municipal indoor sports complex,12.04.2024,M,tamil ,35,10:51
+drugs,sirimawo bandaranayake lane,14.04.2024,M,Sinhala,38,19:58
+burglary,train station,15.04.2024,M,Sinhala,48,17:28
+burglary,hanthane road,16.04.2024,M,Sinhala,37,14:05
+drugs,car park,16.04.2024,M,Sinhala,44,20:28
+burglary,aniwatte,17.04.2024,M,Sinhala,59,11:35
+robbery,KCC,17.04.2024,M,Sinhala,46,17:33
+theft,deiyanwela,19.04.2024,M,Sinhala,43,9:32
+robbery,train station,19.04.2024,M,Sinhala,48,15:07
+burglary,william gopallawa lane,19.04.2024,M,Sinhala,33,19:21
+burglary,deiyanwela,20.04.2024,M,Sinhala,41,5:48
+burglary,mulgampola,21.04.2024,F,Sinhala,32,2:22
+burglary,colombo street ,22.04.2024,M,Sinhala,32,6:14
+burglary,katugasthota road,22.04.2024,M,Muslim,53,16:46
+burglary,hewaheta,24.04.2024,M,Sinhala,44,14:31
+theft,yatinuwara street,25.04.2024,M,Sinhala,37,8:46
+burglary,peradeniya KFC,25.04.2024,F,Sinhala,31,11:37
+stabbing,boowelikada,26.04.2024,M,tamil ,47,10:49
+theft,aniwatte,26.04.2024,F,Sinhala,40,22:46
+drugs,yatinuwara street,28.04.2024,M,Sinhala,58,20:42
+burglary,lewella bangalaawatte,29.04.2024,F,Sinhala,33,10:42
+drugs,bogambara official police stayhouse,01.05.2024,M,tamil ,50,10:54
+drugs,nuwarawela ampitiya,01.05.2024,M,Sinhala,35,13:51
+stabbing,hanathane kadurata malshalawa,01.05.2024,M,Sinhala,49,15:35
+robbery,dharmapala road lewella,02.05.2024,M,tamil ,48,10:55
+theft,thannekumbura,04.05.2024,M,Sinhala,66,5:31
+robbery,highschool,05.05.2024,F,Sinhala,33,19:17
+theft,mahaiyawa,06.05.2024,M,Sinhala,34,11:00
+burglary,malwatte,06.05.2024,F,Muslim,39,16:45
+robbery,Municipal indoor sports complex,09.05.2024,M,Sinhala,43,14:39
+theft,heerassagala,09.05.2024,M,Sinhala,64,21:23
+vehicle theft,sirimawo bandaranayake lane,11.05.2024,M,Sinhala,63,19:05
+burglary,old peradeniya road,13.05.2024,M,Sinhala,59,9:10
+robbery,malwatte,15.05.2024,M,Sinhala,51,14:22
+drugs,thalaathuoya road,15.05.2024,M,Sinhala,35,17:29
+stabbing,new queens hotel,15.05.2024,M,Sinhala,76,18:16
+drugs,maligawa,16.05.2024,F,Sinhala,41,11:49
+burglary,polgolla,16.05.2024,M,Muslim,44,17:08
+robbery,ampitiya,18.05.2024,M,Sinhala,30,15:30
+vehicle theft,paradise park,19.05.2024,M,Sinhala,60,14:06
+vehicle theft,provincial education department,20.05.2024,M,Sinhala,31,13:03
+burglary,Municipal indoor sports complex,21.05.2024,M,Sinhala,45,16:03
+theft,2nd rajasinghe lane,22.05.2024,M,tamil ,49,10:57
+burglary,mapanawathura,22.05.2024,F,Muslim,46,15:33
+stabbing,asgiriya stadium,25.05.2024,F,Sinhala,72,13:01
+burglary,watapuluwa,25.05.2024,M,Sinhala,47,19:27
+theft,ampitiya bus stand,26.05.2024,M,Sinhala,48,8:03
+theft,rajapihilla lane,26.05.2024,M,Sinhala,23,20:37
+theft,lewella gangaramaya,28.05.2024,M,Sinhala,49,19:40
+stabbing,dharmapala road lewella,31.05.2024,F,Sinhala,46,8:18
+burglary,colombo street ,31.05.2024,F,Sinhala,50,15:53
+theft,watapuluwa,03.06.2024,M,sinhala,29,13:07
+drugs,Municipal indoor sports complex,09.06.2024,M,Sinhala,26,18:33
+burglary,2nd rajasinghe lane,09.06.2024,M,Sinhala,47,23:01
+burglary,dharmasena lane,11.06.2024,F,Sinhala,26,14:26
+robbery,thalaathuoya road,12.06.2024,M,Sinhala,71,12:06
+robbery,heerassagala,12.06.2024,M,Sinhala,52,13:52
+burglary,peradeniya road,13.06.2024,M,Sinhala,35,10:12
+drugs,bowalawatte,14.06.2024,M,Sinhala,53,13:25
+robbery,ampitiya,17.06.2024,M,Sinhala,47,21:06
+burglary,yatinuwara lane,19.06.2024,F,Sinhala,53,12:45
+robbery,deiyanwela,19.06.2024,F,Sinhala,49,16:35
+theft,peradeniya KFC,20.06.2024,M,Sinhala,61,11:08
+theft,thilakawardhana,20.06.2024,M,Sinhala,59,20:46
+stabbing,new queens hotel,22.06.2024,M,Sinhala,45,7:01
+vehicle theft,2nd rajasinghe lane,23.06.2024,F,sinhala,46,2:49
+burglary,poornawatte,23.06.2024,M,Sinhala,41,8:02
+theft,hanthane,25.06.2024,M,sinhala,55,2:33
+stabbing,provincial education department,25.06.2024,M,Sinhala,67,11:05
+drugs,Municipal indoor sports complex,25.06.2024,F,Sinhala,52,22:27
+drugs,mahaiyawa cemetary,30.06.2024,M,Sinhala,48,11:04
+theft,aniwatte,30.06.2024,M,Sinhala,52,16:10
+theft,aniwatte,30.06.2024,F,Sinhala,45,16:55
+theft,nagasthanne,01.07.2024,M,Sinhala,59,8:36
+burglary,ampitiya,06.07.2024,F,Sinhala,36,6:10
+theft,william gopallawa lane,07.07.2024,M,Sinhala,56,10:28
+burglary,train station,10.07.2024,M,Sinhala,62,21:24
+theft,Primrose gardens,12.07.2024,F,Sinhala,27,5:25
+robbery,bowala ,13.07.2024,F,Sinhala,51,12:59
+vehicle theft,hanathane kadurata malshalawa,15.07.2024,M,Sinhala,41,19:28
+burglary,suduhumpola,17.07.2024,M,Sinhala,58,5:56
+stabbing,polgolla,18.07.2024,F,Sinhala,37,6:14
+burglary,gatambe,18.07.2024,M,Sinhala,36,9:20
+vehicle theft,provincial education department,18.07.2024,M,Sinhala,26,9:33
+theft,mulgampola,18.07.2024,M,sinhala,42,13:35
+burglary,central market,19.07.2024,F,Sinhala,69,15:11
+theft,ampitiya,19.07.2024,M,Sinhala,34,20:34
+vehicle theft,dangolla,20.07.2024,M,Sinhala,48,14:29
+drugs,bowala,20.07.2024,F,Sinhala,31,19:49
+theft,gatambe,23.07.2024,M,Sinhala,36,21:44
+theft,thannekumbura,24.07.2024,F,Sinhala,23,5:36
+theft,post office,26.07.2024,F,Sinhala,39,12:42
+burglary,dharmasena lane,26.07.2024,M,Sinhala,42,18:00
+drugs,katukale,27.07.2024,M,Sinhala,69,6:30
+robbery,udabowala,02.08.2024,F,Sinhala,37,5:46
+vehicle theft,yatinuwara street,02.08.2024,F,muslim,15,6:52
+burglary,heerassagala,04.08.2024,M,Sinhala,49,13:12
+robbery,yatinuwara street,08.08.2024,M,Sinhala,50,13:42
+robbery,watapuluwa,08.08.2024,M,Sinhala,62,15:12
+theft,train station,10.08.2024,foreign couple,muslim,28,14:58
+burglary,mahaiyawa cemetary,12.08.2024,F,Sinhala,31,5:46
+drugs,mada bowala angampitiya,14.08.2024,M,Sinhala,44,12:09
+burglary,ampitiya,16.08.2024,F,Sinhala,51,7:00
+drugs,goerge.E.Silva lane,16.08.2024,F,Sinhala,44,14:30
+stabbing,kotugodalla road,20.08.2024,M,Sinhala,27,0:27
+theft,ampitiya,24.08.2024,F,Sinhala,60,9:34
+theft,watapuluwa,25.08.2024,F,Sinhala,38,5:11
+drugs,2nd rajasinghe lane,25.08.2024,F,Sinhala,34,20:51
+burglary,aniwatte,26.08.2024,M,Sinhala,21,3:29
+vehicle theft,D.S senanayake lane,28.08.2024,F,sinhala,35,2:30
+burglary,hanthane,29.08.2024,F,Sinhala,60,11:50
+burglary,2nd rajasinghe lane,29.08.2024,F,Sinhala,27,12:10
+robbery,ampitiya,30.08.2024,M,Sinhala,31,14:46
+robbery,katugasthota road,31.08.2024,F,Muslim,56,4:31
+theft,thannekumbura,31.08.2024,M,sinhala,25,14:30
+burglary,ampitiyaa,31.08.2024,M,Muslim,54,15:25
+robbery,wattegama,31.08.2024,M,Sinhala,65,19:51
+theft,lake house hotel,01.09.2024,M,Sinhala,25,1:29
+burglary,watapuluwa,01.09.2024,M,Sinhala,72,3:27
+burglary,peradeniya road,03.09.2024,M,Sinhala,66,6:36
+theft,katugasthota,03.09.2024,M,Sinhala,38,20:53
+theft,wattaranthanne ground,04.09.2024,M,Sinhala,17,16:49
+stabbing,sri wickramasinghe mawatha,05.09.2024,M,Sinhala,28,12:34
+stabbing,bogambara bus stand,08.09.2024,M,Sinhala,44,5:14
+robbery,william gopallawa lane,08.09.2024,M,Sinhala,42,7:16
+drugs,old peradeniya road,08.09.2024,M,Sinhala,59,22:36
+burglary,D.S senanayake lane,09.09.2024,M,Sinhala,52,4:12
+burglary,train station,09.09.2024,M,tamil ,24,8:15
+burglary,colombo street ,10.09.2024,M,Sinhala,47,22:49
+burglary,asgiriya   ,12.09.2024,F,Sinhala,48,9:54
+burglary,Municipal indoor sports complex,14.09.2024,M,Sinhala,53,14:12
+theft,peradeniya road,16.09.2024,F,Sinhala,37,5:15
+robbery,dodamwela bridge,16.09.2024,M,Sinhala,46,8:29
+burglary,Municipal indoor sports complex,16.09.2024,M,Sinhala,56,13:48
+stabbing,kingswood,16.09.2024,F,Sinhala,28,18:50
+burglary,bogambara,16.09.2024,M,Sinhala,47,19:34
+theft,in front of post office,18.09.2024,M,Sinhala,41,6:06
+theft,mapanawathura,18.09.2024,M,Sinhala,29,6:29
+theft,kingswood,18.09.2024,M,Sinhala,57,16:07
+stabbing,aniwatte,18.09.2024,M,Sinhala,63,21:05
+drugs,goodshed bus stand,19.09.2024,M,Sinhala,52,10:17
+theft,dodamwela,19.09.2024,M,Sinhala,47,15:13
+theft,kotugodalla street,20.09.2024,F,muslim,39,5:50
+burglary,kandy hospital,20.09.2024,M,Sinhala,47,10:03
+burglary,KCC commercial bank,20.09.2024,M,Sinhala,45,10:26
+vehicle theft,sahas uyana,20.09.2024,M,sinhala,36,18:24
+drugs,Municipal indoor sports complex,21.09.2024,F,Sinhala,64,9:27
+burglary,bogambara prison,21.09.2024,M,muslim,41,13:31
+burglary,mapanawathura,22.09.2024,F,Sinhala,21,8:39
+robbery,train station,25.09.2024,M,Sinhala,64,14:53
+stabbing,pitakanda kanaththa,26.09.2024,M,Sinhala,63,6:20
+burglary,ampitiya,26.09.2024,F,sinhala,40,12:25
+drugs,bus stand,26.09.2024,F,Sinhala,78,14:02
+vehicle theft,sahas uyana,27.09.2024,M,sinhala,37,18:32
+drugs,mapanawathura,29.09.2024,M,Sinhala,40,8:51
+burglary,aniwatte,29.09.2024,M,Sinhala,42,15:38
+burglary,aruppala,02.10.2024,M,Muslim,27,17:20
+theft,nuwarawela ampitiya,03.10.2024,M,muslim,28,7:59
+vehicle theft,dodamwela,03.10.2024,M,Sinhala,41,17:50
+robbery,hanthane,03.10.2024,F,Sinhala,43,19:18
+theft,hanthane,04.10.2024,M,Sinhala,58,19:33
+theft,lewella,05.10.2024,M,Sinhala,62,17:15
+stabbing,mahaiyawa,08.10.2024,M,sinhala,43,1:53
+stabbing,paradeniya road,08.10.2024,F,Sinhala,33,5:12
+stabbing,mapanawathura,08.10.2024,M,tamil ,27,6:46
+robbery,nagasthanne,08.10.2024,M,muslim,31,9:13
+burglary,dharmapala road lewella,08.10.2024,M,Sinhala,43,18:08
+robbery,kandy hospital,09.10.2024,M,tamil ,23,7:09
+vehicle theft,kingswood,12.10.2024,F,Sinhala,72,15:36
+burglary,kandy hospital,12.10.2024,F,Sinhala,62,16:02
+burglary,heerassagala,13.10.2024,F,Sinhala,73,15:13
+burglary,old peradeniya road,15.10.2024,M,Sinhala,52,18:02
+robbery,2nd rajasinghe lane,16.10.2024,F,Sinhala,73,5:28
+drugs,galkaduwa junction,18.10.2024,M,Sinhala,36,9:48
+drugs,heerassagala,18.10.2024,F,Sinhala,75,19:23
+burglary,bowalawatte,19.10.2024,M,Sinhala,52,5:44
+robbery,heerassagala,19.10.2024,M,Sinhala,43,22:16
+theft,maligawa,21.10.2024,F,Sinhala,35,5:14
+vehicle theft,ogastawatte,21.10.2024,M,Muslim,42,8:34
+drugs,kandy hospital,21.10.2024,M,sinhala,35,9:50
+burglary,kandy hospital,22.10.2024,M,Sinhala,38,12:18
+theft,bus stand,22.10.2024,M,Sinhala,32,22:09
+burglary,kotugodalla street,26.10.2024,M,Sinhala,35,19:09
+drugs,kotugodalla road,28.10.2024,F,Sinhala,48,17:28
+theft,ampitiya,30.10.2024,M,muslim,42,6:09
+robbery,bogambara bus stand,30.10.2024,M,Sinhala,37,14:21
+burglary,gatambe,30.10.2024,M,Sinhala,49,17:35
+burglary,suduhumpola,01.11.2024,M,Sinhala,56,2:18
+drugs,KCC,01.11.2024,M,Sinhala,40,15:11
+burglary,Municipal indoor sports complex,02.11.2024,M,Sinhala,54,7:15
+robbery,car park,04.11.2024,M,Sinhala,48,12:26
+burglary,Municipal indoor sports complex,05.11.2024,F,Sinhala,40,1:29
+drugs,bowala,06.11.2024,M,Sinhala,27,17:22
+drugs,sangamiththa college,07.11.2024,F,Sinhala,33,4:38
+theft,lewella bangalaawatte,08.11.2024,M,Sinhala,65,16:45
+burglary,aruppala,09.11.2024,M,Sinhala,41,7:57
+stabbing,mahaiyawa,09.11.2024,F,muslim,39,18:32
+theft,bogambara,12.11.2024,M,Sinhala,62,22:39
+stabbing,watapuluwa,13.11.2024,F,Sinhala,64,12:30
+stabbing,kotugodalla road,13.11.2024,F,muslim,38,18:36
+stabbing,2nd rajasinghe lane,14.11.2024,M,Sinhala,62,14:33
+theft,goodshed bus stand,14.11.2024,foreign couple,Sinhala,34,14:34
+burglary,aniwatte,15.11.2024,M,sinhala,40,12:52
+drugs,kandy hospital,16.11.2024,M,Sinhala,48,9:37
+burglary,aruppala,16.11.2024,M,Sinhala,34,14:01
+drugs,kandy hospital,18.11.2024,M,Sinhala,21,14:02
+robbery,people's bank,20.11.2024,M,sinhala,40,1:34
+burglary,wagolla lewella,20.11.2024,M,Sinhala,48,15:53
+burglary,kingswood,21.11.2024,F,Sinhala,61,10:19
+theft,bus stand,21.11.2024,F,sinhala,37,19:08
+robbery,Apiit campus,22.11.2024,M,Sinhala,46,9:43
+theft,yatinuwara lane,23.11.2024,M,Sinhala,59,16:31
+burglary,aniwatte,24.11.2024,M,Sinhala,38,8:32
+theft,katugasthota road,26.11.2024,M,Sinhala,35,16:00
+burglary,hanthane,28.11.2024,F,tamil ,58,9:42
+stabbing,ampitiya,29.11.2024,M,Sinhala,43,9:43
+theft,Lady golden road,01.12.2024,M,Sinhala,56,14:06
+vehicle theft,yatinuwara street,04.12.2024,F,tamil ,50,20:13
+drugs,suduhumpola,06.12.2024,M,Sinhala,25,13:37
+burglary,heerassagala,10.12.2024,F,Sinhala,53,9:13
+stabbing,widyarthe college,11.12.2024,F,Sinhala,44,5:20
+theft,dodamwela,11.12.2024,M,sinhala,55,6:35
+theft,ampitiya,11.12.2024,M,Sinhala,76,18:13
+theft,thannekumbura,11.12.2024,F,sinhala,47,19:16
+theft,peradeniya road,14.12.2024,M,Sinhala,60,18:03
+burglary,ampitiya,15.12.2024,F,Sinhala,50,11:09
+stabbing,sahas uyana,16.12.2024,F,Sinhala,39,4:32
+stabbing,bogambara,16.12.2024,F,Sinhala,63,20:54
+burglary,Municipal indoor sports complex,17.12.2024,F,sinhala,50,12:57
+theft,meekanuwa watarauma ,17.12.2024,F,sinhala,43,19:22
+burglary,aniwatte,18.12.2024,M,Sinhala,39,19:00
+theft,aniwatte,23.12.2024,M,Sinhala,58,18:10
+theft,peradeniya road,25.12.2024,F,Sinhala,39,18:29
+vehicle theft,bowalawatte,26.12.2024,M,sinhala,17,6:51
+robbery,aniwatte,27.12.2024,F,Sinhala,40,4:51
+robbery,Municipal indoor sports complex,27.12.2024,M,muslim,47,5:42
+stabbing,yatinuwara street,29.12.2024,F,Sinhala,15,4:35
+burglary,Municipal indoor sports complex,29.12.2024,F,muslim,38,12:56
+burglary,hanthane,29.12.2024,M,Sinhala,32,18:24
+vehicle theft,aniwatte,03.01.2025,M,Sinhala,29,21:28
+drugs,kotugodalla road,13.01.2025,F,Sinhala,45,12:19
+theft,Municipal indoor sports complex,13.01.2025,M,Sinhala,42,18:09
+robbery,peradeniya,14.01.2025,M,Sinhala,57,15:00
+vehicle theft,bus stand ,16.01.2025,M,Sinhala,45,13:12
+robbery,asgiriya stadium,16.01.2025,F,Sinhala,67,18:56
+burglary,yatinuwara street,19.01.2025,M,Sinhala,73,20:04
+theft,hanthane watte,28.01.2025,M,Sinhala,31,17:32
+robbery,KCC,12.02.2025,M,Sinhala,32,10:00
+theft,thalaathuoya road,08.03.2025,M,sinhala,24,5:50
+drugs,ampitiya bus stand,10.03.2025,M,Sinhala,67,8:45
+theft,mahamaya primary,10.03.2025,M,Sinhala,78,13:24
+burglary,sky gate hotel,15.03.2025,F,Sinhala,53,9:47
+drugs,peradeniya,26.04.2025,M,Sinhala,29,8:39
+burglary,common market complex,26.04.2025,F,Sinhala,68,17:59
+robbery,polgolla,06.05.2025,M,Sinhala,52,7:48
+stabbing,KCC commercial bank,06.05.2025,M,Sinhala,33,9:46
+burglary,polgolla,06.05.2025,F,Sinhala,51,12:45
+drugs,ampitiya udawela kanda,07.05.2025,M,Sinhala,59,16:56
+burglary,hanthane watte,15.05.2025,F,Sinhala,48,10:32
+burglary,lake house hotel,08.06.2025,M,Sinhala,24,10:15
+robbery,yatinuwara street,10.06.2025,M,Sinhala,44,14:35
+drugs,Municipal indoor sports complex,13.06.2025,F,Sinhala,55,18:59
+drugs,walespark,30.07.2025,M,Sinhala,65,9:19
+drugs,old peradeniya road,16.08.2025,M,Sinhala,59,4:38
+robbery,provincial education department,13.09.2025,F,Sinhala,50,7:25
+robbery,post office,17.09.2025,F,Sinhala,61,20:12
+stabbing,malwatte,23.09.2025,M,Sinhala,78,17:50
