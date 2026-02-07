@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Hotspot Allocation Scores</title>
+    <title>Police Resource Allocation</title>
     <style>
         table {
             border-collapse: collapse;
@@ -19,34 +19,41 @@
         th {
             background: #f4f4f4;
             text-align: left;
+            position: sticky;
+            top: 0;
         }
     </style>
 </head>
 
 <body>
-    <h1>Hotspot Model Predictions</h1>
+    <h2>Predicted Allocation + Officer Assignment</h2>
 
     {% if rows %}
     <table>
         <thead>
             <tr>
-                {% for c in cols %}
-                <th>{{ c }}</th>
-                {% endfor %}
+                {% for c in cols %}<th>{{ c }}</th>{% endfor %}
             </tr>
         </thead>
         <tbody>
             {% for r in rows %}
             <tr>
                 {% for c in cols %}
-                <td>{{ r[c] }}</td>
+                <td>
+                    {% if c in ["risk_score","distance_to_station_km","allocation_score","pred_alloc","pred_alloc_norm"]
+                    %}
+                    {{ "%.4f"|format(r[c]) }}
+                    {% else %}
+                    {{ r[c] }}
+                    {% endif %}
+                </td>
                 {% endfor %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
-    <p>No rows to display.</p>
+    <p>No results.</p>
     {% endif %}
 </body>
 
