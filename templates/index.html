@@ -28,9 +28,7 @@
 <body>
     <h2>Predicted Allocation + Officer Assignment</h2>
     <form method="GET" style="margin-bottom:20px;">
-        Crime:
-        <input name="crime_type" value="{{ crime_type }}">
-
+        <p><strong>Hotspot crime type:</strong> {{ rows[0].crime_type if rows else "N/A" }}</p>
         Officers:
         <input type="number" name="officers" value="{{ total_officers }}">
 

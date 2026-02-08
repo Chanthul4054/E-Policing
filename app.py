@@ -166,7 +166,6 @@ def make_diminishing_returns_charts(df, k=0.25, max_total_officers=500):
 
 @app.route("/")
 def index():
-    crime_type = request.args.get("crime_type", "drugs")
     total_officers = int(request.args.get("officers", 500))
     max_gns_to_cover = int(request.args.get("topk", 80))
     min_per_gn = int(request.args.get("min_per_gn", 1))
@@ -175,7 +174,7 @@ def index():
 
     # Replace this with real hotspot output
     hotspot_output = {
-        "crime_type": crime_type,
+        "crime_type": "drugs",
         "predictions": [
             {"gn_encoded": 31, "gn_name": "LK2130145", "risk_score": 0.6906274641},
             {"gn_encoded": 26, "gn_name": "LK2130120", "risk_score": 0.6855819647},
@@ -183,7 +182,7 @@ def index():
         ],
         "status": "success"
     }
-
+    crime_type = hotspot_output.get("crime_type", "unknown")
     df_hot = build_df_from_hotspot_output(hotspot_output)
     if df_hot.empty:
         return render_template("index.html", cols=[], rows=[])
