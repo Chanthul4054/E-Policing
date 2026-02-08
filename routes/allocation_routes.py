@@ -32,7 +32,7 @@ def index():
         rows = df[cols].to_dict(orient="records")
 
     return render_template(
-        "index.html",
+        "allocation.html",
         cols=cols,
         rows=rows,
         crime_type=crime_type,
