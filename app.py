@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, session
 from dotenv import load_dotenv
 import os
@@ -8,6 +9,16 @@ from routes.allocation_routes import allocation_bp
 from routes.hotspot_routes import hotspot_bp
 from routes.pattern_routes import pattern_bp
 from routes.risk_routes import risk_bp
+=======
+from flask import Flask, render_template, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import text, bindparam
+from dotenv import load_dotenv
+import os
+import pandas as pd
+import numpy as np
+import xgboost as xgb
+>>>>>>> fa62a7c (updated with dynamic charts)
 
 load_dotenv()
 
