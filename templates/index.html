@@ -4,7 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <title>Police Resource Allocation</title>
+
+    <!-- Chart.js for animated charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -22,32 +30,50 @@
             position: sticky;
             top: 0;
         }
+
+        .charts {
+            margin: 16px 0;
+        }
+
+        canvas {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .muted {
+            color: #666;
+        }
     </style>
 </head>
 
 <body>
     <h2>Predicted Allocation + Officer Assignment</h2>
-    <form method="GET" style="margin-bottom:20px;">
-        <p><strong>Hotspot crime type:</strong> {{ rows[0].crime_type if rows else "N/A" }}</p>
+
+    <form id="controls" method="GET" style="margin-bottom:20px;">
+        <p><strong>Hotspot crime type:</strong> {{ crime_type if crime_type else (rows[0].crime_type if rows else "N/A")
+            }}</p>
+
         Officers:
-        <input type="number" name="officers" value="{{ total_officers }}">
+        <input type="number" name="officers" value="{{ total_officers }}" min="1">
 
         Top-K GNs:
-        <input type="number" name="topk" value="{{ max_gns_to_cover }}">
+        <input type="number" name="topk" value="{{ max_gns_to_cover }}" min="1">
 
         Min per GN:
-        <input type="number" name="min_per_gn" value="{{ min_per_gn }}">
+        <input type="number" name="min_per_gn" value="{{ min_per_gn }}" min="0">
 
         k:
         <input type="number" step="0.05" name="k" value="{{ k }}">
 
         Chart max:
-        <input type="number" name="chart_max" value="{{ chart_max }}">
+        <input type="number" name="chart_max" value="{{ chart_max }}" min="1">
 
+        <!-- Keep submit to refresh table + charts together -->
         <button type="submit">Update</button>
+
+        <!-- Optional: animate charts without reloading table -->
+        <button type="button" onclick="loadCharts()">Update Charts Only</button>
     </form>
-
-
     {% if rows %}
     <table>
         <thead>
@@ -76,14 +102,76 @@
     <p>No results.</p>
     {% endif %}
 
-    {% if chart_total and chart_marginal %}
-    <h3>Diminishing Returns</h3>
+    <div class="charts">
+        <h3>Diminishing Returns (Animated)</h3>
+        <p class="muted">Charts animate on load and when you click “Update Charts Only”.</p>
 
-    <img src="data:image/png;base64,{{ chart_total }}" style="width:100%;border:1px solid #ccc;">
-    <br><br>
-    <img src="data:image/png;base64,{{ chart_marginal }}" style="width:100%;border:1px solid #ccc;">
-    {% endif %}
+        <h4>Total Benefit</h4>
+        <canvas id="totalChart"></canvas>
 
+        <h4>Marginal Benefit</h4>
+        <canvas id="marginalChart"></canvas>
+    </div>
+
+    <script>
+        let totalChart = null;
+        let marginalChart = null;
+
+        function getParamsFromForm() {
+            const form = document.getElementById("controls");
+            const params = new URLSearchParams(new FormData(form));
+            return params.toString();
+        }
+
+        async function loadCharts() {
+            const qs = getParamsFromForm();
+            const res = await fetch("/api/diminishing?" + qs);
+            const data = await res.json();
+
+            const totalCtx = document.getElementById("totalChart");
+            const marginalCtx = document.getElementById("marginalChart");
+
+            if (totalChart) totalChart.destroy();
+            if (marginalChart) marginalChart.destroy();
+
+            totalChart = new Chart(totalCtx, {
+                type: "line",
+                data: {
+                    labels: data.totals,
+                    datasets: [{
+                        label: "Total Benefit",
+                        data: data.total_benefits,
+                        tension: 0.25
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 900 },
+                    plugins: { legend: { display: true } }
+                }
+            });
+
+            marginalChart = new Chart(marginalCtx, {
+                type: "line",
+                data: {
+                    labels: data.totals,
+                    datasets: [{
+                        label: "Marginal Benefit",
+                        data: data.marginal_benefits,
+                        tension: 0.25
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 900 },
+                    plugins: { legend: { display: true } }
+                }
+            });
+        }
+
+        // Load charts on page load
+        loadCharts();
+    </script>
 </body>
 
 </html>
