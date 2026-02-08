@@ -27,6 +27,28 @@
 
 <body>
     <h2>Predicted Allocation + Officer Assignment</h2>
+    <form method="GET" style="margin-bottom:20px;">
+        Crime:
+        <input name="crime_type" value="{{ crime_type }}">
+
+        Officers:
+        <input type="number" name="officers" value="{{ total_officers }}">
+
+        Top-K GNs:
+        <input type="number" name="topk" value="{{ max_gns_to_cover }}">
+
+        Min per GN:
+        <input type="number" name="min_per_gn" value="{{ min_per_gn }}">
+
+        k:
+        <input type="number" step="0.05" name="k" value="{{ k }}">
+
+        Chart max:
+        <input type="number" name="chart_max" value="{{ chart_max }}">
+
+        <button type="submit">Update</button>
+    </form>
+
 
     {% if rows %}
     <table>
@@ -55,6 +77,15 @@
     {% else %}
     <p>No results.</p>
     {% endif %}
+
+    {% if chart_total and chart_marginal %}
+    <h3>Diminishing Returns</h3>
+
+    <img src="data:image/png;base64,{{ chart_total }}" style="width:100%;border:1px solid #ccc;">
+    <br><br>
+    <img src="data:image/png;base64,{{ chart_marginal }}" style="width:100%;border:1px solid #ccc;">
+    {% endif %}
+
 </body>
 
 </html>
