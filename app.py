@@ -6,6 +6,13 @@ import os
 import pandas as pd
 import numpy as np
 import xgboost as xgb
+from flask import request  
+import matplotlib
+matplotlib.use("Agg")   
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+import math
 
 load_dotenv()
 
@@ -19,6 +26,8 @@ if not db_uri:
 app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db.init_app(app)
+
+#Resource Allocation pipeline --------------------------------------------------------------------------------------------------------------------------------
 
 FEATURES = ["risk_score", "distance_to_station_km", "GN_population", "crime_type_enc", "risk_rank"]
 MODEL_PATH = "models/resource_allocation_xgboost.json"
@@ -108,11 +117,65 @@ def allocate_officers(df: pd.DataFrame, total_officers=500, max_gns_to_cover=80,
 
     return pd.concat([deploy, non_deploy], ignore_index=True)
 
+def make_diminishing_returns_charts(df, k=0.25, max_total_officers=500):
+    d = df[df["assigned_officers"] > 0].copy()
+    if d.empty:
+        return None, None
+
+    d = d.sort_values("pred_alloc_norm", ascending=False).reset_index(drop=True)
+    demand = d["pred_alloc_norm"].to_numpy()
+
+    totals, total_benefits, marginal_benefits = [], [], []
+    prev_b = 0.0
+    step = 5
+
+    for T in range(0, max_total_officers + 1, step):
+        officers = (demand * T).astype(int)
+        b = sum(w * (1 - math.exp(-k * int(x))) for w, x in zip(demand, officers))
+        totals.append(T)
+        total_benefits.append(b)
+        marginal_benefits.append(b - prev_b)
+        prev_b = b
+
+    def plot_to_base64(x, y, xlabel, ylabel, title):
+        plt.figure()
+        plt.plot(x, y)
+        plt.xlabel(xlabel)
+        plt.ylabel(ylabel)
+        plt.title(title)
+        buf = BytesIO()
+        plt.savefig(buf, format="png", bbox_inches="tight")
+        plt.close()
+        buf.seek(0)
+        return base64.b64encode(buf.read()).decode("utf-8")
+
+    chart_total = plot_to_base64(
+        totals, total_benefits,
+        "Total officers deployed", "Total benefit",
+        "Total Benefit vs Officers (Diminishing Returns)"
+    )
+
+    chart_marginal = plot_to_base64(
+        totals, marginal_benefits,
+        "Total officers deployed", "Marginal benefit",
+        "Marginal Benefit vs Officers"
+    )
+
+    return chart_total, chart_marginal
+
+
 @app.route("/")
 def index():
-    # Replace this with your real hotspot output
+    crime_type = request.args.get("crime_type", "drugs")
+    total_officers = int(request.args.get("officers", 500))
+    max_gns_to_cover = int(request.args.get("topk", 80))
+    min_per_gn = int(request.args.get("min_per_gn", 1))
+    k = float(request.args.get("k", 0.25))
+    chart_max = int(request.args.get("chart_max", total_officers))
+
+    # Replace this with real hotspot output
     hotspot_output = {
-        "crime_type": "drugs",
+        "crime_type": crime_type,
         "predictions": [
             {"gn_encoded": 31, "gn_name": "LK2130145", "risk_score": 0.6906274641},
             {"gn_encoded": 26, "gn_name": "LK2130120", "risk_score": 0.6855819647},
@@ -139,7 +202,6 @@ def index():
     df.loc[df["distance_to_station_km"].isna() | (df["distance_to_station_km"] < 0), "distance_to_station_km"] = dist_med
     df["closest_police_station"] = df["closest_police_station"].fillna("Unknown")
 
-    # Ensure required features exist + numeric
     missing = [c for c in FEATURES if c not in df.columns]
     if missing:
         raise ValueError(f"Missing required features for model: {missing}. Have: {df.columns.tolist()}")
@@ -153,7 +215,7 @@ def index():
     df["crime_type_enc"] = df["crime_type_enc"].fillna(0)
     df["risk_rank"] = df["risk_rank"].fillna(df["risk_rank"].median())
 
-    # ✅ FIX: Predict using DMatrix with explicit feature names
+    #  Predict using DMatrix with explicit feature names
     X = df.loc[:, FEATURES].copy()
     dmat = xgb.DMatrix(X, feature_names=FEATURES)
 
@@ -162,8 +224,7 @@ def index():
     df["allocation_score"] = pd.to_numeric(df["allocation_score"], errors="coerce").fillna(0.0)
 
     # Officer allocation step
-    df = allocate_officers(df, total_officers=500, max_gns_to_cover=80, min_per_gn=1)
-
+    df = allocate_officers(df,total_officers=total_officers, max_gns_to_cover=max_gns_to_cover, min_per_gn=min_per_gn)
     cols = [
         "gn_name",
         "crime_type",
@@ -180,7 +241,12 @@ def index():
 
     df = df.sort_values(["assigned_officers", "allocation_score"], ascending=[False, False])
     rows = df[cols].to_dict(orient="records")
-    return render_template("index.html", cols=cols, rows=rows)
+    chart_total, chart_marginal = make_diminishing_returns_charts(df,k=k,max_total_officers=chart_max)
+
+    return render_template("index.html",cols=cols,rows=rows,chart_total=chart_total,chart_marginal=chart_marginal,crime_type=crime_type,total_officers=total_officers,max_gns_to_cover=max_gns_to_cover,min_per_gn=min_per_gn,k=k,chart_max=chart_max)
+
+
+    #-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
