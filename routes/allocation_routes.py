@@ -1,10 +1,12 @@
 from flask import Blueprint, render_template, request, jsonify
 from services.allocation_service import run_allocation_pipeline
 from services.allocation_service import diminishing_curves_from_df
+from flask_login import login_required
 
 allocation_bp = Blueprint("allocation", __name__)
 
 @allocation_bp.route("/")
+@login_required
 def index():
     total_officers = int(request.args.get("officers", 500))
     topk = int(request.args.get("topk", 80))
@@ -44,6 +46,7 @@ def index():
     )
 
 @allocation_bp.route("/api/diminishing")
+@login_required
 def api_diminishing():
     total_officers = int(request.args.get("officers", 500))
     topk = int(request.args.get("topk", 80))
