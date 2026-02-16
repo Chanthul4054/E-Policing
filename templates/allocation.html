@@ -35,68 +35,113 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <h2 class="page-title">Resource Allocation Module</h2>
+            <div class="header-container">
+                <h2 class="page-title">Resource Allocation Module</h2>
+                <p class="page-description">
+                    Optimize police officer deployment across GN divisions based on predicted crime hotspots and
+                    diminishing returns analysis.
+                </p>
+            </div>
+
+            <!-- KPI Summary Bar -->
+            <div class="kpi-bar">
+                <div class="kpi-card">
+                    <div class="kpi-icon">👮</div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Deployed Officers</span>
+                        <!-- Use safe defaults or 0 if variables missing -->
+                        <span class="kpi-value">{{ total_assigned|default(0) }} <small>/ {{ total_officers|default(0)
+                                }}</small></span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">📍</div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">GN Divisions Covered</span>
+                        <span class="kpi-value">{{ coverage|default(0) }}</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon">⚡</div>
+                    <div class="kpi-content">
+                        <span class="kpi-label">Optimization Status</span>
+                        <span class="kpi-value highlight">Active</span>
+                    </div>
+                </div>
+            </div>
 
             <div class="dashboard-grid">
                 <!-- Left Column: Controls & Table -->
                 <div class="dashboard-left">
-                    <form id="controls" method="GET">
-                        <div class="control-row">
-                            <div class="control-group">
-                                <label for="crime_type">Hotspot Crime Type</label>
-                                <select name="crime_type" id="crime_type">
-                                    {% for ct in crime_types %}
-                                    <option value="{{ ct }}" {% if ct==crime_type %}selected{% endif %}>{{ ct|title }}
-                                    </option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-
-                            <div class="control-group">
-                                <label for="officers">Total Officers</label>
-                                <input type="number" name="officers" id="officers" value="{{ total_officers }}" min="1">
-                            </div>
-
-                            <div class="control-group">
-                                <label for="topk">Top-K GNs</label>
-                                <input type="number" name="topk" id="topk" value="{{ max_gns_to_cover }}" min="1">
+                    <form id="controls" method="GET" class="glass-panel">
+                        <div class="form-section">
+                            <h5 class="section-title">Model Parameters</h5>
+                            <div class="control-row">
+                                <div class="control-group"
+                                    title="Select the specific crime type to analyze hotspots for">
+                                    <label for="crime_type">Crime Type </label>
+                                    <select name="crime_type" id="crime_type">
+                                        {% for ct in crime_types %}
+                                        <option value="{{ ct }}" {% if ct==crime_type %}selected{% endif %}>{{ ct|title
+                                            }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="control-group"
+                                    title="Limit analysis to the top N highest risk GN divisions. Higher values cover more area but spread resources thinner.">
+                                    <label for="topk">Top-K GNs</label>
+                                    <input type="number" name="topk" id="topk" value="{{ max_gns_to_cover }}" min="1">
+                                </div>
+                                <div class="control-group"
+                                    title="Rate at which the benefit of adding more officers decreases. Higher k means diminishing returns kick in faster.">
+                                    <label for="k_val">Decay (k)</label>
+                                    <input type="number" step="0.05" name="k" id="k_val" value="{{ k }}">
+                                </div>
                             </div>
                         </div>
 
-                        <div class="control-row">
-                            <div class="control-group">
-                                <label for="min_per_gn">Min per GN</label>
-                                <input type="number" name="min_per_gn" id="min_per_gn" value="{{ min_per_gn }}" min="0">
-                            </div>
-
-                            <div class="control-group">
-                                <label for="k_val">Decay (k)</label>
-                                <input type="number" step="0.05" name="k" id="k_val" value="{{ k }}">
-                            </div>
-
-                            <div class="control-group">
-                                <label for="chart_max">Chart Max</label>
-                                <input type="number" name="chart_max" id="chart_max" value="{{ chart_max }}" min="1">
+                        <div class="form-section">
+                            <h5 class="section-title">Resource Constraints</h5>
+                            <div class="control-row">
+                                <div class="control-group">
+                                    <label for="officers">Total Officers</label>
+                                    <input type="number" name="officers" id="officers" value="{{ total_officers }}"
+                                        min="1">
+                                </div>
+                                <div class="control-group"
+                                    title="Minimum number of officers to ensure per selected GN regardless of risk score.">
+                                    <label for="min_per_gn">Min per GN ℹ️</label>
+                                    <input type="number" name="min_per_gn" id="min_per_gn" value="{{ min_per_gn }}"
+                                        min="0">
+                                </div>
+                                <div class="control-group">
+                                    <label for="chart_max">Chart X-Axis</label>
+                                    <input type="number" name="chart_max" id="chart_max" value="{{ chart_max }}"
+                                        min="1">
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-actions">
-                            <button type="submit" class="btn">Update Allocation</button>
-                            <button type="button" class="btn btn-secondary" onclick="loadCharts()">Update Charts
-                                Only</button>
+                            <button type="submit" class="btn btn-primary ripple">Run Allocation</button>
+                            <button type="button" class="btn btn-secondary ripple" onclick="loadCharts()">
+                                <span class="btn-icon">↺</span> Update Charts Only
+                            </button>
                         </div>
                     </form>
 
                     {% if rows %}
-                    <div class="table-container">
-                        <table>
+                    <div class="table-container fade-in">
+                        <table id="allocationTable">
                             <thead>
                                 <tr>
                                     {% for c in cols %}
                                     {% if c == 'pred_alloc_norm' %}
-                                    <th>Allocation Score</th>
+                                    <th class="table-header">Allocation Score</th>
+                                    {% elif c == 'assigned_officers' %}
+                                    <th class="table-header">Officers</th>
                                     {% else %}
-                                    <th>{{ c|replace('_', ' ')|title }}</th>
+                                    <th class="table-header">{{ c|replace('_', ' ')|title }}</th>
                                     {% endif %}
                                     {% endfor %}
                                 </tr>
@@ -105,15 +150,22 @@
                                 {% for r in rows %}
                                 <tr>
                                     {% for c in cols %}
-                                    <td>
-                                        {% if c in
-                                        ["risk_score","distance_to_station_km","allocation_score","pred_alloc","pred_alloc_norm"]
-                                        %}
+                                    {% if c == 'pred_alloc_norm' %}
+                                    <td
+                                        class="{{ 'text-success-bold' if r[c]|float > 0.5 else 'text-secondary-bold' }}">
                                         {{ "%.4f"|format(r[c]) }}
-                                        {% else %}
-                                        {{ r[c] }}
-                                        {% endif %}
                                     </td>
+                                    {% elif c == 'assigned_officers' %}
+                                    <!-- Heatmap color logic: Blue opacity based on count relative to 50 (arbitrary max for viz) or just simple logic -->
+                                    <td class="font-mono font-bold" style="color: var(--accent-color);">
+                                        {{ r[c] }}
+                                    </td>
+                                    {% elif c in ["risk_score","distance_to_station_km","allocation_score","pred_alloc"]
+                                    %}
+                                    <td class="font-mono">{{ "%.4f"|format(r[c]) }}</td>
+                                    {% else %}
+                                    <td class="font-mono">{{ r[c] }}</td>
+                                    {% endif %}
                                     {% endfor %}
                                 </tr>
                                 {% endfor %}
@@ -121,20 +173,32 @@
                         </table>
                     </div>
                     {% else %}
-                    <p class="no-results">No results found for the selected criteria.</p>
+                    <p class="no-results fade-in">No results found for the selected criteria.</p>
                     {% endif %}
                 </div>
 
                 <!-- Right Column: Charts -->
                 <div class="dashboard-right">
-                    <div class="chart-card">
-                        <h4>Total Benefit (Diminishing Returns)</h4>
-                        <canvas id="totalChart"></canvas>
+                    <div class="chart-card fade-in delay-1">
+                        <div class="card-header-flex">
+                            <h4>Total Benefit (Diminishing Returns)</h4>
+                            <span class="badge">Model</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="totalChart"></canvas>
+                        </div>
+                        <p class="chart-hint">Shows cumulative crime reduction as officers are added.</p>
                     </div>
 
-                    <div class="chart-card">
-                        <h4>Marginal Benefit per Officer</h4>
-                        <canvas id="marginalChart"></canvas>
+                    <div class="chart-card fade-in delay-2">
+                        <div class="card-header-flex">
+                            <h4>Marginal Benefit per Officer</h4>
+                            <span class="badge">Efficiency</span>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="marginalChart"></canvas>
+                        </div>
+                        <p class="chart-hint">Optimal allocation point is where marginal benefit levels off.</p>
                     </div>
                 </div>
             </div>
