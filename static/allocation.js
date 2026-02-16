@@ -114,5 +114,27 @@ async function loadCharts() {
 
 
 
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("collapsed");
+    const collapsed = sidebar.classList.contains("collapsed");
+    localStorage.setItem("sidebarCollapsed", collapsed);
+
+    // Trigger chart resize after transition
+    setTimeout(() => {
+        if (totalChart) totalChart.resize();
+        if (marginalChart) marginalChart.resize();
+    }, 450);
+}
+
+// Restore state
+document.addEventListener("DOMContentLoaded", () => {
+    const collapsed = localStorage.getItem("sidebarCollapsed") === "true";
+    if (collapsed) {
+        document.getElementById("sidebar").classList.add("collapsed");
+    }
+});
+
 //Load charts on page load
 loadCharts();
