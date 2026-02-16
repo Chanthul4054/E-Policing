@@ -19,7 +19,7 @@ def load_model():
 
 def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_type="drugs"):
     # Fetch hotspot predictions dynamically
-    from services.hotspot_service import get_hotspot_data
+    from services.hotspot_output import get_hotspot_data
     hotspot_output = get_hotspot_data(crime_type=crime_type)
 
 

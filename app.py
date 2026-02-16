@@ -5,6 +5,9 @@ import os
 from extensions import db
 from routes.auth_routes import auth_bp, init_login
 from routes.allocation_routes import allocation_bp
+from routes.hotspot_routes import hotspot_bp
+from routes.pattern_routes import pattern_bp
+from routes.risk_routes import risk_bp
 
 load_dotenv()
 
@@ -27,6 +30,9 @@ def create_app():
     init_login(app)
     app.register_blueprint(auth_bp)
     app.register_blueprint(allocation_bp)
+    app.register_blueprint(hotspot_bp, url_prefix="/hotspot")
+    app.register_blueprint(pattern_bp, url_prefix="/pattern")
+    app.register_blueprint(risk_bp, url_prefix="/risk")
 
     return app
 
