@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, session
 from dotenv import load_dotenv
 import os
 
@@ -12,6 +12,7 @@ def create_app():
     app = Flask(__name__)
 
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev-secret-change-me")
+    app.config["SESSION_PERMANENT"] = False
 
     db_uri = os.getenv("DB_URI")
     if not db_uri:
@@ -22,7 +23,7 @@ def create_app():
 
     db.init_app(app)
 
-    # Blueprints 
+    # Blueprints
     init_login(app)
     app.register_blueprint(auth_bp)
     app.register_blueprint(allocation_bp)
@@ -31,10 +32,13 @@ def create_app():
 
 app = create_app()
 
+@app.before_request
+def make_session_non_permanent():
+    session.permanent = False  
+
 @app.errorhandler(403)
 def forbidden(e):
     return render_template("403.html"), 403
-
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,48 +1,133 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .box {
-            width: 360px;
-            margin: 80px auto;
-            padding: 18px;
-            border: 1px solid #ddd;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-        }
-
-        .err {
-            color: #b00020;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Policing Portal - Secure Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
 </head>
 
 <body>
-    <div class="box">
-        <h2>Login</h2>
-        {% if error %}<p class="err">{{ error }}</p>{% endif %}
-        <form method="POST">
-            <input name="username" placeholder="Username" required>
-            <input name="password" type="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
+    <div class="login-container">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/Sinhabahu_Lion.svg') }}" alt="Sri Lanka Police Logo"
+                    style="width: 70%; height: auto;">
+            </div>
+            <h1 class="site-title">E-Policing Portal</h1>
+            <p class="site-subtitle">Democratic Socialist Republic of Sri Lanka</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <div class="card-header">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="card-header-icon">
+                    <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="card-title">Secure Officer Authentication</span>
+            </div>
+
+            {% if error %}
+            <div class="error-message">
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="username">Officer ID / Official Email</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" />
+                                <path d="M7 20V19C7 17.3431 8.34315 16 10 16H14C15.6569 16 17 17.3431 17 19V20"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </span>
+                        <input class="form-input" name="username" id="username"
+                            placeholder="SLP-XXXXXX or email@police.lk" required autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <label class="form-label" style="margin-bottom: 0;" for="password">Password</label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </span>
+                        <input class="form-input" name="password" id="password" type="password"
+                            placeholder="••••••••••••" required>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" class="checkbox">
+                        Authorized workstation (Remember me)
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" fill="white"
+                            fill-opacity="0.2" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Secure Login
+                </button>
+            </form>
+
+            <div class="separator"></div>
+
+            <div class="card-footer">
+                <p class="footer-text">New officer or transferred station?</p>
+                <a href="#" class="footer-link">Request Portal Access</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 16V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </div>
+            <p class="info-text">
+                This is a restricted government system. Unauthorized access attempts are monitored and recorded under
+                the Computer Crime Act No. 24 of 2007.
+            </p>
+        </div>
     </div>
+
+    <footer class="page-footer">
+        <div>© 2024 Sri Lanka Police Department. Information Technology Division.</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">System Status</a>
+        </div>
+    </footer>
 </body>
 
 </html>
