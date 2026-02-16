@@ -20,11 +20,16 @@
             <ul class="nav-links">
                 <li><a href="#" class="nav-item"><i class="icon">🔥</i> Hotspot Prediction</a></li>
                 <li><a href="#" class="nav-item"><i class="icon">🔍</i> Pattern Recognition</a></li>
-                <li><a href="/allocation" class="nav-item active"><i class="icon">👮</i> Resource Allocation</a></li>
+                <li>
+                    <a href="{{ url_for('allocation.index') }}"
+                        class="nav-item {% if request.endpoint == 'allocation.index' %}active{% endif %}">
+                        <i class="icon">👮</i> Resource Allocation
+                    </a>
+                </li>
                 <li><a href="#" class="nav-item"><i class="icon">📊</i> Crime Risk Analysis</a></li>
             </ul>
             <div class="sidebar-footer">
-                <a href="/logout" class="logout-btn">Logout</a>
+                <a href="{{ url_for('auth.logout') }}" class="logout-btn">Logout</a>
             </div>
         </nav>
 
