@@ -9,7 +9,7 @@ MODEL_PATH = "models/resource_allocation_xgboost.json"
 
 CRIME_TYPE_MAP = {
     "drugs": 0, "robbery": 1, "theft": 2,
-    "vehical theft": 3, "buglary": 4, "stabbing": 5,
+    "vehicle theft": 3, "burglary": 4, "stabbing": 5,
 }
 
 def load_model():
@@ -17,15 +17,11 @@ def load_model():
     model.load_model(MODEL_PATH)
     return model
 
-def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn):
-    # hotspot_output comes from your hotspot module
-    hotspot_output = {
-        "crime_type": "drugs",
-        "predictions": [
-            {"gn_name": "LK2130145", "risk_score": 0.69},
-            {"gn_name": "LK2130120", "risk_score": 0.68},
-        ]
-    }
+def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_type="drugs"):
+    # Fetch hotspot predictions dynamically
+    from services.hotspot_mockoutput import get_hotspot_data
+    hotspot_output = get_hotspot_data(crime_type=crime_type)
+
 
     crime_type = hotspot_output["crime_type"]
     df = pd.DataFrame(hotspot_output["predictions"])
