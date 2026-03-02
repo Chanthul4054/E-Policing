@@ -118,7 +118,64 @@
                     Evaluate and visualize risk factors contributing to crime in various administrative divisions.
                 </p>
             </div>
+            
 
+            <h1>Crime Risk Driving Factor Analysis</h1>
+            <div class="dropdowns">
+                <label for="gn_dropdown">Grama Niladhari Division</label>
+                <form method="POST">
+                    <select id="gn_dropdown" name="gn_division" class="dropdown-content">
+                        {% for gn in gn_name_list %}
+                            <option value="{{ gn }}">{{ gn }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Analyze</button>
+                </form>
+
+
+            </div>
+
+            {% if result %}
+
+            <div id="content_area">
+                <h2>GN: {{ result.gn_division }}</h2>
+                <h2>GN: {{ result.crime_type }}</h2>
+                
+                <h3>Risk Score: {{result.risk_score}}</h3>
+
+                <h3>Top Risk Driving Factors:</h3>
+                <ul>
+                    {% for f in result.top_features %}
+                        <li>{{ f }}</li>
+                    {% endfor %}
+                </ul>
+                
+                <h3>Crime Risk Driving Factor Interpretation</h3>
+                <canvas id="shap_chart" width="400" height="200"></canvas>
+
+
+            </div>
+            <script>
+                const shap_values = {{ result.shap_values | tojson}}:
+                const shap_labels = {{ result.top_features | tojson}};
+
+                const ctx = document.getElementById("shap_chart");
+
+                new Chart(ctx, {
+                    type:'bar',
+                    data: {
+                        labels:shap_lables,
+                        datasets: [{
+                            label:'SHAP Contribution',
+                            data:shap_values
+                        }]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            </script>
+            {% endif %}
 
         </main>
     </div>
