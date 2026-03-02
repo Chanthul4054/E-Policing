@@ -8,6 +8,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>    
+    <link rel="stylesheet" href="{{ url_for('static', filename='hotspot.css') }}">
+
 </head>
 
 <body>
@@ -112,18 +115,74 @@
 
         <!-- Main Content -->
         <main class="main-content">
+
             <div class="header-container">
                 <h2 class="page-title">Hotspot Prediction</h2>
                 <p class="page-description">
                     Analyze spatio-temporal crime data to identify emerging high-density crime zones.
                 </p>
+                
+                <div class="filter-controls">
+                    <label for="crimeTypeSelect" class="filter-label">Analysis Type:</label>
+                    <select id ="crimeTypeSelect" class="form-select">
+                        <option value="burglary">Burglary</option>
+                        <option value="drugs">Drugs</option>
+                        <option value="stabbing">Stabbing</option>
+                        <option value="robbery">Robbery</option>
+                        <option value="theft">Theft</option>
+                        <option value="vehicle_theft">Vehicle Theft</option>
+                    </select>    
+                </div>
             </div>
+            <div class="dashboard-grid">
 
+                <div class="card map-card" >
+                    <h3>Crime Hotspot Map</h3>
+                    <div id="map"></div>
+                </div>     
+                
+                <div class = "card charts-column">
+                    <div class="card chart-card">
+                        <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h3 id="chartTitle">Top 5 Priority Zones</h3>
+                            <button id="toggleChartBtn" class="btn-view-more">View More</button>
+                        </div>
+                        <canvas id="priorityCharts"></canvas>
+                    </div>
+                
+                    <div class="card chart-card">
+                        <h3>Risk Distribution</h3>
+                        <div style="height: 250px;"> <canvas id="totalChart"></canvas>
+                        </div>
+    
+                        <div class="risk-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
+                            <div class="stat-item" style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid #ef4444;">
+                                <small style="color: #ef4444; font-weight: bold;">CRITICAL</small>
+                                <div id="count-critical" style="font-size: 1.2rem; color: rgb(255, 255, 255);">0</div>
+                            </div>
+                            <div class="stat-item" style="background: rgba(249, 115, 22, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid #f97316;">
+                                <small style="color: #f97316; font-weight: bold;">HIGH</small>
+                                <div id="count-high" style="font-size: 1.2rem; color: rgb(234, 227, 227);">0</div>
+                            </div>
+                            <div class="stat-item" style="background: rgba(241, 196, 15, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid #f1c40f;">
+                                <small style="color: #f1c40f; font-weight: bold;">MEDIUM</small>
+                                <div id="count-medium" style="font-size: 1.2rem; color: rgb(255, 255, 255);">0</div>
+                            </div>
+                            <div class="stat-item" style="background: rgba(107, 253, 204, 0.1); padding: 10px; border-radius: 8px; border-left: 4px solid #6bfdcc;">
+                                <small style="color: #6bfdcc; font-weight: bold;">LOW</small>
+                                <div id="count-low" style="font-size: 1.2rem; color: rgb(255, 255, 255);">0</div>
+                            </div>
+                        </div>
+                    </div>
+    
+    
+                </div>
+            </div>
 
         </main>
     </div>
-
-    <script src="{{ url_for('static', filename='allocation.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> 
+    <script src="{{ url_for('static', filename='hotspot.js') }}"></script>
 </body>
 
 </html>
