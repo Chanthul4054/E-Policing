@@ -24,6 +24,7 @@ def index():
         crime_type=crime_type_req
     )
 
+
     cols = [
         "gn_name",
         "closest_police_station",

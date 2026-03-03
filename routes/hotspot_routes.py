@@ -56,6 +56,7 @@ def generate_risk_scores(crime_type):
 @hotspot_bp.route("/")
 @login_required
 def index():
+    
     return render_template("hotspot.html")
 
 @hotspot_bp.route('/predict', methods=['GET'])
