@@ -5,6 +5,7 @@ import os
 from extensions import db
 from routes.auth_routes import auth_bp, init_login
 from routes.allocation_routes import allocation_bp
+
 from routes.hotspot_routes import hotspot_bp
 from routes.pattern_routes import pattern_bp
 from routes.risk_routes import risk_bp
