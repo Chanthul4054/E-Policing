@@ -33,6 +33,7 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_
     gn_names = df["gn_name"].tolist()
     q = text("""
         SELECT "admin4Pcode" AS gn_name,
+               "admin4Name_en" AS actual_gn_name,
                "GN_population",
                "distance_to_station_km",
                "closest_police_station"
@@ -44,6 +45,9 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_
         extra = conn.execute(q, {"g": gn_names}).mappings().all()
 
     df = df.merge(pd.DataFrame(extra), on="gn_name", how="left")
+    
+    if "actual_gn_name" in df.columns:
+        df["gn_name"] = df["actual_gn_name"].fillna(df["gn_name"])
 
     X = df[FEATURES]
     dmat = xgb.DMatrix(X, feature_names=FEATURES)
