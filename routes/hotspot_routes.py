@@ -25,6 +25,7 @@ with open(os.path.join(base_path, 'gn_name_mapping.json'), 'r') as f:
 
 #The logic
 def generate_risk_scores(crime_type):
+    
     #Load Master feature list
     with open(os.path.join(base_path, 'feature_list.json'), 'r') as f:
         master_features = json.load(f)
