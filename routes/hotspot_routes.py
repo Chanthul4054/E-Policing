@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from flask import Blueprint, render_template, session
 from flask_login import login_required
+from sqlalchemy import text, bindparam 
+from extensions import db # db is imported from extensions
 
 #Set up the Blueprint
 hotspot_bp = Blueprint("hotspot", __name__)
@@ -61,6 +63,7 @@ def index():
 
 @hotspot_bp.route('/predict', methods=['GET'])
 @login_required
+
 def predict():
     """API endpont used by map_visualizer.js to get current risk data"""
     crime_type = request.args.get('type', 'burglary').lower()
@@ -68,9 +71,46 @@ def predict():
     #Store the selection in the session
     session['selected_crime_type'] = crime_type
     try:
-        data = generate_risk_scores(crime_type)
-        return jsonify({"status": "success", "predictions": data})
+        #Get the predictions
+        predictions = generate_risk_scores(crime_type)
+        df = pd.DataFrame(predictions)
+
+        #Fetch actual names from the database 
+        gn_pcodes = df['gn_name'].tolist()
+
+    
+        query = text("""
+            SELECT "admin4Pcode" AS pcode,
+                   "admin4Name_en" AS actual_name
+            FROM gn_division_info
+            WHERE "admin4Pcode" IN :codes
+        """).bindparams(bindparam("codes", expanding=True))
+
+        with db.engine.connect() as conn:
+            name_data = conn.execute(query, {"codes": gn_pcodes}).mappings().all()
+
+        #Merge the names back into the results
+        if name_data:
+            names_df = pd.DataFrame(name_data)
+            df = df.merge(names_df, left_on='gn_name', right_on='pcode', how='left')
+
+            # Map PCODE to technical ID for the map and Name for the chart
+            df['display_name'] = df['actual_name'].fillna(df['gn_name'])
+            df = df.rename(columns={'gn_name': 'pcode_id'})
+
+        else:
+            # Fallback if DB query fails
+            df['display_name'] = df['gn_name']
+            df['pcode_id'] = df['gn_name'] 
+
+
+        # Return both the readable name for charts AND the pcode for the map
+        final_data = df[['display_name', 'pcode_id', 'risk_score']].to_dict(orient='records')
+        return jsonify({"status": "success", "predictions": final_data})
+ 
+
     except Exception as e:
+        print(f"Error in /predict: {str(e)}")
         return jsonify({"status": "failed", "error": str(e)}), 500
 
 

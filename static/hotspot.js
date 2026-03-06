@@ -45,13 +45,15 @@ async function loadKandyMap(crimeType='burglary') {
         const mappingData = await mappingResponse.json();
         const predictData = await predictResponse.json(); // The results from generate_risk_scores
 
-        if (predictData.predictions) {
-
-            updateRiskChart(predictData.predictions);
-            // Update the distribution summary chart
-            updateDistributionChart(predictData.predictions);
-
+        if (!predictResponse.ok || !predictData.predictions) {
+            console.error("Prediction Load Failed:", predictData.error || "Unknown Error");
+            return; 
         }
+
+        updateRiskChart(predictData.predictions);
+        // Update the distribution summary chart
+        updateDistributionChart(predictData.predictions);
+
 
         //Convert the mapping values into an Array 
         const allowedCodes = Object.values(mappingData);
@@ -59,7 +61,7 @@ async function loadKandyMap(crimeType='burglary') {
         //A quick-lookup object for risk scores
         const riskLookup = {};
         predictData.predictions.forEach(item => {
-        riskLookup[item.gn_name] = item.risk_score;
+            riskLookup[item.pcode_id] = item.risk_score;
         });        
 
 
@@ -267,11 +269,11 @@ function updateRiskChart(predictions) {
         .sort((a, b) => b.risk_score - a.risk_score)
         .slice(0, limit); // Top 10 GN Divisions
 
-    const labels = sortedData.map(item => item.gn_name);
+    const labels = sortedData.map(item => item.display_name);
     const scores = sortedData.map(item => item.risk_score * 100);
 
     // Update the Title and Button Text
-    document.getElementById('chartTitle').innerText = `Top ${limit} Priority Zones`;
+    document.getElementById('chartTitle').innerText = `Top ${limit} Grama Niladhari Divisions`;
     document.getElementById('toggleChartBtn').innerText = showAllResults ? "View Less" : "View More";
     //Create the Chart
     riskChart = new Chart(ctx, {
@@ -309,7 +311,7 @@ function updateRiskChart(predictions) {
                 },
                 y: {
                     grid: { display: false },
-                    ticks: { color: '#ffffff', font: { size: 11 } }
+                    ticks: { color: '#ffffff', font: { size: 11 }, autoSkip: false}
                 }
             }
         }
@@ -389,7 +391,7 @@ function updateDistributionChart(predictions) {
                 // Draw "TOTAL GNs" label
                 ctx.font = "12px sans-serif";
                 ctx.fillStyle = "#94a3b8";
-                const subText = "TOTAL GNs";
+                const subText = "TOTAL GN Divisions";
                 const subX = Math.round((width - ctx.measureText(subText).width) / 2);
                 ctx.fillText(subText, subX, height / 2 + 20);
                 
