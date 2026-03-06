@@ -1,7 +1,10 @@
 //--------------Variable initialization-------------
 
 // Initialize the map globally, for the instance to be accessible
-const map = L.map('map').setView([7.2906, 80.6337], 13);
+const map = L.map('map', {
+    minZoom: 12,   // Prevents zooming out beyond the starting level
+    maxZoom: 18    // Sets a reasonable limit for zooming in
+}).setView([7.2906, 80.6337], 13);
 //Keep track of the layer 
 let currentGeoLayer = null 
 //For the chart
@@ -12,6 +15,7 @@ let distributionChart = null;
 let showAllResults = false; 
 // Store data globally to reuse on toggle
 let latestPredictions = []; 
+
 
 
 //Base map layer
@@ -78,6 +82,7 @@ async function loadKandyMap(crimeType='burglary') {
                 return feature;
             })   
         };     
+
 
 
         //Pass the filtered data to the renderer
@@ -155,13 +160,11 @@ function renderMapLayer(geoData) {
     currentGeoLayer = geoLayer;
 
     if (geoLayer) {
-        map.fitBounds(geoLayer.getBounds(),{
-        padding: [20, 20], 
-        maxZoom: 14
-    
-    });
-
+    const bounds = geoLayer.getBounds();
+    map.fitBounds(bounds, { padding: [20, 20], maxZoom: 14 });
+    map.setMaxBounds(bounds); // This prevents dragging away from the 72 divisions
     }
+
     //Recalculate the square dimensions
     setTimeout(() => {
         map.invalidateSize();

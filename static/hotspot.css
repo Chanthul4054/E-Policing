@@ -6,8 +6,30 @@
     margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 1.5rem; 
+    gap: 24px;
+    align-items: flex-start; 
 }
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+/* Styling the static 'Next Week' text */
+.static-period-label {
+    background-color: #1e293b; 
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border:2px solid var(--border-color); 
+    font-size: 1.1rem;
+    height: 45px; 
+    display: flex;
+    align-items: center;
+    min-width: 250px;
+}
+
 
 .filter-label {
     color: var(--text-secondary);

@@ -123,16 +123,23 @@
                 </p>
                 
                 <div class="filter-controls">
-                    <label for="crimeTypeSelect" class="filter-label">Analysis Type:</label>
-                    <select id ="crimeTypeSelect" class="form-select">
-                        <option value="burglary">Burglary</option>
-                        <option value="drugs">Drugs</option>
-                        <option value="stabbing">Stabbing</option>
-                        <option value="robbery">Robbery</option>
-                        <option value="theft">Theft</option>
-                        <option value="vehicle_theft">Vehicle Theft</option>
-                    </select>    
-                </div>
+                    <div class="filter-group">
+                        <label for="crimeTypeSelect" class="filter-label">Crime Type:</label>
+                        <select id ="crimeTypeSelect" class="form-select">
+                            <option value="burglary">Burglary</option>
+                            <option value="drugs">Drugs</option>
+                            <option value="stabbing">Stabbing</option>
+                            <option value="robbery">Robbery</option>
+                            <option value="theft">Theft</option>
+                            <option value="vehicle_theft">Vehicle Theft</option>
+                        </select>    
+                    </div>
+                
+                    <div class="filter-group">
+                        <label class="filter-label">Prediction Period:</label>
+                        <div class="static-period-label">Next Week</div>
+                    </div>
+
             </div>
             <div class="dashboard-grid">
 
