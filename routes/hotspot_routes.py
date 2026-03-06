@@ -4,7 +4,7 @@ import joblib
 import pandas as pd
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session
 from flask_login import login_required
 
 #Set up the Blueprint
@@ -64,6 +64,9 @@ def index():
 def predict():
     """API endpont used by map_visualizer.js to get current risk data"""
     crime_type = request.args.get('type', 'burglary').lower()
+
+    #Store the selection in the session
+    session['selected_crime_type'] = crime_type
     try:
         data = generate_risk_scores(crime_type)
         return jsonify({"status": "success", "predictions": data})
