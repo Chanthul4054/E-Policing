@@ -294,6 +294,13 @@ function updateRiskChart(predictions) {
             indexAxis: 'y', // Makes the bar chart horizontal
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    bottom: 35, // Creates space for the X-axis title and labels
+                    left: 10,
+                    right: 30
+                }
+            },
             plugins: {
                 legend: { display: false }, // Hide legend for cleaner look
                 tooltip: {
@@ -306,12 +313,34 @@ function updateRiskChart(predictions) {
                 x: {
                     beginAtZero: true,
                     max: 100,
-                    grid: { display: false },
-                    ticks: { color: '#ffffff', font: { size: 10 } }
+                    grid: { 
+                        display: true, 
+                        color: 'rgba(255, 255, 255, 0.1)' 
+                    },
+                    ticks: { color: '#ffffff', font: { size: 10 }, display:true},
+                    title: {
+                        display: true,
+                        text: 'Predicted Risk Level (%)',
+                        color: '#94a3b8',
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
+                    }
                 },
                 y: {
                     grid: { display: false },
-                    ticks: { color: '#ffffff', font: { size: 11 }, autoSkip: false}
+                    ticks: { color: '#ffffff', font: { size: 11 }, autoSkip: false},
+
+                    title: {
+                        display: true,
+                        text: 'Grama Niladhari Divisions',
+                        color: '#94a3b8',
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
+                    }
                 }
             }
         }

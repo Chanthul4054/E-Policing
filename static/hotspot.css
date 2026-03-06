@@ -111,9 +111,10 @@
     height: 600px; 
     display: flex;
     flex-direction: column;
-    position:relative;
+    position: relative;
     margin-bottom: 20px;
-    overflow: hidden;
+    overflow: visible; /* CHANGE: Ensure nothing is cut off */
+    padding-bottom: 50px;
 
 }
 
@@ -121,6 +122,7 @@
     flex: 1;
     width: 100% !important;
     height: 100% !important;
+ 
 }
 
 #priorityCharts {
