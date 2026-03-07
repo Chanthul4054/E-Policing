@@ -120,6 +120,12 @@
                     Optimize police officer deployment across GN divisions based on predicted crime hotspots and
                     diminishing returns analysis.
                 </p>
+                <div class="active-config-banner"
+                    style="margin-top: 10px; padding: 10px 15px; border-radius: 6px; background-color: rgba(59, 130, 246, 0.1); border-left: 4px solid #3b82f6; display: inline-block;">
+                    <span style="color: #94a3b8; font-size: 0.9rem;">Current Target Analysis: </span>
+                    <strong style="color: white; font-size: 1.1rem; text-transform: capitalize;">{{
+                        crime_type|replace('_', ' ') }}</strong>
+                </div>
             </div>
 
             <!-- KPI Summary Bar -->
@@ -153,24 +159,10 @@
                 <!-- Left Column: Controls & Table -->
                 <div class="dashboard-left">
                     <form id="controls" method="GET" class="glass-panel">
-                        <div class="form-section">
+                        <div class="form-section" style="display: none;">
                             <h5 class="section-title">Model Parameters</h5>
                             <div class="control-row">
-                                <div class="control-group"
-                                    title="Select the specific crime type to analyze hotspots for">
-                                    <label for="crime_type">Crime Type ⓘ</label>
-                                    <select name="crime_type" id="crime_type">
-                                        {% for ct in crime_types %}
-                                        <option value="{{ ct }}" {% if ct==crime_type %}selected{% endif %}>{{ ct|title
-                                            }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div class="control-group"
-                                    title="Limit analysis to the top N highest risk GN divisions. Higher values cover more area but spread resources thinner.">
-                                    <label for="topk">Top-K GNs ⓘ</label>
-                                    <input type="number" name="topk" id="topk" value="{{ max_gns_to_cover }}" min="1">
-                                </div>
+                                <!-- Crime Type selection is now driven by Hotspot module  -->
                             </div>
                         </div>
 
