@@ -247,24 +247,26 @@
                 <div class="dashboard-right">
                     <div class="chart-card fade-in delay-1">
                         <div class="card-header-flex">
-                            <h4>Total Benefit (Diminishing Returns)</h4>
+                            <h4>Crime Reduction as More Officers Are Deployed</h4>
                             <span class="badge">Model</span>
                         </div>
                         <div class="chart-wrapper">
                             <canvas id="totalChart"></canvas>
                         </div>
-                        <p class="chart-hint">Shows cumulative crime reduction as officers are added.</p>
+                        <p class="chart-hint">Shows how crime reduction improves as more officers are deployed. After a
+                            certain point, adding more officers provides smaller improvements.</p>
                     </div>
 
                     <div class="chart-card fade-in delay-2">
                         <div class="card-header-flex">
-                            <h4>Marginal Benefit per Officer</h4>
+                            <h4>Impact of Adding One More Officer</h4>
                             <span class="badge">Efficiency</span>
                         </div>
                         <div class="chart-wrapper">
                             <canvas id="marginalChart"></canvas>
                         </div>
-                        <p class="chart-hint">Optimal allocation point is where marginal benefit levels off.</p>
+                        <p class="chart-hint">Shows how much additional crime reduction each new officer provides. When
+                            the line becomes low, adding more officers has little impact.</p>
                     </div>
                 </div>
             </div>

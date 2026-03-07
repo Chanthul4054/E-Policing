@@ -26,7 +26,7 @@ async function loadCharts() {
         if (totalChart) totalChart.destroy();
         if (marginalChart) marginalChart.destroy();
 
-        const commonOptions = {
+        const getOptions = (xTitle, yTitle) => ({
             responsive: true,
             maintainAspectRatio: false,
             animation: {
@@ -55,21 +55,33 @@ async function loadCharts() {
             scales: {
                 x: {
                     grid: { color: '#334155' },
-                    ticks: { color: '#94a3b8' }
+                    ticks: { color: '#94a3b8' },
+                    title: {
+                        display: true,
+                        text: xTitle,
+                        color: '#94a3b8',
+                        font: { size: 12, weight: 'bold' }
+                    }
                 },
                 y: {
                     grid: { color: '#334155' },
-                    ticks: { color: '#94a3b8' }
+                    ticks: { color: '#94a3b8' },
+                    title: {
+                        display: true,
+                        text: yTitle,
+                        color: '#94a3b8',
+                        font: { size: 12, weight: 'bold' }
+                    }
                 }
             }
-        };
+        });
 
         totalChart = new Chart(totalCtx, {
             type: "line",
             data: {
                 labels: data.totals,
                 datasets: [{
-                    label: "Total Benefit",
+                    label: "Estimated Crime Reduction",
                     data: data.total_benefits,
                     borderColor: '#3b82f6',
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -80,7 +92,7 @@ async function loadCharts() {
                     pointHoverRadius: 6
                 }]
             },
-            options: commonOptions
+            options: getOptions("Number of Police Officers Deployed", "Estimated Crime Reduction")
         });
 
         marginalChart = new Chart(marginalCtx, {
@@ -88,7 +100,7 @@ async function loadCharts() {
             data: {
                 labels: data.totals,
                 datasets: [{
-                    label: "Marginal Benefit",
+                    label: "Additional Crime Reduction",
                     data: data.marginal_benefits,
                     borderColor: '#10b981',
                     backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -99,7 +111,7 @@ async function loadCharts() {
                     pointHoverRadius: 6
                 }]
             },
-            options: commonOptions
+            options: getOptions("Total Officers Deployed", "Additional Crime Reduction from 1 Officer")
         });
 
     } catch (e) {
