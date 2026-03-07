@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Policing Portal - Secure Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/Sinhabahu_Lion.svg') }}" alt="Sri Lanka Police Logo"
+                    style="width: 70%; height: auto;">
+            </div>
+            <h1 class="site-title">E-Policing Portal</h1>
+            <p class="site-subtitle">Sri Lanka Police Department</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="login-card">
+            <div class="card-header">
+                <div class="header-icon-container">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="card-header-icon animated-lock">
+                        <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lock-check" />
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <span class="card-title">Secure Officer Authentication</span>
+                    <span class="trust-badge">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L1 21h22L12 2zm1 16h-2v-2h2v2zm0-4h-2V8h2v6z" />
+                        </svg>
+                        Government Secure System
+                    </span>
+                </div>
+            </div>
+
+            {% if error %}
+            <div class="error-message" role="alert">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form method="POST" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="username">Officer ID</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <input class="form-input" name="username" id="username" placeholder="SLP-XXXXXX" required
+                            autofocus autocomplete="username">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="label-row">
+                        <label class="form-label" for="password">Password</label>
+                        <a href="#" class="forgot-password" tabindex="0">Forgot?</a>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <span class="input-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M7 11V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V11"
+                                    stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </span>
+                        <input class="form-input" name="password" id="password" type="password" placeholder="••••••••"
+                            required autocomplete="current-password">
+                        <button type="button" class="password-toggle" id="togglePassword" aria-label="Show password">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" class="checkbox">
+                        <span>Remember workstation</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn ripple" id="loginBtn">
+                    <span class="btn-text">Secure Login</span>
+                    <div class="spinner"></div>
+                </button>
+            </form>
+
+            <div class="separator"></div>
+
+            <div class="card-footer">
+                <a href="#" class="footer-link">Request Access</a>
+                <span class="footer-divider">•</span>
+                <a href="#" class="footer-link">Help</a>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <p class="info-text">
+                <strong>Restricted System.</strong> Unauthorized access involves criminal liability under CCA No. 24 of
+                2007. Activity is monitored.
+            </p>
+        </div>
+    </div>
+
+    <footer class="page-footer">
+        <div>© 2024 Sri Lanka Police Department. Information Technology Division.</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">System Status</a>
+        </div>
+    </footer>
+    <script>
+        // Password Toggle
+        const togglePassword = document.querySelector('#togglePassword');
+        const password = document.querySelector('#password');
+
+        togglePassword.addEventListener('click', function (e) {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+
+            // Toggle eye icon
+            if (type === 'password') {
+                this.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+            } else {
+                this.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M1 1l22 22"></path><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path></svg>`;
+            }
+        });
+
+        // Loading State
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const btnText = loginBtn.querySelector('.btn-text');
+        const spinner = loginBtn.querySelector('.spinner');
+
+        loginForm.addEventListener('submit', function () {
+            loginBtn.classList.add('loading');
+            loginBtn.setAttribute('disabled', 'true');
+        });
+    </script>
+</body>
+
+</html>

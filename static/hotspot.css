@@ -1,0 +1,196 @@
+/*---------Style the dropdown--------*/
+
+/* Container for the filter */
+.filter-controls {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-items: flex-start; 
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}
+
+/* Styling the static 'Next Week' text */
+.static-period-label {
+    background-color: #1e293b; 
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border:2px solid var(--border-color); 
+    font-size: 1.1rem;
+    height: 45px; 
+    display: flex;
+    align-items: center;
+    min-width: 250px;
+}
+
+
+.filter-label {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-select {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color); 
+    padding: 12px 24px; 
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem; 
+    font-weight: 500;
+    min-width: 250px; 
+    appearance: none; 
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 18px;
+    padding-right: 50px; 
+}
+
+.form-select:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(107, 253, 204, 0.1); 
+}
+
+/*-------Styling the dashboard------*/
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 450px; 
+    gap: 1.5rem;
+    align-items: start;
+
+
+}
+/*------------Map------------------*/
+.map-card {
+    grid-column: 1;
+    width: 100%;
+    height: 1250px !important; 
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    
+}
+
+#map {
+    flex: 1;
+    width: 100%;
+    height:  100%;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/*Style the container with the statistics chart*/
+
+.chart-card{
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    height: 600px; 
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 20px;
+    overflow: visible; /* CHANGE: Ensure nothing is cut off */
+    padding-bottom: 50px;
+
+}
+
+.chart-card canvas{
+    flex: 1;
+    width: 100% !important;
+    height: 100% !important;
+ 
+}
+
+#priorityCharts {
+    flex-grow:1;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/*The risk distribution chart*/
+.charts-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/*The dropdown in the top 10 priority chart*/
+.btn-view-more {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-view-more:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #6bfdcc;
+}
+
+
+
+/* Responsive adjustment for mobile/tablets */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr; 
+    }
+    
+    .map-card {
+        min-height: 400px;
+    }
+}
+
+/*Map legend
+/* Legend container styling */
+.info.legend {
+    padding: 15px 30px;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    color: #000000;
+    line-height: 32px;
+    font-size: 1.5rem;
+    
+}
+
+/* Legend color boxes */
+.info.legend i {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 15px;
+    opacity: 0.7;
+    border: 1px solid #fff;
+}

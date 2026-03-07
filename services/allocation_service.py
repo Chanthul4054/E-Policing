@@ -9,7 +9,7 @@ MODEL_PATH = "models/resource_allocation_xgboost.json"
 
 CRIME_TYPE_MAP = {
     "drugs": 0, "robbery": 1, "theft": 2,
-    "vehical theft": 3, "buglary": 4, "stabbing": 5,
+    "vehicle_theft": 3, "burglary": 4, "stabbing": 5,
 }
 
 def load_model():
@@ -17,18 +17,22 @@ def load_model():
     model.load_model(MODEL_PATH)
     return model
 
-def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn):
-    # hotspot_output comes from your hotspot module
-    hotspot_output = {
-        "crime_type": "drugs",
-        "predictions": [
-            {"gn_name": "LK2130145", "risk_score": 0.69},
-            {"gn_name": "LK2130120", "risk_score": 0.68},
-        ]
-    }
+def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_type="drugs"):
+    # Fetch hotspot predictions dynamically
+    from routes.hotspot_routes import generate_risk_scores
+    import json
+    import os
+    
+    # Load allowed GN mapping from the static directory directly
+    current_dir = os.path.dirname(os.path.abspath(__file__)) 
+    base_path = os.path.abspath(os.path.join(current_dir, ".."))
+    with open(os.path.join(base_path, 'static', 'gn_div_info','gn_name_mapping.json'), 'r') as f:
+        allowed_gn_codes = set(json.load(f).values())
 
-    crime_type = hotspot_output["crime_type"]
-    df = pd.DataFrame(hotspot_output["predictions"])
+    raw_predictions = generate_risk_scores(crime_type)
+    predictions = [p for p in raw_predictions if p["gn_name"] in allowed_gn_codes]
+
+    df = pd.DataFrame(predictions)
     df["crime_type"] = crime_type
     df["crime_type_enc"] = CRIME_TYPE_MAP[crime_type]
     df["risk_rank"] = df["risk_score"].rank(ascending=False)
@@ -37,6 +41,7 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn):
     gn_names = df["gn_name"].tolist()
     q = text("""
         SELECT "admin4Pcode" AS gn_name,
+               "admin4Name_en" AS actual_gn_name,
                "GN_population",
                "distance_to_station_km",
                "closest_police_station"
@@ -47,7 +52,14 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn):
     with db.engine.connect() as conn:
         extra = conn.execute(q, {"g": gn_names}).mappings().all()
 
-    df = df.merge(pd.DataFrame(extra), on="gn_name", how="left")
+    df = df.merge(pd.DataFrame(extra), on="gn_name", how="inner")
+    
+    # Filter only top K from the available predictions
+    if len(df) > max_gns_to_cover:
+        df = df.head(max_gns_to_cover)
+    
+    if "actual_gn_name" in df.columns:
+        df["gn_name"] = df["actual_gn_name"].fillna(df["gn_name"])
 
     X = df[FEATURES]
     dmat = xgb.DMatrix(X, feature_names=FEATURES)
