@@ -10,10 +10,11 @@ allocation_bp = Blueprint("allocation", __name__)
 def index():
     total_officers = int(request.args.get("officers", 500))
     topk = int(request.args.get("topk", 80))
-    min_per_gn = int(request.args.get("min_per_gn", 1))
+    min_per_gn = int(request.args.get("min_per_gn", 2))
     k = float(request.args.get("k", 0.25))
-    chart_max = int(request.args.get("chart_max", total_officers))
-    crime_type_req = request.args.get("crime_type", "drugs")
+    chart_max = int(request.args.get("chart_max", 250))
+    from flask import session
+    crime_type_req = session.get("selected_crime_type", "drugs")
     if crime_type_req not in CRIME_TYPE_MAP:
         crime_type_req = "drugs"
 
@@ -47,7 +48,6 @@ def index():
         cols=cols,
         rows=rows,
         crime_type=crime_type,
-        crime_types=list(CRIME_TYPE_MAP.keys()),
         total_officers=total_officers,
         max_gns_to_cover=topk,
         min_per_gn=min_per_gn,
@@ -62,10 +62,11 @@ def index():
 def api_diminishing():
     total_officers = int(request.args.get("officers", 200))
     topk = int(request.args.get("topk", 80))
-    min_per_gn = int(request.args.get("min_per_gn", 3))
+    min_per_gn = int(request.args.get("min_per_gn", 2))
     k = float(request.args.get("k", 0.25))
-    chart_max = int(request.args.get("chart_max", total_officers))
-    crime_type_req = request.args.get("crime_type", "drugs")
+    chart_max = int(request.args.get("chart_max", 250))
+    from flask import session
+    crime_type_req = session.get("selected_crime_type", "drugs")
     if crime_type_req not in CRIME_TYPE_MAP:
         crime_type_req = "drugs"
 

@@ -31,7 +31,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
-            return redirect(url_for("allocation.index"))  # change if your index endpoint differs
+            return redirect(url_for("hotspot.index"))
 
         return render_template("login.html", error="Invalid username or password")
 

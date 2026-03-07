@@ -9,7 +9,7 @@ MODEL_PATH = "models/resource_allocation_xgboost.json"
 
 CRIME_TYPE_MAP = {
     "drugs": 0, "robbery": 1, "theft": 2,
-    "vehicle theft": 3, "burglary": 4, "stabbing": 5,
+    "vehicle_theft": 3, "burglary": 4, "stabbing": 5,
 }
 
 def load_model():
@@ -19,12 +19,20 @@ def load_model():
 
 def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_type="drugs"):
     # Fetch hotspot predictions dynamically
-    from services.hotspot_mockoutput import get_hotspot_data
-    hotspot_output = get_hotspot_data(crime_type=crime_type)
+    from routes.hotspot_routes import generate_risk_scores
+    import json
+    import os
+    
+    # Load allowed GN mapping from the static directory directly
+    current_dir = os.path.dirname(os.path.abspath(__file__)) 
+    base_path = os.path.abspath(os.path.join(current_dir, ".."))
+    with open(os.path.join(base_path, 'static', 'gn_div_info','gn_name_mapping.json'), 'r') as f:
+        allowed_gn_codes = set(json.load(f).values())
 
+    raw_predictions = generate_risk_scores(crime_type)
+    predictions = [p for p in raw_predictions if p["gn_name"] in allowed_gn_codes]
 
-    crime_type = hotspot_output["crime_type"]
-    df = pd.DataFrame(hotspot_output["predictions"])
+    df = pd.DataFrame(predictions)
     df["crime_type"] = crime_type
     df["crime_type_enc"] = CRIME_TYPE_MAP[crime_type]
     df["risk_rank"] = df["risk_score"].rank(ascending=False)
@@ -44,7 +52,11 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_
     with db.engine.connect() as conn:
         extra = conn.execute(q, {"g": gn_names}).mappings().all()
 
-    df = df.merge(pd.DataFrame(extra), on="gn_name", how="left")
+    df = df.merge(pd.DataFrame(extra), on="gn_name", how="inner")
+    
+    # Filter only top K from the available predictions
+    if len(df) > max_gns_to_cover:
+        df = df.head(max_gns_to_cover)
     
     if "actual_gn_name" in df.columns:
         df["gn_name"] = df["actual_gn_name"].fillna(df["gn_name"])
