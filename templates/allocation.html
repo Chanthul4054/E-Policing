@@ -202,9 +202,7 @@
                             <thead>
                                 <tr>
                                     {% for c in cols %}
-                                    {% if c == 'predicted_demand_score' %}
-                                    <th class="table-header">Demand Score</th>
-                                    {% elif c == 'officers_allocated' %}
+                                    {% if c == 'officers_allocated' %}
                                     <th class="table-header">Officers</th>
                                     {% else %}
                                     <th class="table-header">{{ c|replace('_', ' ')|title }}</th>
@@ -216,12 +214,7 @@
                                 {% for r in rows %}
                                 <tr>
                                     {% for c in cols %}
-                                    {% if c == 'predicted_demand_score' %}
-                                    <td
-                                        class="{{ 'text-success-bold' if r[c]|float > 0.5 else 'text-secondary-bold' }}">
-                                        {{ "%.4f"|format(r[c]) }}
-                                    </td>
-                                    {% elif c == 'officers_allocated' %}
+                                    {% if c == 'officers_allocated' %}
                                     <td class="font-mono font-bold" style="color: var(--accent-color);">
                                         {{ r[c] }}
                                     </td>

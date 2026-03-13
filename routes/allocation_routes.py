@@ -42,7 +42,6 @@ def index():
     cols = [
         "gn_division",
         "closest_police_station",
-        "predicted_demand_score",
         "officers_allocated",
     ]
 

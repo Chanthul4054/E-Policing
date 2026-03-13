@@ -72,7 +72,6 @@ class FeatureError(Exception):
 # Model loading
 
 def load_model(model_path: Path = MODEL_PATH) -> Any:
-    """Load the pre-trained XGBoost regression model from disk."""
     if not model_path.exists():
         raise ModelLoadError(
             f"Model file not found at '{model_path}'. "
