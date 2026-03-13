@@ -229,41 +229,90 @@ def predict_demand(
 
 
 # Officer allocation
-def allocate_officers(df: pd.DataFrame, total_officers: int) -> pd.DataFrame:
+def allocate_officers(df: pd.DataFrame, total_officers: int, min_per_gn: int = 0) -> pd.DataFrame:
     
     df = df.copy()
-    total_demand = df["predicted_demand_score"].sum()
-
-    if total_demand <= 0 or total_officers <= 0:
-        df["officers_allocated"] = 0
-        df["allocation_rank"] = df["predicted_demand_score"].rank(
-            method="dense", ascending=False
-        ).astype(int)
+    
+    # 1. Filter to eligible
+    eligible_mask = df["predicted_demand_score"] > 0
+    df["officers_allocated"] = 0
+    
+    if not eligible_mask.any() or total_officers <= 0:
+        df["allocation_rank"] = df["predicted_demand_score"].rank(method="dense", ascending=False).astype(int)
         return df
 
-    df["_raw_alloc"] = (df["predicted_demand_score"] / total_demand) * total_officers
-    df["officers_allocated"] = df["_raw_alloc"].apply(math.floor)
-    df["_remainder"] = df["_raw_alloc"] - df["officers_allocated"]
+    # To avoid satisfying min_per_gn for a huge number of GNs when there are very few officers,
+    # we first calculate the maximum number of GNs we can support
+    max_k = min(eligible_mask.sum(), total_officers // max(1, min_per_gn)) if min_per_gn > 0 else eligible_mask.sum()
+    if max_k == 0:
+        # Give all to the very top GN
+        top_idx = df.sort_values("predicted_demand_score", ascending=False).index[0]
+        df.loc[top_idx, "officers_allocated"] = total_officers
+        df["allocation_rank"] = df["predicted_demand_score"].rank(method="dense", ascending=False).astype(int)
+        return df
 
-    remaining = total_officers - int(df["officers_allocated"].sum())
-    if remaining > 0:
-        top_indices = df["_remainder"].nlargest(remaining).index
-        df.loc[top_indices, "officers_allocated"] += 1
+    # Select the top max_k GNs based on demand
+    top_indices = df[eligible_mask].nlargest(max_k, "predicted_demand_score").index
+    
+    # Initial setup
+    allocations = pd.Series(0, index=top_indices, dtype=float)
+    demands = df.loc[top_indices, "predicted_demand_score"].copy()
+    frozen = pd.Series(False, index=top_indices)
+    
+    unallocated = total_officers
+    
+    while True:
+        unfrozen_indices = frozen[~frozen].index
+        if len(unfrozen_indices) == 0:
+            break
+            
+        unfrozen_demand = demands[unfrozen_indices].sum()
+        if unfrozen_demand <= 0:
+            break
+            
+        # Distribute unallocated proportionally
+        raw_alloc = (demands[unfrozen_indices] / unfrozen_demand) * unallocated
+        
+        # Check if anyone falls below min_per_gn
+        newly_frozen = unfrozen_indices[raw_alloc < min_per_gn]
+        
+        if len(newly_frozen) == 0:
+            # We are good, no one falls below min_per_gn!
+            break
+            
+        # Freeze them at min_per_gn
+        allocations[newly_frozen] = min_per_gn
+        frozen[newly_frozen] = True
+        
+        unallocated -= len(newly_frozen) * min_per_gn
+        if unallocated <= 0:
+            break
 
-    df["officers_allocated"] = df["officers_allocated"].astype(int)
-    df["allocation_rank"] = (
-        df["predicted_demand_score"]
-        .rank(method="dense", ascending=False)
-        .astype(int)
-    )
+    # Now we have finalized allocations. For the unfrozen, we use standard Huntington-Hill or remainder
+    unfrozen_indices = frozen[~frozen].index
+    if len(unfrozen_indices) > 0 and unallocated > 0:
+        unfrozen_demand = demands[unfrozen_indices].sum()
+        if unfrozen_demand > 0:
+            raw_alloc = (demands[unfrozen_indices] / unfrozen_demand) * unallocated
+            floor_alloc = raw_alloc.apply(math.floor)
+            allocations[unfrozen_indices] = floor_alloc
+            
+            remainders = raw_alloc - floor_alloc
+            remaining_officers = int(unallocated - floor_alloc.sum())
+            
+            if remaining_officers > 0:
+                top_rem = remainders.nlargest(remaining_officers).index
+                allocations[top_rem] += 1
 
-    df.drop(columns=["_raw_alloc", "_remainder"], inplace=True, errors="ignore")
+    df.loc[allocations.index, "officers_allocated"] = allocations.astype(int)
+    df["allocation_rank"] = df["predicted_demand_score"].rank(method="dense", ascending=False).astype(int)
 
     logger.info(
-        "Allocated %d / %d officers across %d GN divisions.",
+        "Allocated %d / %d officers across %d GN divisions (min_per_gn=%d).",
         df["officers_allocated"].sum(),
         total_officers,
-        len(df),
+        (df["officers_allocated"] > 0).sum(),
+        min_per_gn,
     )
     return df
 
@@ -289,6 +338,7 @@ def run_resource_allocation(
     hotspot_output: Dict[str, Any],
     gn_feature_df: pd.DataFrame,
     total_officers: int = 120,
+    min_per_gn: int = 0,
     model_path: Optional[Path] = None,
     features_path: Optional[Path] = None,
 ) -> pd.DataFrame:
@@ -305,7 +355,7 @@ def run_resource_allocation(
         return pd.DataFrame(columns=_OUTPUT_COLUMNS)
 
     scored_df = predict_demand(merged_df, model, model_features)
-    allocated_df = allocate_officers(scored_df, total_officers)
+    allocated_df = allocate_officers(scored_df, total_officers, min_per_gn)
     result_df = format_results(allocated_df)
 
     logger.info(
@@ -385,6 +435,7 @@ def run_allocation_pipeline(total_officers, max_gns_to_cover, min_per_gn, crime_
         hotspot_output=hotspot_output,
         gn_feature_df=gn_feature_df,
         total_officers=total_officers,
+        min_per_gn=min_per_gn,
     )
 
     # Attach closest_police_station for dashboard display

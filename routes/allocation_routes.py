@@ -103,6 +103,7 @@ def api_allocate_resources():
     payload = request.get_json(force=True)
     hotspot_dict = payload.get("hotspot_output", payload)
     total_officers = int(payload.get("total_officers", 120))
+    min_per_gn = int(payload.get("min_per_gn", 0))
 
     # Fetch GN features from the database for all predicted pcodes
     predictions = hotspot_dict.get("predictions", [])
@@ -117,6 +118,7 @@ def api_allocate_resources():
             hotspot_output=hotspot_dict,
             gn_feature_df=gn_df,
             total_officers=total_officers,
+            min_per_gn=min_per_gn
         )
     except HotspotInputError as exc:
         return jsonify({"status": "error", "detail": str(exc)}), 422
