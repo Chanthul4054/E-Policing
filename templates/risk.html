@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crime Risk Analysis</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='risk_factor.css') }}">
 </head>
 
 <body>
@@ -112,75 +112,147 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <div class="header-container">
-                <h2 class="page-title">Crime Risk Analysis</h2>
-                <p class="page-description">
-                    Evaluate and visualize risk factors contributing to crime in various administrative divisions.
-                </p>
-            </div>
-            
+            <div class="risk-page">
+                <div class="header-container risk-header">
+                    <div class="risk-header-left">
+                        <p class="risk-breadcrumb">Crime Analytics <span> › </span> Crime Risk Driving Factor Analysis </p> 
+                        <h2 class="page-title">Crime Risk Driving Factor Analysis</h2>
+                        <p class="page-description">
+                            Evaluate and visualize risk factors contributing to crime in various administrative divisions.
+                        </p>
+                    </div>
 
-            <h1>Crime Risk Driving Factor Analysis</h1>
-            <div class="dropdowns">
-                <label for="gn_dropdown">Grama Niladhari Division</label>
-                <form method="POST">
-                    <select id="gn_dropdown" name="gn_division" class="dropdown-content">
-                        {% for gn in gn_name_list %}
-                            <option value="{{ gn }}">{{ gn }}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit">Analyze</button>
-                </form>
+                    <div class="risk-filter-wrapper">
+                        <h3 class="risk-filter-title">Grama Niladhari Division Specific Crime Risk Driving Factors</h3>
 
+                        {% if gn_options %}
+                        <form method="POST" class="risk-filter-panel">
+                            <label for="gn_dropdown">Select Grama Niladhari Division</label>
+                            <div class="risk-filter-row">
+                                <select id="gn_dropdown" name="gn_selection" class="risk-select">
+                                    {% for item in gn_options %}
+                                        <option value="{{ item.selection_key }}"{% if item.selection_key == selected_key %} selected{% endif %}>
+                                            {{ item.gn_division }} - {{ item.crime_type|title }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                <button type="submit" class="risk-btn">Analyze</button>
+                            </div>
+                        </form>
+                        {% else %}
+                        <div class="risk-filter-panel">
+                            <p class="risk-empty-state">
+                                No GN divisions have been received from the Pattern Recognition component yet.
+                            </p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if error %}
+                <div class="risk-filter-panel">
+                    <p class="risk-empty-state">{{ error }}</p>
+                </div>
+                {% endif %}
 
-            </div>
+                {% if result %}
+                <section class="risk-section">
+                    <h3 class="risk-section-title">Factors Driving Risk in all GN Divisions Globally</h3>
+                    
+                    <div class="risk-global-grid">
+                        <div class="risk-card">
+                            <div class="risk-chart-surface">
+                                <img src="data:image/png;base64,{{ result.global_waterfall_plot }}"  alt="Global SHAP Plot">
+                            </div>
+                        </div>
 
-            {% if result %}
+                        <div class="risk-card">
+                            <div class="risk-card-header">
+                                <h4 class="risk-card-title">Global Interpretation</h4>
+                            </div>
 
-            <div id="content_area">
-                <h2>GN: {{ result.gn_division }}</h2>
-                <h2>GN: {{ result.crime_type }}</h2>
-                
-                <h3>Risk Score: {{result.risk_score}}</h3>
+                            <div class="risk-insight-stack">
+                                <div class="risk-insight-box primary">
+                                    <h5> Primary Insight</h5>
+                                    <p>{{ result.global_interpretation }}</p>
+                                </div>
 
-                <h3>Top Risk Driving Factors:</h3>
-                <ul>
-                    {% for f in result.top_features %}
-                        <li>{{ f }}</li>
-                    {% endfor %}
-                </ul>
-                
-                <h3>Crime Risk Driving Factor Interpretation</h3>
-                <canvas id="shap_chart" width="400" height="200"></canvas>
+                                <div class="risk-insight-box success">
+                                    <h5>Model View</h5>
+                                    <p>The chart highlights the strongest average drivers influencing risk predictions across all GN divisions.</p>
+                                </div>
 
+                                <div class="risk-insight-box danger">
+                                    <h5> Analytical Note</h5>
+                                    <p>Use these global drivers as police-division-level indicators. Local GN explanations may still vary significantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-            </div>
-            <script>
-                const shap_values = {{ result.shap_values | tojson}}:
-                const shap_labels = {{ result.top_features | tojson}};
+                <section class="risk-section">
+                    <h3 class="risk-section-title">
+                        GN Division Deep-Dive: <span class="accent">{{ result.gn_division }}</span>
+                    </h3>
 
-                const ctx = document.getElementById("shap_chart");
+                    <div class="risk-card">
+                        <div class="risk-deep-grid">
+                            <div class="risk-left-col">
+                                <div class="risk-mini-meta">
+                                    <span class="risk-mini-label">Local Explanation Model</span>
+                                    <span class="risk-confidence">SHAP Local Analysis</span>
+                                </div>
 
-                new Chart(ctx, {
-                    type:'bar',
-                    data: {
-                        labels:shap_lables,
-                        datasets: [{
-                            label:'SHAP Contribution',
-                            data:shap_values
-                        }]
-                    },
-                    options: {
-                        responsive: true
-                    }
-                });
-            </script>
-            {% endif %}
+                                <div class="risk-chart-surface">
+                                    <img src="data:image/png;base64,{{ result.local_waterfall_plot }}" alt="Local SHAP Plot">
+                                </div>
+                            </div>
 
+                            <div class="risk-right-col">
+                                <div class="risk-metric-grid">
+                                    <div class="risk-metric-card">
+                                        <span class="risk-metric-label">Crime Type</span>
+                                        <div class="risk-metric-value">{{ result.crime_type }}</div>
+                                    </div>
+
+                                    <div class="risk-metric-card highlight">
+                                        <span class="risk-metric-label">Risk Score</span>
+                                        <div class="risk-metric-value">{{ result.risk_score }}</div>
+                                    </div>
+                                </div>
+
+                                <div class="risk-summary-card">
+                                    <h4>Division Snapshot</h4>
+                                    <p><strong>{{ result.gn_division }}</strong></p>
+                                    <p>This view explains the main factors increasing or decreasing predicted crime risk in the selected GN division.</p>
+                                </div>
+
+                                <div class="risk-chip-panel">
+                                    <h4>Top Risk Driving Factors</h4>
+                                    <div class="risk-chip-list">
+                                        {% for f in result.top_features %}
+                                            <span class="risk-chip">{{ f }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="risk-narrative">
+                            <div class="risk-narrative-icon">✦</div>
+                            <div class="risk-narrative-content">
+                                <h4>Crime Risk Driving Factor Interpretation</h4>
+                                <p>{{ result.local_interpretation }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>               
+                {% endif %}
+            </div>    
         </main>
     </div>
 
-    <script src="{{ url_for('static', filename='allocation.js') }}"></script>
+    <script src="{{ url_for('static', filename='risk_factor.js') }}"></script>
 </body>
 
 </html>
