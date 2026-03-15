@@ -87,6 +87,13 @@ def index():
                 result=None,
                 error="An unexpected error occurred while generating the risk analysis."
             )
+    return render_template(
+    "risk.html",
+    gn_options=gn_options,
+    selected_key=selected_key,
+    result=result,
+    error=None
+    )
     
 @risk_bp.route("/api/load-pattern-results", methods=["POST"])
 @login_required
