@@ -5,7 +5,6 @@ import os
 from extensions import db
 from routes.auth_routes import auth_bp, init_login
 from routes.allocation_routes import allocation_bp
-
 from routes.hotspot_routes import hotspot_bp
 from routes.pattern_routes import pattern_bp
 from routes.risk_routes import risk_bp
@@ -27,7 +26,6 @@ def create_app():
 
     db.init_app(app)
 
-    # Blueprints
     init_login(app)
     app.register_blueprint(auth_bp)
     app.register_blueprint(allocation_bp)
@@ -41,7 +39,7 @@ app = create_app()
 
 @app.before_request
 def make_session_non_permanent():
-    session.permanent = False  
+    session.permanent = False
 
 @app.errorhandler(403)
 def forbidden(e):
@@ -49,3 +47,6 @@ def forbidden(e):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+import sys
+print("Python executable:", sys.executable)
