@@ -1,129 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <title>Crime Pattern Intelligence</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pattern Recognition</title>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='pattern.css') }}">
 </head>
-
 <body>
-    <div class="app-layout">
-        <!-- Sidebar Navigation -->
-        <nav class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="brand-wrapper">
-                    <div class="logo-emblem">
-                        <img src="{{ url_for('static', filename='images/Sinhabahu_Lion.svg') }}" alt="Sinhabahu Lion"
-                            style="width: 100%; height: 100%; padding: 4px;">
-                    </div>
-                    <div class="brand-text">
-                        <h3>E-Policing</h3>
-                        <span class="brand-sub">Portal v2.0</span>
-                    </div>
+<div class="app-layout">
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-wrapper">
+                <div class="logo-emblem">
+                    <img src="{{ url_for('static', filename='images/Sinhabahu_Lion.svg') }}" alt="Sinhabahu Lion"
+                        style="width: 100%; height: 100%; padding: 4px;">
                 </div>
-                <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </button>
+                <div class="brand-text">
+                    <h3>E-Policing</h3>
+                    <span class="brand-sub">Portal v2.0</span>
+                </div>
             </div>
+            <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+        </div>
 
-            <ul class="nav-links">
-                <li>
-                    <a href="{{ url_for('hotspot.index') }}" class="nav-item">
-                        <i class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3.25.3.75 1.5 2.25 2.5 3.25z" />
-                            </svg>
-                        </i>
-                        <span class="link-text">Hotspot Prediction</span>
-                        <span class="tooltip">Hotspot Prediction</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('pattern.index') }}" class="nav-item active">
-                        <i class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </i>
-                        <span class="link-text">Pattern Recognition</span>
-                        <span class="tooltip">Pattern Recognition</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('allocation.index') }}" class="nav-item">
-                        <i class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                        </i>
-                        <span class="link-text">Resource Allocation</span>
-                        <span class="tooltip">Resource Allocation</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url_for('risk.index') }}" class="nav-item">
-                        <i class="icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                            </svg>
-                        </i>
-                        <span class="link-text">Crime Risk Analysis</span>
-                        <span class="tooltip">Crime Risk Analysis</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="sidebar-footer">
-                <div class="user-profile">
-                    <div class="avatar">
-                        <span>SO</span>
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name">{{ current_user.username|default('User') }}</span>
-                        <span class="user-role">{{ current_user.role|default('Officer')|title }}</span>
-                    </div>
-                </div>
-                <a href="{{ url_for('auth.logout') }}" class="logout-btn-icon" title="Logout">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                        <polyline points="16 17 21 12 16 7"></polyline>
-                        <line x1="21" y1="12" x2="9" y2="12"></line>
-                    </svg>
+        <ul class="nav-links">
+            <li>
+                <a href="{{ url_for('hotspot.index') }}" class="nav-item">
+                    <i class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3.25.3.75 1.5 2.25 2.5 3.25z" />
+                        </svg>
+                    </i>
+                    <span class="link-text">Hotspot Prediction</span>
+                    <span class="tooltip">Hotspot Prediction</span>
                 </a>
+            </li>
+            <li>
+                <a href="{{ url_for('pattern.index') }}"
+                    class="nav-item {% if request.endpoint == 'pattern.index' %}active{% endif %}">
+                    <i class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </i>
+                    <span class="link-text">Pattern Recognition</span>
+                    <span class="tooltip">Pattern Recognition</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('allocation.index') }}" class="nav-item">
+                    <i class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                    </i>
+                    <span class="link-text">Resource Allocation</span>
+                    <span class="tooltip">Resource Allocation</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('risk.index') }}" class="nav-item">
+                    <i class="icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </i>
+                    <span class="link-text">Crime Risk Analysis</span>
+                    <span class="tooltip">Crime Risk Analysis</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">
+                    <span>SO</span>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">{{ current_user.username|default('User') }}</span>
+                    <span class="user-role">{{ current_user.role|default('Officer')|title }}</span>
+                </div>
             </div>
-        </nav>
+            <a href="{{ url_for('auth.logout') }}" class="logout-btn-icon" title="Logout">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+            </a>
+        </div>
+    </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="header-container">
-                <h2 class="page-title">Pattern Recognition</h2>
-                <p class="page-description">
-                    Identify recurring crime patterns and serial offenses using machine learning algorithms.
-                </p>
+    <main class="main-content">
+
+        <div class="header-container">
+            <h2 class="page-title">Pattern Recognition Module</h2>
+            <p class="page-description">
+                This component identifies and analyzes recurring crime patterns across high-risk GN divisions,
+                highlighting peak times and locations.
+            </p>
+        </div>
+
+        <!-- Filters -->
+        <div class="glass-panel" style="display:flex; gap:20px; align-items:flex-end; flex-wrap:wrap; margin-bottom:20px;">
+
+            <!-- Crime type carried over from Hotspot page via session — read-only -->
+            <div class="control-group">
+                <label>Crime Type</label>
+                <div style="display:flex; align-items:center; gap:8px; padding: 8px 14px;
+                    background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3);
+                    border-radius: 8px; font-size: 13px; color: #60a5fa; font-weight: 500;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span id="crimeTypeBadge">{{ selected_crime_type | capitalize }}</span>
+                </div>
             </div>
 
+            <div class="control-group">
+                <label>Location Type</label>
+                <select id="locationTypeSelect">
+                    <option value="all">All Locations</option>
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="road">Road</option>
+                    <option value="transport_hub">Transport Hub</option>
+                    <option value="urban_center">Urban Center</option>
+                    <option value="education">Education</option>
+                    <option value="government">Government</option>
+                    <option value="medical">Medical</option>
+                    <option value="hospitality">Hospitality</option>
+                    <option value="recreation">Recreation</option>
+                    <option value="parking">Parking</option>
+                    <option value="religious">Religious</option>
+                    <option value="cemetery">Cemetery</option>
+                </select>
+            </div>
 
-        </main>
-    </div>
+            <div class="control-group">
+                <label>Time Of Crime</label>
+                <select id="timeSelect">
+                    <option value="all">All Times</option>
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="night">Night</option>
+                </select>
+            </div>
 
-    <script src="{{ url_for('static', filename='allocation.js') }}"></script>
+            <div class="form-actions">
+                <button class="btn btn-primary ripple" id="applyBtn">Apply Analytics</button>
+            </div>
+
+            <div id="loadingMsg" style="display:none; color:#60a5fa; font-size:13px;">
+                ⏳ Analysing patterns...
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="pattern-map-card">
+            <div id="map"></div>
+        </div>
+
+        <!-- Table + Trend Chart -->
+        <div class="dashboard-grid" style="margin-top:20px;">
+            <div class="chart-card fade-in">
+                <div class="card-header-flex">
+                    <h4>Top Patterns — <span id="selectedGN">Hover a GN Division</span>
+                        <span id="strengthBadge"></span>
+                    </h4>
+                </div>
+                <table id="allocationTable">
+                    <thead>
+                        <tr>
+                            <th class="table-header">#</th>
+                            <th class="table-header">When It Happens</th>
+                            <th class="table-header">Location Type</th>
+                            <th class="table-header">How Often</th>
+                            <th class="table-header">Pattern Description</th>
+                            <th class="table-header">Risk Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patternTableBody">
+                        <tr>
+                            <td colspan="6" style="color:#64748b;text-align:center;padding:20px;">
+                                Apply filters and hover a GN division to see patterns
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="chart-card fade-in delay-1">
+                <div class="card-header-flex">
+                    <h4>Pattern Frequency (2020–2025)</h4>
+                    <span class="badge">Trend</span>
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heatmap -->
+        <div class="chart-card fade-in delay-2" style="margin-top:20px;">
+            <div class="card-header-flex">
+                <h4>⏱ Peak Crime Time Analysis
+                    <span style="font-size:13px; font-weight:normal; color:#64748b;">
+                        — <span id="heatmapGN">Select a GN division on the map</span>
+                    </span>
+                </h4>
+            </div>
+            <div class="heatmap-wrap">
+                <div class="heatmap-ylabels">
+                    <div>Morning</div>
+                    <div>Afternoon</div>
+                    <div>Night</div>
+                </div>
+                <div class="heatmap-grid" id="heatmapGrid"></div>
+                <div class="heatmap-xlabels" id="heatmapXLabels"></div>
+            </div>
+            <div class="heatmap-legend">
+                <span>Low activity</span>
+                <div class="heatmap-legend-bar"></div>
+                <span>High activity</span>
+            </div>
+            <p class="heatmap-hint" id="heatmapHint">
+                Hover a coloured GN division on the map after applying filters to see its time pattern.
+            </p>
+        </div>
+
+    </main>
+</div>
+
+<script src="{{ url_for('static', filename='pattern.js') }}"></script>
 </body>
-
 </html>
