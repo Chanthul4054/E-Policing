@@ -202,9 +202,7 @@
                             <thead>
                                 <tr>
                                     {% for c in cols %}
-                                    {% if c == 'pred_alloc_norm' %}
-                                    <th class="table-header">Allocation Score</th>
-                                    {% elif c == 'assigned_officers' %}
+                                    {% if c == 'officers_allocated' %}
                                     <th class="table-header">Officers</th>
                                     {% else %}
                                     <th class="table-header">{{ c|replace('_', ' ')|title }}</th>
@@ -216,19 +214,10 @@
                                 {% for r in rows %}
                                 <tr>
                                     {% for c in cols %}
-                                    {% if c == 'pred_alloc_norm' %}
-                                    <td
-                                        class="{{ 'text-success-bold' if r[c]|float > 0.5 else 'text-secondary-bold' }}">
-                                        {{ "%.4f"|format(r[c]) }}
-                                    </td>
-                                    {% elif c == 'assigned_officers' %}
-                                    <!-- Heatmap color logic: Blue opacity based on count relative to 50 (arbitrary max for viz) or just simple logic -->
+                                    {% if c == 'officers_allocated' %}
                                     <td class="font-mono font-bold" style="color: var(--accent-color);">
                                         {{ r[c] }}
                                     </td>
-                                    {% elif c in ["risk_score","distance_to_station_km","allocation_score","pred_alloc"]
-                                    %}
-                                    <td class="font-mono">{{ "%.4f"|format(r[c]) }}</td>
                                     {% else %}
                                     <td class="font-mono">{{ r[c] }}</td>
                                     {% endif %}

@@ -50,6 +50,21 @@ async function loadCharts() {
                     borderWidth: 1,
                     padding: 10,
                     displayColors: true,
+                    callbacks: {
+                        title: function (context) {
+                            return 'Total officers deployed: ' + context[0].label;
+                        },
+                        label: function (context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                label += (context.parsed.y * 100).toFixed(1) + '%';
+                            }
+                            return label;
+                        }
+                    }
                 }
             },
             scales: {
@@ -65,7 +80,12 @@ async function loadCharts() {
                 },
                 y: {
                     grid: { color: '#334155' },
-                    ticks: { color: '#94a3b8' },
+                    ticks: {
+                        color: '#94a3b8',
+                        callback: function (value) {
+                            return (value * 100).toFixed(0) + '%';
+                        }
+                    },
                     title: {
                         display: true,
                         text: yTitle,
@@ -81,7 +101,7 @@ async function loadCharts() {
             data: {
                 labels: data.totals,
                 datasets: [{
-                    label: "Estimated Crime Reduction",
+                    label: "Estimated crime reduction (%)",
                     data: data.total_benefits,
                     borderColor: '#3b82f6',
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
@@ -92,7 +112,7 @@ async function loadCharts() {
                     pointHoverRadius: 6
                 }]
             },
-            options: getOptions("Number of Police Officers Deployed", "Estimated Crime Reduction")
+            options: getOptions("Number of Police Officers Deployed", "Estimated Crime Reduction (%)")
         });
 
         marginalChart = new Chart(marginalCtx, {
@@ -100,7 +120,7 @@ async function loadCharts() {
             data: {
                 labels: data.totals,
                 datasets: [{
-                    label: "Additional Crime Reduction",
+                    label: "Additional Crime Reduction (%)",
                     data: data.marginal_benefits,
                     borderColor: '#10b981',
                     backgroundColor: 'rgba(16, 185, 129, 0.1)',
@@ -111,7 +131,7 @@ async function loadCharts() {
                     pointHoverRadius: 6
                 }]
             },
-            options: getOptions("Total Officers Deployed", "Additional Crime Reduction from 1 Officer")
+            options: getOptions("Total Officers Deployed", "Additional Crime Reduction (%)")
         });
 
     } catch (e) {
