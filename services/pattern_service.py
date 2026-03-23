@@ -43,11 +43,11 @@ def pattern_strength(top_patterns):
     best       = max(top_patterns, key=lambda r: r.get("lift", 1.0) * r.get("confidence", 0.0))
     lift       = best.get("lift",       1.0)
     confidence = best.get("confidence", 0.0)
-    if lift > 2.0 and confidence >= 0.7:
+    if lift > 1.5 and confidence >= 0.55:
         return "high"
-    elif lift >= 1.5 or confidence >= 0.5:
+    elif lift >= 1.2 or confidence >= 0.4:
         return "medium"
-    elif lift >= 1.2:
+    elif lift >= 1.0:
         return "low"
     else:
         return "none"
