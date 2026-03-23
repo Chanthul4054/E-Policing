@@ -79,13 +79,14 @@ def index():
                 result=None,
                 error=str(e)
             )
-        except Exception:
+        except Exception as e:
+            print("RISK PIPELINE ERROR:", repr(e))
             return render_template(
                 "risk.html",
                 gn_options=gn_options,
                 selected_key=selected_key,
                 result=None,
-                error="An unexpected error occurred while generating the risk analysis."
+                error=f"An unexpected error occurred while generating the risk analysis: {str(e)}"
             )
     return render_template(
     "risk.html",
