@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Crime Records</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='records.css') }}">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="brand-wrapper">
+                    <div class="logo-emblem">
+                        <img src="{{ url_for('static', filename='images/Sinhabahu_Lion.svg') }}" alt="Sinhabahu Lion"
+                            style="width: 100%; height: 100%; padding: 4px;">
+                    </div>
+                    <div class="brand-text">
+                        <h3>E-Policing</h3>
+                        <span class="brand-sub">Portal v2.0</span>
+                    </div>
+                </div>
+                <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="{{ url_for('hotspot.index') }}" class="nav-item">
+                        <i class="icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.5-3.25.3.75 1.5 2.25 2.5 3.25z" />
+                            </svg>
+                        </i>
+                        <span class="link-text">Hotspot Prediction</span>
+                        <span class="tooltip">Hotspot Prediction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('pattern.index') }}" class="nav-item">
+                        <i class="icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                        </i>
+                        <span class="link-text">Pattern Recognition</span>
+                        <span class="tooltip">Pattern Recognition</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('allocation.index') }}" class="nav-item">
+                        <i class="icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </i>
+                        <span class="link-text">Resource Allocation</span>
+                        <span class="tooltip">Resource Allocation</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('risk.index') }}" class="nav-item">
+                        <i class="icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                        </i>
+                        <span class="link-text">Crime Risk Analysis</span>
+                        <span class="tooltip">Crime Risk Analysis</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('records.index') }}" class="nav-item active">
+                        <i class="icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </i>
+                        <span class="link-text">Past Crime Records</span>
+                        <span class="tooltip">Past Crime Records</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">
+                        <span>SO</span>
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">{{ current_user.username|default('User') }}</span>
+                        <span class="user-role">{{ current_user.role|default('Officer')|title }}</span>
+                    </div>
+                </div>
+                <a href="{{ url_for('auth.logout') }}" class="logout-btn-icon" title="Logout">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header-container">
+                <div class="header-flex">
+                    <div>
+                        <h2 class="page-title">Past Crime Data Explorer</h2>
+                        <p class="page-description">
+                            Browse and review historical crime incidents recorded across all GN divisions.
+                        </p>
+                    </div>
+                    <form method="GET" action="{{ url_for('records.index') }}" class="glass-panel meta-stat" style="display: flex; gap: 1rem; align-items: flex-end; padding: 1rem;">
+                        <div class="control-group" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                            <label for="crime" style="font-size: 0.8rem; color: var(--text-secondary);">Crime Type</label>
+                            <select name="crime" id="crime" style="padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-primary); cursor: pointer; outline: none;">
+                                <option value="">All Crimes</option>
+                                <option value="burglary" {% if crime_filter == 'burglary' %}selected{% endif %}>Burglary</option>
+                                <option value="robbery" {% if crime_filter == 'robbery' %}selected{% endif %}>Robbery</option>
+                                <option value="theft" {% if crime_filter == 'theft' %}selected{% endif %}>Theft</option>
+                                <option value="vehicle theft" {% if crime_filter == 'vehicle theft' %}selected{% endif %}>Vehicle Theft</option>
+                                <option value="drugs" {% if crime_filter == 'drugs' %}selected{% endif %}>Drugs</option>
+                                <option value="stabbing" {% if crime_filter == 'stabbing' %}selected{% endif %}>Stabbing</option>
+                            </select>
+                        </div>
+                        <div class="control-group" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                            <label for="month" style="font-size: 0.8rem; color: var(--text-secondary);">Month</label>
+                            <select name="month" id="month" style="padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-primary); cursor: pointer; outline: none;">
+                                <option value="">All Months</option>
+                                {% for m in range(1, 13) %}
+                                <option value="{{ m }}" {% if month_filter == m|string %}selected{% endif %}>{{ "%02d"|format(m) }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="control-group" style="display: flex; flex-direction: column; gap: 0.25rem;">
+                            <label for="year" style="font-size: 0.8rem; color: var(--text-secondary);">Year</label>
+                            <select name="year" id="year" style="padding: 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-primary); cursor: pointer; outline: none;">
+                                <option value="">All Years</option>
+                                {% for y in range(2018, 2026) %}
+                                <option value="{{ y }}" {% if year_filter == y|string %}selected{% endif %}>{{ y }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-secondary" style="height: 33px; padding: 0 1rem;">Filter</button>
+                        <a href="{{ url_for('records.index') }}" class="btn btn-secondary" style="height: 33px; padding: 0 1rem; display: flex; align-items: center;">Clear</a>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Table Container -->
+            <div class="dashboard-grid full-width">
+                <div class="glass-panel table-container fade-in">
+                    <div class="table-header-controls">
+                        <h5>Crime Database</h5>
+                        <div class="pagination-controls">
+                            {% if page > 1 %}
+                                <a href="{{ url_for('records.index', page=page-1, crime=crime_filter, month=month_filter, year=year_filter) }}" class="btn btn-secondary btn-sm">Previous</a>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Previous</button>
+                            {% endif %}
+                            <span class="page-info">Page <span class="highlight">{{ page }}</span> of {{ total_pages }}</span>
+                            {% if page < total_pages %}
+                                <a href="{{ url_for('records.index', page=page+1, crime=crime_filter, month=month_filter, year=year_filter) }}" class="btn btn-secondary btn-sm">Next</a>
+                            {% else %}
+                                <button class="btn btn-secondary btn-sm" disabled>Next</button>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Crime Type</th>
+                                    <th>Location (GN)</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Victim Age</th>
+                                    <th>Sex</th>
+                                    <th>Weather</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for r in records %}
+                                <tr class="table-row">
+                                    <td class="font-mono text-muted">#{{ r.crime_id }}</td>
+                                    <td>
+                                        <span class="badge badge-{{ r.crime|replace(' ', '-')|lower }}">
+                                            {{ r.crime|title }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="gn-location">
+                                            <strong>{{ r.gn_division|default(r.location)|title }}</strong>
+                                        </div>
+                                    </td>
+                                    <td>{{ r.date }}</td>
+                                    <td class="font-mono">{{ r.time }}</td>
+                                    <td>{{ r.victim_age|default('-') }}</td>
+                                    <td>
+                                        {% if r.sex == 'm' %}Male{% elif r.sex == 'f' %}Female{% else %}-{% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="weather-icon">
+                                            {% if r.weather|lower == 'rainy' %}🌧️ 
+                                            {% elif r.weather|lower == 'cloudy' %}☁️ 
+                                            {% else %}☀️ {% endif %}
+                                            {{ r.weather|title }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center py-4">No records found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- UI Interaction Script -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+    </script>
+</body>
+
+</html>
