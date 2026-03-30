@@ -88,6 +88,8 @@ def index():
                 result=None,
                 error=f"An unexpected error occurred while generating the risk analysis: {str(e)}"
             )
+    print("pattern_results in session at /risk/:", session.get("pattern_results"))
+
     return render_template(
     "risk.html",
     gn_options=gn_options,
@@ -100,8 +102,10 @@ def index():
 @login_required
 def load_pattern_results():
     payload = request.get_json()
+    print("Received payload:", payload)
 
     if not isinstance(payload, list) or not payload:
+        print("Payload invalid or empty")
         return jsonify({"error": "Invalid or empty payload"}), 400
 
     compact_results = []
@@ -119,6 +123,7 @@ def load_pattern_results():
             seen.add((gn, crime))
 
     session["pattern_results"] = compact_results
+    print("Stored in session:", session.get("pattern_results"))
 
     gn_options = [
         {
@@ -133,3 +138,8 @@ def load_pattern_results():
         "message": "Pattern results loaded successfully",
         "gn_options": gn_options
     })
+
+@risk_bp.route("/clear-session")
+def clear_session():
+    session.clear()
+    return "Session cleared!"

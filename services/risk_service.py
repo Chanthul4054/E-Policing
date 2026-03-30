@@ -9,6 +9,8 @@ from sqlalchemy import text
 from datetime import datetime
 import base64
 import io
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

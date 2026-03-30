@@ -116,5 +116,3 @@ def predict():
     except Exception as e:
         print(f"Error in /predict: {str(e)}")
         return jsonify({"status": "failed", "error": str(e)}), 500
-
-
