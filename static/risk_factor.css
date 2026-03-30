@@ -480,3 +480,10 @@
     font-size: 0.92rem;
     line-height: 1.6;
 }
+
+.risk-metric-subvalue {
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}

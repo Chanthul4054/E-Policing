@@ -35,6 +35,34 @@ def fetch_risk_scores(crime_type):
         print("Failed to fetch risk scores:", e)
         return []
 
+# def send_pattern_results_to_risk(predictions):
+#     try:
+#         cookies = flask_request.cookies
+
+#         compact_payload = [
+#             {
+#                 "gn_division": item.get("gn_division"),
+#                 "crime_type": item.get("crime_type")
+#             }
+#             for item in predictions
+#             if item.get("gn_division") and item.get("crime_type")
+#         ]
+
+#         if not compact_payload:
+#             print("No valid pattern results to send to risk component.")
+#             return
+
+#         response = requests.post(
+#             "http://localhost:5000/risk/api/load-pattern-results",
+#             json=compact_payload,
+#             cookies=cookies,
+#             timeout=10
+#         )
+
+#         print("Risk API response:", response.status_code, response.text)
+
+#     except Exception as e:
+#         print("Failed to send pattern results to risk component:", e)
 
 # ── Pattern strength calculator ──────────────────────────────────
 def pattern_strength(top_patterns):

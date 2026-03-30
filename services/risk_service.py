@@ -9,6 +9,8 @@ from sqlalchemy import text
 from datetime import datetime
 import base64
 import io
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,9 +31,9 @@ with open("models/feature_list.json") as f:
     FEATURE_ORDER = json.load(f)
 
 FEATURE_LABELS = {
-    "avg_victim_age":"Average Victim Age",
-    "holiday_ratio":"Holiday Crime Ratio",
-    "rainy_ratio":"Rainy Weather Frequency",
+    "avg_victim_age":"Victim Age",
+    "holiday_ratio":"Holidays",
+    "rainy_ratio":"Rainy Weather",
     "unemployment_rate": "Unemployment Rate",
     "avg_income":"Average Household Income",
     "building_density":"Building Density",
@@ -39,6 +41,14 @@ FEATURE_LABELS = {
     "road_density":"Road Network Density",
     "log_population":"Population Density",
     "distance_km":"Distance to the Closest Police Station"
+}
+CRIME_LABELS = {
+    "burglary": "Burglary",
+    "theft": "Theft",
+    "vehicle": "Vehicle Theft",
+    "robbery": "Robbery",
+    "drugs": "Drug-related Crime",
+    "stabbing": "Stabbing"
 }
 
 GLOBAL_SHAP_CACHE = {}
@@ -94,41 +104,68 @@ def get_global_shap_results(crime_type):
 
     return GLOBAL_SHAP_CACHE[crime_type]
 
-def generate_local_shap_waterfall_plot(model, X_scaled, feature_names, explainer, shap_values):
-    """Generate local SHAP waterfall plot and return as base64 image"""
+def generate_local_plot(feature_importance, gn_name, crime_type):
+    chart_df = feature_importance.copy()
+    chart_df["label"] = chart_df["feature"].map(lambda x: FEATURE_LABELS.get(x, x))
+    chart_df = chart_df.sort_values("shap_value")
 
-    base_values=explainer.expected_value
+    colors = ["#16a34a" if v < 0 else "#dc2626" for v in chart_df["shap_value"]]
 
-    if isinstance(base_values, (list, np.ndarray)):
-        base_values = base_values[1]
+    plt.figure(figsize=(10, 6))
+    plt.barh(chart_df["label"], chart_df["shap_value"], color=colors)
+    plt.axvline(0, color="gray", linewidth=1)
 
-    base_values = float(np.array(base_values).flatten()[0])
+    crime_name = CRIME_LABELS.get(crime_type, crime_type.title())
+    plt.title(f"Factors affecting {crime_name.lower()} risk in {gn_name}", fontsize=12)
+    plt.xlabel("Effect on risk")
+    plt.ylabel("")
 
-    if isinstance(shap_values, list):
-        shap_values = shap_values[1]
-    elif len(shap_values.shape) == 3:
-        shap_values = shap_values[:, :, 1]
-    
-    # select the single observation
-    shap_values = shap_values[0]
-
-    explanation = shap.Explanation(
-        values=shap_values,
-        base_values= base_values,
-        data=pd.DataFrame(X_scaled, columns=feature_names).iloc[0],
-        feature_names=[FEATURE_LABELS.get(f,f) for f in feature_names]
-    )
-
-    plt.figure()
-    shap.plots.waterfall(explanation, show=False)
+    plt.tight_layout()
 
     buf = io.BytesIO()
-    plt.savefig(buf, format="png", bbox_inches="tight")
+    plt.savefig(buf, format="png", bbox_inches="tight", dpi=300)
     plt.close()
 
     buf.seek(0)
-
     return base64.b64encode(buf.read()).decode("utf-8")
+
+
+
+# def generate_local_plot(model, X_scaled, feature_names, explainer, shap_values):
+#     """Generate local SHAP waterfall plot and return as base64 image"""
+
+#     base_values=explainer.expected_value
+
+#     if isinstance(base_values, (list, np.ndarray)):
+#         base_values = base_values[1]
+
+#     base_values = float(np.array(base_values).flatten()[0])
+
+#     if isinstance(shap_values, list):
+#         shap_values = shap_values[1]
+#     elif len(shap_values.shape) == 3:
+#         shap_values = shap_values[:, :, 1]
+    
+#     # select the single observation
+#     shap_values = shap_values[0]
+
+#     explanation = shap.Explanation(
+#         values=shap_values,
+#         base_values= base_values,
+#         data=pd.DataFrame(X_scaled, columns=feature_names).iloc[0],
+#         feature_names=[FEATURE_LABELS.get(f,f) for f in feature_names]
+#     )
+
+#     plt.figure()
+#     shap.plots.waterfall(explanation, show=False)
+
+#     buf = io.BytesIO()
+#     plt.savefig(buf, format="png", bbox_inches="tight")
+#     plt.close()
+
+#     buf.seek(0)
+
+#     return base64.b64encode(buf.read()).decode("utf-8")
     
 def generate_global_shap_waterfall_plot(X_background, shap_values):
 
@@ -180,17 +217,17 @@ def global_explanation(crime_type, top_features):
     )
 
     return(
-        f"Across all GN divisions, {crime_type} risk is mainly influenced by"
-        f" {drivers}. These factors consistently show the strongest contribution "
-        f"to the model predictions."
+        f"Across all GN divisions, {crime_type} risk is strongly linked with"
+        f" {drivers}. These factors consistently show the strongest contribution to "
+        f" {drivers} than other factors."
     )
     
 def run_risk_factor_pipeline(crime_type, features):
     """
     Runs ML inference and generates:
     - risk score
-    - local SHAP explanation
-    - global SHAP explanation (from cached per-crime results)
+    - local explanation
+    - global explanation
     """
 
     if crime_type not in CRIME_MODELS:
@@ -208,26 +245,21 @@ def run_risk_factor_pipeline(crime_type, features):
     except KeyError as e:
         raise ValueError(f"Missing required feature(s): {e}")
 
-    # Scale input features
-    X_scaled = scaler.transform(X)
+    # Scale input features and keep feature names
+    X_scaled = pd.DataFrame(
+        scaler.transform(X),
+        columns=FEATURE_ORDER
+    )
 
     # Load model for requested crime type
     model = CRIME_MODELS[crime_type]
 
-    # Predict risk score (probability of crime = 1)
+    # Predict risk score
     risk = float(model.predict_proba(X_scaled)[0][1])
 
     # Local SHAP
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_scaled)
-
-    local_waterfall_plot = generate_local_shap_waterfall_plot(
-        model=model,
-        X_scaled=X_scaled,
-        feature_names=FEATURE_ORDER,
-        explainer=explainer,
-        shap_values=shap_values
-    )
 
     # Handle different SHAP output formats
     if isinstance(shap_values, list):
@@ -237,7 +269,7 @@ def run_risk_factor_pipeline(crime_type, features):
     else:
         shap_values_pos = shap_values
 
-    # Extract top 3 local driving factors
+    # SHAP values for this selected GN division
     shap_row = shap_values_pos[0]
 
     feature_importance = pd.DataFrame({
@@ -252,6 +284,13 @@ def run_risk_factor_pipeline(crime_type, features):
         .reset_index(drop=True)
     )
 
+    # Simple user-friendly local plot
+    local_waterfall_plot = generate_local_plot(
+        feature_importance=top_drivers,
+        gn_name=features.get("gn_name", "Selected GN"),
+        crime_type=crime_type
+    )
+
     # Local interpretation text
     local_text = local_explanation(
         crime_type=crime_type,
@@ -260,14 +299,16 @@ def run_risk_factor_pipeline(crime_type, features):
         risk_score=risk
     )
 
-    # Get global SHAP results for this crime type
+    # Global results
     global_results = get_global_shap_results(crime_type)
 
     return {
         "gn_division": features.get("gn_name", "Selected GN"),
         "crime_type": crime_type,
         "risk_score": round(risk, 3),
-        "top_features": top_drivers["feature"].tolist(),
+        "risk_percentage": round(risk * 100, 1),
+        "risk_level": get_risk_level(risk),
+        "top_features": [FEATURE_LABELS.get(f, f) for f in top_drivers["feature"].tolist()],
         "shap_values": top_drivers["shap_value"].tolist(),
         "global_waterfall_plot": global_results["plot"],
         "local_waterfall_plot": local_waterfall_plot,
@@ -393,6 +434,16 @@ def build_global_feature_dataset():
     df = pd.DataFrame(rows)
 
     return df
+
+
+def get_risk_level(risk_score):
+    if risk_score < 0.30:
+        return "Low"
+    elif risk_score < 0.60:
+        return "Moderate"
+    else:
+        return "High"
+
 
 
 
