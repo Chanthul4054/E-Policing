@@ -35,6 +35,34 @@ def fetch_risk_scores(crime_type):
         print("Failed to fetch risk scores:", e)
         return []
 
+# def send_pattern_results_to_risk(predictions):
+#     try:
+#         cookies = flask_request.cookies
+
+#         compact_payload = [
+#             {
+#                 "gn_division": item.get("gn_division"),
+#                 "crime_type": item.get("crime_type")
+#             }
+#             for item in predictions
+#             if item.get("gn_division") and item.get("crime_type")
+#         ]
+
+#         if not compact_payload:
+#             print("No valid pattern results to send to risk component.")
+#             return
+
+#         response = requests.post(
+#             "http://localhost:5000/risk/api/load-pattern-results",
+#             json=compact_payload,
+#             cookies=cookies,
+#             timeout=10
+#         )
+
+#         print("Risk API response:", response.status_code, response.text)
+
+#     except Exception as e:
+#         print("Failed to send pattern results to risk component:", e)
 
 # ── Pattern strength calculator ──────────────────────────────────
 def pattern_strength(top_patterns):
@@ -43,11 +71,11 @@ def pattern_strength(top_patterns):
     best       = max(top_patterns, key=lambda r: r.get("lift", 1.0) * r.get("confidence", 0.0))
     lift       = best.get("lift",       1.0)
     confidence = best.get("confidence", 0.0)
-    if lift > 2.0 and confidence >= 0.7:
+    if lift > 1.5 and confidence >= 0.55:
         return "high"
-    elif lift >= 1.5 or confidence >= 0.5:
+    elif lift >= 1.2 or confidence >= 0.4:
         return "medium"
-    elif lift >= 1.2:
+    elif lift >= 1.0:
         return "low"
     else:
         return "none"

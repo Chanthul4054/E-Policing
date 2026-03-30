@@ -320,7 +320,6 @@
 .heatmap-xlabels {
     grid-column: 2;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     gap: 4px;
     margin-top: 4px;
 }

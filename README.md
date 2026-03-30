@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # E-Policing: Integrated Spatio-Temporal Crime Forecasting and Decision Support System
 
 ## Overview
@@ -75,3 +76,4 @@ By default, the application will run in debug mode at `http://localhost:5000/`.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+=======

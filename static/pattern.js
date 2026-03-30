@@ -14,7 +14,29 @@ var trendChart = new Chart(document.getElementById("trendChart"), {
     },
     options: {
         plugins: { legend: { display: false } },
-        scales:  { y: { beginAtZero: true } }
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Year',
+                    color: '#94a3b8',
+                    font: { size: 12 }
+                },
+                ticks: { color: '#94a3b8' },
+                grid: { color: 'rgba(255,255,255,0.05)' }
+            },
+            y: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Number of Incidents',
+                    color: '#94a3b8',
+                    font: { size: 12 }
+                },
+                ticks: { color: '#94a3b8' },
+                grid: { color: 'rgba(255,255,255,0.05)' }
+            }
+        }
     }
 });
 
@@ -46,7 +68,7 @@ function patternLabel(strength) {
 
 // ── Heatmap ──────────────────────────────────────────────────────
 var TIMES    = ["morning", "afternoon", "night"];
-var DAY_CATS = ["holiday", "non holiday", "weekday", "weekend"];
+var DAY_CATS = ["holiday", "non holiday"];
 
 function parsePatternText(text) {
     if (!text) return null;
@@ -106,12 +128,12 @@ function renderHeatmap(gnName, patterns) {
             cell.title            = val > 0
                 ? (t + ' / ' + d + '\nConf. weight: ' + val.toFixed(2))
                 : (t + ' / ' + d + '\nNo patterns');
-            if (val > 0) cell.textContent = val.toFixed(1);
             grid.appendChild(cell);
         });
     });
 
     xlabels.innerHTML = '';
+    xlabels.style.gridTemplateColumns = 'repeat(' + DAY_CATS.length + ', 1fr)'; // ← add this
     DAY_CATS.forEach(function(d) {
         var span = document.createElement('div');
         span.textContent = d.charAt(0).toUpperCase() + d.slice(1);
@@ -152,7 +174,7 @@ legend.onAdd = function() {
     var div = L.DomUtil.create("div", "map-legend");
     div.innerHTML =
         "<b>Pattern Strength</b><br>" +
-        "<span style='color:#ef4444;font-size:16px;'>⬤</span> Strong &nbsp;(Lift&gt;2.0, Conf≥70%)<br>" +
+        "<span style='color:#ef4444;font-size:16px;'>⬤</span> Strong &nbsp;(Lift≥1.5, Conf≥55%)<br>" +
         "<span style='color:#f97316;font-size:16px;'>⬤</span> Moderate<br>" +
         "<span style='color:#eab308;font-size:16px;'>⬤</span> Weak<br>" +
         "<span style='color:#64748b;font-size:16px;'>⬤</span> No pattern matched";
@@ -268,13 +290,42 @@ document.getElementById('applyBtn').addEventListener('click', function() {
                 if (patterns.length === 0) {
                     popupHtml += '<p style="color:#94a3b8;font-size:12px;margin-top:8px;">No patterns matched for selected filters.</p>';
                 } else {
-                    popupHtml += '<table class="popup-table"><thead><tr><th>#</th><th>Pattern</th><th>Location</th><th>Conf.</th><th>Lift</th></tr></thead><tbody>';
+                    popupHtml += '<table class="popup-table"><thead><tr><th>#</th><th>When</th><th>Location</th><th>How Often</th><th>Risk</th></tr></thead><tbody>';
                     patterns.forEach(function(p, i) {
-                        var conf         = (p.confidence * 100).toFixed(0) + '%';
-                        var lift         = p.lift ? p.lift.toFixed(2) : '-';
-                        var lowFreqBadge = (p.support < 0.05) ? '<span class="low-freq-badge">low freq</span>' : '';
-                        popupHtml += '<tr><td>' + (i+1) + '</td><td>' + (p.pattern_text||'-') + lowFreqBadge +
-                                     '</td><td>' + (p.location_type||'-') + '</td><td>' + conf + '</td><td>' + lift + '</td></tr>';
+                        var text = (p.pattern_text || '').toLowerCase();
+                        // When it happens
+                        var parts = [];
+                        if      (text.includes("non holiday")) parts.push("Non-holiday");
+                        else if (text.includes("holiday"))     parts.push("Holiday");
+                        if      (text.includes("weekday"))     parts.push("Weekday");
+                        else if (text.includes("weekend"))     parts.push("Weekend");
+                        if      (text.includes("late night") || text.includes("time night")) parts.push("Night");
+                        else if (text.includes("morning"))    parts.push("Morning");
+                        else if (text.includes("afternoon"))  parts.push("Afternoon");
+
+                        if      (text.includes("weather rainy"))   parts.push("Rainy");
+                        else if (text.includes("weather cloudy"))  parts.push("Cloudy");
+                        else if (text.includes("weather sunny"))   parts.push("Sunny");
+                        else if (text.includes("weather windy"))   parts.push("Windy");
+                        var when = parts.join(', ') || '-';
+                        // How often
+                        var freq = p.support >= 0.3  ? "Very often"
+                        : p.support >= 0.15 ? "Often"
+                        : p.support >= 0.07 ? "Sometimes"
+                        : "Rarely";
+                        
+                        // Risk level
+                        var risk = (p.lift > 2.0 && p.confidence >= 0.7) ? "🔴 High"
+                        : (p.lift >= 1.5 || p.confidence >= 0.5) ? "🟡 Moderate"
+                        : "🟢 Low";
+                        
+                        popupHtml += '<tr>' +
+                        '<td>' + (i+1) + '</td>' +
+                        '<td>' + when + '</td>' +
+                        '<td>' + (p.location_type||'-') + '</td>' +
+                        '<td>' + freq + '</td>' +
+                        '<td>' + risk + '</td>' +
+                        '</tr>';
                     });
                     popupHtml += '</tbody></table>';
                 }
@@ -339,7 +390,7 @@ function updateSummaryTable(gnName, patterns, strength) {
 
     function parseWhen(patternText) {
         if (!patternText) return "—";
-        var text  = patternText.toLowerCase();
+        var text  = patternText.toLowerCase().replace(/_/g, ' ');
         var parts = [];
 
         if      (text.includes("non holiday")) parts.push("Non-holiday");
@@ -351,13 +402,18 @@ function updateSummaryTable(gnName, patterns, strength) {
         else if (text.includes("morning"))    parts.push("Morning");
         else if (text.includes("afternoon"))  parts.push("Afternoon");
 
+        if      (text.includes("weather rainy"))   parts.push("Rainy");
+        else if (text.includes("weather cloudy"))  parts.push("Cloudy");
+        else if (text.includes("weather sunny"))   parts.push("Sunny");
+        else if (text.includes("weather windy"))   parts.push("Windy");
+
         return parts.map(function(p) {
             return '<span class="time-badge">' + p + '</span>';
         }).join(' ');
     }
 
     function buildDescription(p) {
-        var text       = (p.pattern_text || '').toLowerCase();
+        var text       = (p.pattern_text || '').toLowerCase().replace(/_/g, ' ');
         var loc        = (p.location_type || 'unknown location').toLowerCase();
         var crime      = document.getElementById('crimeTypeBadge').textContent.trim();
         var crimeLabel = crime.charAt(0).toUpperCase() + crime.slice(1).toLowerCase();
@@ -370,8 +426,14 @@ function updateSummaryTable(gnName, patterns, strength) {
                      : text.includes("holiday")      ? "on public holidays"
                      : text.includes("weekend")      ? "on weekends"
                      : text.includes("weekday")      ? "on weekdays" : "";
+        
+        var weatherDesc = text.includes("weather rainy")  ? "during rainy weather"
+                    : text.includes("weather cloudy") ? "during cloudy weather"
+                    : text.includes("weather sunny")  ? "during sunny weather"
+                    : text.includes("weather windy")  ? "during windy weather" : "";
 
-        return crimeLabel + " is reported in <b>" + loc + "</b> areas " + timeDesc + " " + dayDesc + ".";
+        return crimeLabel + " is reported in <b>" + loc + "</b> areas " + timeDesc + " " + dayDesc + 
+           (weatherDesc ? " " + weatherDesc : "") + ".";
     }
 
     var html = '';
