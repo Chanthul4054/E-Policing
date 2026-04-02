@@ -6,7 +6,6 @@ import os
 import shap
 from extensions import db
 from sqlalchemy import text
-from datetime import datetime
 import base64
 import io
 import matplotlib
@@ -14,33 +13,156 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_DIR = os.path.join(BASE_DIR,"models")
+MODEL_DIR = os.path.join(BASE_DIR, "models", "risk_factor_models")
+if not os.path.exists(MODEL_DIR):
+    raise RuntimeError(f"Model directory not found: {MODEL_DIR}")
 
-# load scaler
-scaler = joblib.load(os.path.join(MODEL_DIR, "scaler.pkl"))
+CRIME_TYPES = ["burglary", "theft", "vehicle", "robbery", "drugs", "stabbing"]
 
-# load the models
-CRIME_MODELS = {}
-for crime in ["burglary" ,"theft" ,"vehicle" ,"robbery" ,"drugs", "stabbing"]:
-    CRIME_MODELS[crime] = joblib.load(
-        os.path.join(MODEL_DIR, f"rf_{crime}.pkl")
-    )
+CRIME_MODELS = {
+    crime: joblib.load(os.path.join(MODEL_DIR, f"rf_{crime}.pkl"))
+    for crime in CRIME_TYPES
+}
 
-# load feature order
-with open("models/feature_list.json") as f:
-    FEATURE_ORDER = json.load(f)
+SCALERS = {
+    crime: joblib.load(os.path.join(MODEL_DIR, f"scaler_{crime}.pkl"))
+    for crime in CRIME_TYPES
+}
+
+with open(os.path.join(MODEL_DIR, "feature_lists.json"), "r") as f:
+    FEATURE_LISTS = json.load(f)
+
+with open(os.path.join(MODEL_DIR, "thresholds.json"), "r") as f:
+    THRESHOLDS = json.load(f)
+
 
 FEATURE_LABELS = {
-    "avg_victim_age":"Victim Age",
-    "holiday_ratio":"Holidays",
-    "rainy_ratio":"Rainy Weather",
-    "unemployment_rate": "Unemployment Rate",
-    "avg_income":"Average Household Income",
-    "building_density":"Building Density",
-    "land_area_density":"Land Area Density",
-    "road_density":"Road Network Density",
-    "log_population":"Population Density",
-    "distance_km":"Distance to the Closest Police Station"
+    "unemployment_rate": "Unemployment",
+    "avg_income": "Household Income",
+
+    "building_density": "Building Density",
+    "land_area_density": "Land Use Intensity",
+    "road_density": "Road Density",
+    "log_population": "Population",
+    "distance_km": "Distance to Police Station",
+
+    "week_of_year": "Time of Year",
+
+    "avg_victim_age_lag1": "Recent Victim Age",
+    "avg_victim_age_lag2": "Recent Victim Age",
+    "avg_victim_age_roll4": "Recent Victim Age",
+
+    "female_victim_ratio_lag1": "Recent Female Victims",
+    "female_victim_ratio_lag2": "Recent Female Victims",
+    "female_victim_ratio_roll4": "Recent Female Victims",
+
+    "urban_ratio_lag1": "Urban Activity",
+    "urban_ratio_lag2": "Urban Activity",
+    "urban_ratio_roll4": "Urban Activity",
+
+    "holiday_ratio_lag1": "Recent Holidays",
+    "holiday_ratio_lag2": "Recent Holidays",
+    "holiday_ratio_roll4": "Recent Holidays",
+
+    "rainy_ratio_lag1": "Recent Rainy Weather",
+    "rainy_ratio_lag2": "Recent Rainy Weather",
+    "rainy_ratio_roll4": "Recent Rainy Weather",
+}
+DISPLAY_EXCLUDE_FEATURES = {
+    "year",
+    "week_of_year",
+    "week_sin",
+    "week_cos",
+
+    "unemployment_rate",
+    "avg_income",
+
+    "total_crimes_lag1",
+    "total_crimes_lag2",
+    "total_crimes_lag4",
+    "total_crimes_roll4",
+    "total_crimes_roll8",
+    "total_crimes_trend_4v8",
+
+    "burglary_count_lag1",
+    "burglary_count_lag2",
+    "burglary_count_lag4",
+    "burglary_count_roll4",
+    "burglary_count_roll8",
+    "burglary_count_trend_4v8",
+
+    "theft_count_lag1",
+    "theft_count_lag2",
+    "theft_count_lag4",
+    "theft_count_roll4",
+    "theft_count_roll8",
+    "theft_count_trend_4v8",
+
+    "vehicle_count_lag1",
+    "vehicle_count_lag2",
+    "vehicle_count_lag4",
+    "vehicle_count_roll4",
+    "vehicle_count_roll8",
+    "vehicle_count_trend_4v8",
+
+    "robbery_count_lag1",
+    "robbery_count_lag2",
+    "robbery_count_lag4",
+    "robbery_count_roll4",
+    "robbery_count_roll8",
+    "robbery_count_trend_4v8",
+
+    "drugs_count_lag1",
+    "drugs_count_lag2",
+    "drugs_count_lag4",
+    "drugs_count_roll4",
+    "drugs_count_roll8",
+    "drugs_count_trend_4v8",
+
+    "stabbing_count_lag1",
+    "stabbing_count_lag2",
+    "stabbing_count_lag4",
+    "stabbing_count_roll4",
+    "stabbing_count_roll8",
+    "stabbing_count_trend_4v8",
+
+    "avg_victim_age_lag1",
+    "avg_victim_age_lag2",
+    "avg_victim_age_roll4",
+
+    "female_victim_ratio_lag1",
+    "female_victim_ratio_lag2",
+    "female_victim_ratio_roll4"
+}
+
+FEATURE_DESCRIPTIONS = {
+    "unemployment_rate": "The percentage of people without jobs in the area.",
+    "avg_income": "The average income of households in the area.",
+    "building_density": "How closely buildings are packed together.",
+    "land_area_density": "How much land is actively used compared to unused land.",
+    "road_density": "How many roads are present in the area.",
+    "log_population": "The number of people living in the area.",
+    "distance_km": "How far the area is from the nearest police station.",
+
+    "avg_victim_age_lag1": "Average age of victims in recent weeks.",
+    "avg_victim_age_lag2": "Average age of victims earlier.",
+    "avg_victim_age_roll4": "Average victim age over the last few weeks.",
+
+    "female_victim_ratio_lag1": "Proportion of female victims recently.",
+    "female_victim_ratio_lag2": "Proportion of female victims earlier.",
+    "female_victim_ratio_roll4": "Proportion of female victims recently.",
+
+    "urban_ratio_lag1": "How urban (developed) the area is.",
+    "urban_ratio_lag2": "How urban (developed) the area is.",
+    "urban_ratio_roll4": "How urban (developed) the area is.",
+
+    "holiday_ratio_lag1": "Presence of holidays in recent weeks.",
+    "holiday_ratio_lag2": "Presence of holidays earlier.",
+    "holiday_ratio_roll4": "Holiday trend over recent weeks.",
+
+    "rainy_ratio_lag1": "How much rain occurred recently.",
+    "rainy_ratio_lag2": "Rainfall earlier.",
+    "rainy_ratio_roll4": "Rainfall trend over recent weeks."
 }
 CRIME_LABELS = {
     "burglary": "Burglary",
@@ -51,7 +173,33 @@ CRIME_LABELS = {
     "stabbing": "Stabbing"
 }
 
+CRIME_TYPE_ALIASES = {
+    "vehicle_theft": "vehicle",
+    "vehicle theft": "vehicle",
+    "vehicle": "vehicle",
+    "theft": "theft",
+    "burglary": "burglary",
+    "robbery": "robbery",
+    "drugs": "drugs",
+    "stabbing": "stabbing"
+}
+
 GLOBAL_SHAP_CACHE = {}
+
+def build_global_feature_dataset(crime_type):
+    gn_list = get_all_gns()
+    feature_order = FEATURE_LISTS[crime_type]
+    rows = []
+
+    for gn in gn_list:
+        try:
+            row = fetch_latest_feature_row(gn)
+            filtered_row = {f: row.get(f, 0.0) for f in feature_order}
+            rows.append(filtered_row)
+        except Exception:
+            continue
+
+    return pd.DataFrame(rows)
 
 def get_global_shap_results(crime_type):
     global GLOBAL_SHAP_CACHE
@@ -60,259 +208,332 @@ def get_global_shap_results(crime_type):
         return GLOBAL_SHAP_CACHE[crime_type]
 
     model = CRIME_MODELS[crime_type]
+    scaler = SCALERS[crime_type]
+    feature_order = FEATURE_LISTS[crime_type]
 
-    # Build dataset for all GN divisions
-    global_df = build_global_feature_dataset()
-    X_global = global_df[FEATURE_ORDER]
+    global_df = build_global_feature_dataset(crime_type)
+
+    X_global = global_df[feature_order]
     X_scaled = scaler.transform(X_global)
 
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_scaled)
 
-    global_plot = generate_global_shap_waterfall_plot(
+    global_plot = generate_global_shap_bar_plot(
         X_scaled,
-        shap_values
+        shap_values,
+        feature_order
     )
 
-    # Handle SHAP output format
     if isinstance(shap_values, list):
         shap_values_pos = shap_values[1]
-    elif len(shap_values.shape) == 3:
+    elif len(np.array(shap_values).shape) == 3:
         shap_values_pos = shap_values[:, :, 1]
     else:
         shap_values_pos = shap_values
 
-    top_features = (
-        pd.DataFrame({
-            "feature": FEATURE_ORDER,
-            "value": np.abs(shap_values_pos).mean(axis=0)
-        })
-        .sort_values("value", ascending=False)
-        .head(3)["feature"]
-        .tolist()
-    )
+    global_feature_df = pd.DataFrame({
+        "feature": feature_order,
+        "shap_value": np.mean(shap_values_pos, axis=0),
+        "avg_feature_value": np.mean(X_scaled, axis=0)
+    })
 
-    explanation = global_explanation(
-        crime_type,
-        top_features
-    )
+    filtered_global = filter_display_features(global_feature_df, top_n=5)
+
+    top_features = filtered_global["feature"].tolist()
+
+    global_top_features = [
+        {
+            "label": make_dynamic_global_label(row["feature"], row["avg_feature_value"]),
+            "description": FEATURE_DESCRIPTIONS.get(row["feature"], "No description available.")
+        }
+        for _, row in filtered_global.iterrows()
+    ]
 
     GLOBAL_SHAP_CACHE[crime_type] = {
         "plot": global_plot,
-        "text": explanation
+        "text": global_explanation(crime_type, top_features, global_feature_df),
+        "top_features": global_top_features
     }
 
     return GLOBAL_SHAP_CACHE[crime_type]
 
-def generate_local_plot(feature_importance, gn_name, crime_type):
-    chart_df = feature_importance.copy()
-    chart_df["label"] = chart_df["feature"].map(lambda x: FEATURE_LABELS.get(x, x))
-    chart_df = chart_df.sort_values("shap_value")
-
-    colors = ["#16a34a" if v < 0 else "#dc2626" for v in chart_df["shap_value"]]
-
-    plt.figure(figsize=(10, 6))
-    plt.barh(chart_df["label"], chart_df["shap_value"], color=colors)
-    plt.axvline(0, color="gray", linewidth=1)
-
-    crime_name = CRIME_LABELS.get(crime_type, crime_type.title())
-    plt.title(f"Factors affecting {crime_name.lower()} risk in {gn_name}", fontsize=12)
-    plt.xlabel("Effect on risk")
-    plt.ylabel("")
-
-    plt.tight_layout()
-
-    buf = io.BytesIO()
-    plt.savefig(buf, format="png", bbox_inches="tight", dpi=300)
-    plt.close()
-
-    buf.seek(0)
-    return base64.b64encode(buf.read()).decode("utf-8")
-
-
-
-# def generate_local_plot(model, X_scaled, feature_names, explainer, shap_values):
-#     """Generate local SHAP waterfall plot and return as base64 image"""
-
-#     base_values=explainer.expected_value
-
-#     if isinstance(base_values, (list, np.ndarray)):
-#         base_values = base_values[1]
-
-#     base_values = float(np.array(base_values).flatten()[0])
-
-#     if isinstance(shap_values, list):
-#         shap_values = shap_values[1]
-#     elif len(shap_values.shape) == 3:
-#         shap_values = shap_values[:, :, 1]
-    
-#     # select the single observation
-#     shap_values = shap_values[0]
-
-#     explanation = shap.Explanation(
-#         values=shap_values,
-#         base_values= base_values,
-#         data=pd.DataFrame(X_scaled, columns=feature_names).iloc[0],
-#         feature_names=[FEATURE_LABELS.get(f,f) for f in feature_names]
-#     )
-
-#     plt.figure()
-#     shap.plots.waterfall(explanation, show=False)
-
-#     buf = io.BytesIO()
-#     plt.savefig(buf, format="png", bbox_inches="tight")
-#     plt.close()
-
-#     buf.seek(0)
-
-#     return base64.b64encode(buf.read()).decode("utf-8")
-    
-def generate_global_shap_waterfall_plot(X_background, shap_values):
-
-    X_background = pd.DataFrame(X_background, columns=FEATURE_ORDER )
-
-    # rename columns for readability
-    X_background = X_background.rename(columns=FEATURE_LABELS)
-
+def generate_global_shap_bar_plot(X_background, shap_values, feature_order):
     if isinstance(shap_values, list):
         shap_values = shap_values[1]
-    elif len(shap_values.shape) == 3:
+    elif len(np.array(shap_values).shape) == 3:
         shap_values = shap_values[:, :, 1]
 
-    plt.figure()
+    mean_shap = np.mean(shap_values, axis=0)
+    mean_feature_values = np.mean(X_background, axis=0)
 
-    shap.summary_plot(
-        shap_values,
-        X_background,
-        plot_type="bar",
-        show=False
+    chart_df = pd.DataFrame({
+        "feature": feature_order,
+        "shap_value": mean_shap,
+        "avg_feature_value": mean_feature_values
+    })
+
+    chart_df = filter_display_features(chart_df, top_n=5).copy()
+
+    chart_df["label"] = chart_df.apply(
+        lambda row: make_dynamic_global_label(row["feature"], row["avg_feature_value"]),
+        axis=1
     )
+
+    chart_df = chart_df.sort_values("shap_value")
+
+    print(chart_df[["feature", "avg_feature_value", "shap_value"]])
+
+    colors = ["#e56b6f" if v > 0 else "#57cc99" for v in chart_df["shap_value"]]
+
+    fig, ax = plt.subplots(figsize=(8.6, 4.4))
+    ax.barh(chart_df["label"], chart_df["shap_value"], color=colors, height=0.55)
+    ax.axvline(0, color="#94a3b8", linewidth=1)
+
+    ax.set_title("Top 5 factors affecting crime risk across the division", fontsize=12, pad=10)
+    ax.set_xlabel("Left = reduces risk   |   Right = increases risk", fontsize=10)
+    ax.set_ylabel("")
+    ax.tick_params(axis='y', labelsize=10)
+    ax.set_xticks([])
+
+    max_abs = max(abs(chart_df["shap_value"].min()), abs(chart_df["shap_value"].max()), 0.001)
+    ax.set_xlim(-max_abs * 1.15, max_abs * 1.15)
+
+    for spine in ["top", "right", "bottom"]:
+        ax.spines[spine].set_visible(False)
 
     plt.tight_layout()
 
     buf = io.BytesIO()
-    plt.savefig(buf, format="png", bbox_inches="tight", dpi=300)
+    plt.savefig(buf, format="png", bbox_inches="tight", dpi=220, facecolor="white")
+    plt.close(fig)
+
+    buf.seek(0)
+    return base64.b64encode(buf.read()).decode("utf-8")
+
+def generate_local_plot(feature_importance, gn_name, crime_type):
+    chart_df = filter_display_features(feature_importance, top_n=3)
+    chart_df["label"] = chart_df.apply(
+        lambda row: make_dynamic_feature_label(row["feature"], row["feature_value"]),
+        axis=1
+    )
+    chart_df = chart_df.sort_values("shap_value")
+
+    colors = ["#e56b6f" if v > 0 else "#57cc99" for v in chart_df["shap_value"]]
+
+    plt.figure(figsize=(8.2, 3.8))
+    plt.barh(chart_df["label"], chart_df["shap_value"], color=colors, height=0.55)
+    plt.axvline(0, color="#94a3b8", linewidth=1.1)
+
+    crime_name = CRIME_LABELS.get(crime_type, crime_type.title())
+    plt.title(f"Main factors affecting {crime_name.lower()} risk in {gn_name}", fontsize=12)
+    plt.xlabel("Left = reduces risk    |    Right = increases risk", fontsize=10)
+    plt.ylabel("")
+    plt.xticks([])
+    plt.tick_params(axis='y', labelsize=11)
+    max_abs = max(abs(chart_df["shap_value"].min()), abs(chart_df["shap_value"].max()), 0.001)
+    plt.xlim(-max_abs * 1.15, max_abs * 1.15)
+
+    plt.tight_layout()
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png", bbox_inches="tight", dpi=220)
     plt.close()
 
     buf.seek(0)
-
     return base64.b64encode(buf.read()).decode("utf-8")
 
+def interpret_risk_score(risk_score):
+    if risk_score < 0.2:
+        return "Low Risk", "Routine monitoring is sufficient"
+    elif risk_score < 0.5:
+        return "Moderate Risk", "Increased awareness is recommended"
+    elif risk_score < 0.75:
+        return "High Risk", "Consider increasing patrol presence"
+    else:
+        return "Very High Risk", "Immediate attention and action required"
+    
+
+def format_feature_list(items):
+    if not items:
+        return ""
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return ", ".join(items[:-1]) + f", and {items[-1]}"
+
+EPS = 1e-6
+
 def local_explanation(crime_type, gn_division, top_features, risk_score):
-    """Generates interpretation for a specific GN Division"""
-    drivers = ", ".join(
-        FEATURE_LABELS.get(f, f) for f in top_features["feature"].values[:2]
-    )
-    mitigator = FEATURE_LABELS.get(top_features["feature"].values[-1], top_features["feature"].values[-1])
-    
-    return(
-        f"The elevated {crime_type} risk in {gn_division} is primarily driven by"
-        f" {drivers}, which outweigh mitigating factors such as {mitigator}."
-        f"Predicted risk score = {risk_score:.3f}."
+    crime_name = CRIME_LABELS.get(crime_type, crime_type.title())
+
+    increasing_features = [
+        make_dynamic_feature_label(row["feature"], row["feature_value"]).lower()
+        for _, row in top_features.iterrows()
+        if row["shap_value"] > EPS
+    ]
+
+    reducing_features = [
+        make_dynamic_feature_label(row["feature"], row["feature_value"]).lower()
+        for _, row in top_features.iterrows()
+        if row["shap_value"] < -EPS
+    ]
+
+    risk_label, action = interpret_risk_score(risk_score)
+
+    parts = []
+
+    if increasing_features:
+        parts.append(
+            f"factors increasing {crime_name.lower()} risk include {format_feature_list(increasing_features)}"
+        )
+
+    if reducing_features:
+        parts.append(
+            f"factors reducing {crime_name.lower()} risk include {format_feature_list(reducing_features)}"
+        )
+
+    if not parts:
+        parts.append(
+            f"no strong increasing or reducing factors are clearly shown for {crime_name.lower()} risk"
+        )
+
+    return (
+        f"In {gn_division}, " + ". ".join(parts) + ". "
+        f"This area currently shows a {risk_label.lower()} ({risk_score:.0%}). {action}."
     )
 
-def global_explanation(crime_type, top_features):
-    drivers = ", ".join(
-        FEATURE_LABELS.get(f, f) for f in top_features[:3]
+def global_explanation(crime_type, top_features, global_feature_df):
+    crime_name = CRIME_LABELS.get(crime_type, crime_type.title())
+
+    top_rows = (
+        global_feature_df
+        .set_index("feature")
+        .loc[top_features]
+        .reset_index()
     )
 
-    return(
-        f"Across all GN divisions, {crime_type} risk is strongly linked with"
-        f" {drivers}. These factors consistently show the strongest contribution to "
-        f" {drivers} than other factors."
+    increasing_features = [
+        make_dynamic_global_label(row["feature"], row["avg_feature_value"])
+        for _, row in top_rows.iterrows()
+        if row["shap_value"] > EPS
+    ]
+
+    reducing_features = [
+        make_dynamic_global_label(row["feature"], row["avg_feature_value"])
+        for _, row in top_rows.iterrows()
+        if row["shap_value"] < -EPS
+    ]
+
+    parts = []
+
+    if increasing_features:
+        parts.append(
+            f"the main patterns increasing {crime_name.lower()} risk are {format_feature_list(increasing_features)}"
+        )
+
+    if reducing_features:
+        parts.append(
+            f"the main patterns reducing {crime_name.lower()} risk are {format_feature_list(reducing_features)}"
+        )
+
+    if not parts:
+        parts.append(
+            f"no strong increasing or reducing patterns are clearly shown for {crime_name.lower()} risk"
+        )
+
+    return (
+        f"Across all Grama Niladhari divisions, " + ". ".join(parts) + "."
     )
-    
+ 
 def run_risk_factor_pipeline(crime_type, features):
-    """
-    Runs ML inference and generates:
-    - risk score
-    - local explanation
-    - global explanation
-    """
+    normalized_crime_type = CRIME_TYPE_ALIASES.get(crime_type.lower().strip())
 
-    if crime_type not in CRIME_MODELS:
+    if normalized_crime_type not in CRIME_MODELS:
         raise ValueError("Invalid crime type")
 
-    if not features:
-        raise ValueError("Features are missing")
-
-    # Convert single GN feature dictionary into dataframe
-    X = pd.DataFrame([features])
-
-    # Ensure required features exist and preserve model feature order
-    try:
-        X = X[FEATURE_ORDER]
-    except KeyError as e:
-        raise ValueError(f"Missing required feature(s): {e}")
-
-    # Scale input features and keep feature names
-    X_scaled = pd.DataFrame(
-        scaler.transform(X),
-        columns=FEATURE_ORDER
+    crime_label = CRIME_LABELS.get(
+        normalized_crime_type,
+        normalized_crime_type.replace("_", " ").title()
     )
 
-    # Load model for requested crime type
-    model = CRIME_MODELS[crime_type]
+    model = CRIME_MODELS[normalized_crime_type]
+    scaler = SCALERS[normalized_crime_type]
+    feature_order = FEATURE_LISTS[normalized_crime_type]
+    threshold = float(THRESHOLDS.get(normalized_crime_type, 0.5))
 
-    # Predict risk score
+    X = pd.DataFrame([{f: features.get(f, 0.0) for f in feature_order}])
+
+    X_scaled = pd.DataFrame(
+        scaler.transform(X),
+        columns=feature_order
+    )
+
     risk = float(model.predict_proba(X_scaled)[0][1])
+    predicted_positive = risk >= threshold
 
-    # Local SHAP
     explainer = shap.TreeExplainer(model)
     shap_values = explainer.shap_values(X_scaled)
 
-    # Handle different SHAP output formats
     if isinstance(shap_values, list):
         shap_values_pos = shap_values[1]
-    elif len(shap_values.shape) == 3:
+    elif len(np.array(shap_values).shape) == 3:
         shap_values_pos = shap_values[:, :, 1]
     else:
         shap_values_pos = shap_values
 
-    # SHAP values for this selected GN division
     shap_row = shap_values_pos[0]
 
     feature_importance = pd.DataFrame({
-        "feature": FEATURE_ORDER,
-        "shap_value": shap_row
+        "feature": feature_order,
+        "shap_value": shap_row,
+        "feature_value": X_scaled.iloc[0].values
     })
 
     top_drivers = (
         feature_importance
         .reindex(feature_importance["shap_value"].abs().sort_values(ascending=False).index)
-        .head(3)
         .reset_index(drop=True)
     )
 
-    # Simple user-friendly local plot
-    local_waterfall_plot = generate_local_plot(
+    top_drivers = filter_display_features(top_drivers, top_n=3)
+
+    local_plot = generate_local_plot(
         feature_importance=top_drivers,
         gn_name=features.get("gn_name", "Selected GN"),
-        crime_type=crime_type
+        crime_type=normalized_crime_type
     )
 
-    # Local interpretation text
-    local_text = local_explanation(
-        crime_type=crime_type,
-        gn_division=features.get("gn_name", "Selected GN"),
-        top_features=top_drivers,
-        risk_score=risk
-    )
-
-    # Global results
-    global_results = get_global_shap_results(crime_type)
+    global_results = get_global_shap_results(normalized_crime_type)
 
     return {
         "gn_division": features.get("gn_name", "Selected GN"),
-        "crime_type": crime_type,
+        "crime_type": normalized_crime_type,
+        "crime_label": crime_label,
+        "feature_week": str(features.get("week", "")),
         "risk_score": round(risk, 3),
         "risk_percentage": round(risk * 100, 1),
-        "risk_level": get_risk_level(risk),
-        "top_features": [FEATURE_LABELS.get(f, f) for f in top_drivers["feature"].tolist()],
+        "threshold": round(threshold, 3),
+        "predicted_positive": predicted_positive,
+        "risk_level": get_risk_level(risk, threshold),
+        "top_features": [
+            {
+                "label": make_dynamic_feature_label(row["feature"], row["feature_value"]),
+                "description": FEATURE_DESCRIPTIONS.get(row["feature"], "No description available.")
+            }
+            for _, row in top_drivers.iterrows()
+        ],
+        "global_top_features": global_results["top_features"],
         "shap_values": top_drivers["shap_value"].tolist(),
         "global_waterfall_plot": global_results["plot"],
-        "local_waterfall_plot": local_waterfall_plot,
-        "local_interpretation": local_text,
+        "local_waterfall_plot": local_plot,
+        "local_interpretation": local_explanation(
+            crime_type=normalized_crime_type,
+            gn_division=features.get("gn_name", "Selected GN"),
+            top_features=top_drivers,
+            risk_score=risk
+        ),
         "global_interpretation": global_results["text"]
     }
 
@@ -320,144 +541,78 @@ def run_risk_factor_pipeline(crime_type, features):
 def get_all_gns():
     query = text("""
         SELECT DISTINCT gn_division
-        FROM crime_data
-        ORDER BY gn_division    
+        FROM risk_feature_store
+        ORDER BY gn_division
     """)
 
     with db.engine.connect() as conn:
-        gn_name_list = conn.execute(query).fetchall()
+        rows = conn.execute(query).fetchall()
 
-    return [row[0] for row in gn_name_list]
+    return [row[0] for row in rows]
 
-
-
-
-# fetch gn level environmental, socio-economic, demographic,... data
-def fetch_gn_features(gn_division_name):
-    # 1)Fetch structural features
-    query_struct = text("""
-        SELECT
-            "GN_population",
-            "Avg_Household_Income",
-            "Unemployment_Rate",
-            "Building_Density",
-            "Road_Density",
-            "distance_to_station_km"
-        FROM gn_division_info
-        WHERE "admin4Name_en" = :gn
-        LIMIT 1
-    """)
-
-    with db.engine.connect() as conn:
-        struct = conn.execute(query_struct, {"gn":gn_division_name}).mappings().first()
-
-    if not struct:
-        raise ValueError("GN Division not found")
-    
-    # 2)Fetch contexual averages 
-    query_contexual = text("""
-        SELECT
-            AVG(victim_age) AS avg_victim_age,
-            AVG(CASE WHEN sex = 'f' THEN 1 ELSE 0 END) AS female_ratio,
-            AVG(CASE WHEN is_holiday = '1' THEN 1 ELSE 0 END) AS holiday_ratio,
-            AVG(CASE WHEN LOWER(weather) = 'rainy' THEN 1 ELSE 0 END) AS rainy_ratio
-        FROM crime_data
-        WHERE gn_division = :gn
-    """
-    )
-    with db.engine.connect() as conn:
-        context = conn.execute(query_contexual, {"gn":gn_division_name}).mappings().first()
-
-    
-    # if not context:
-    #     raise ValueError("GN Division not found")
-
-    # Handling missing values safely
-    avg_victim_age = context["avg_victim_age"] or 30
-    # female_victim_ratio = context["female_ratio"] or 0
-    holiday_ratio = context["holiday_ratio"] or 0
-    rainy_ratio = context["rainy_ratio"] or 0
-    
-    # 3) Urban ratios
-    # temporary placeholders ################
-    land_area_density = 0.5
-
-
-    # 4) Transform to model schema
-    gn_population = struct["GN_population"] or 1
-    log_population = np.log1p(gn_population)
-
-    distance_km = struct["distance_to_station_km"] or 0
-
-    # distance_km = struct(static placeholder for now)
-    current_week = datetime.now().isocalendar().week
-    week_sin = np.sin(2 * np.pi * current_week / 52)
-    week_cos = np.cos(2 * np.pi * current_week / 52)
-
-    year = datetime.now().year
-
-
-    features = {
-        "avg_victim_age": float(avg_victim_age),
-        "holiday_ratio": float(holiday_ratio),
-        "rainy_ratio": float(rainy_ratio),
-        "unemployment_rate": float(struct["Unemployment_Rate"] or 0),
-        "avg_income": float(struct["Avg_Household_Income"] or 0),
-        "building_density": float(struct["Building_Density"] or 0),
-        "land_area_density": float(land_area_density),
-        "road_density": float(struct["Road_Density"] or 0),
-        "log_population": float(log_population),
-        "distance_km": float(distance_km),
-        "year": float(year)
-    }
-    features["gn_name"] = gn_division_name
-
-    return features
-
-def build_global_feature_dataset():
-    """
-    Builds feature dataset for all the GN divisions
-    """
-
-    gn_list = get_all_gns()
-
-    rows = []
-
-    for gn in gn_list:
-        features = fetch_gn_features(gn)
-
-        # remove helper field
-        features.pop("gn_name", None)
-
-        rows.append(features)
-
-    df = pd.DataFrame(rows)
-
-    return df
-
-
-def get_risk_level(risk_score):
-    if risk_score < 0.30:
+def get_risk_level(risk_score, threshold):
+    if risk_score < threshold * 0.75:
         return "Low"
-    elif risk_score < 0.60:
+    elif risk_score < threshold:
         return "Moderate"
     else:
         return "High"
 
+# to read data from the risk_feature_store
+def fetch_latest_feature_row(gn_division_name):
+    query = text("""
+        SELECT *
+        FROM risk_feature_store
+        WHERE gn_division = :gn
+        ORDER BY week DESC
+        LIMIT 1
+    """)
 
+    with db.engine.connect() as conn:
+        row = conn.execute(query, {"gn": gn_division_name}).mappings().first()
 
+    if not row:
+        raise ValueError("No feature data found for selected GN division")
 
+    return dict(row)
 
-# . Remove hardcoded crime type
-# Add a route that accepts the teammate’s JSON
+def filter_display_features(feature_df, top_n=5):
+    filtered = feature_df.loc[
+        ~feature_df["feature"].isin(DISPLAY_EXCLUDE_FEATURES)
+    ].copy()
 
+    filtered = filtered.reindex(
+        filtered["shap_value"].abs().sort_values(ascending=False).index
+    ).head(top_n)
 
+    return filtered.reset_index(drop=True)
 
+def make_dynamic_feature_label(feature, feature_value):
+    base = FEATURE_LABELS.get(feature, feature.replace("_", " ").title())
 
-# receive Component 2 output list
+    if feature == "distance_km":
+        return "Greater Distance to Police Station" if feature_value > 0 else "Shorter Distance to Police Station"
 
-# build a filtered GN list from it
+    if feature in {"avg_income"}:
+        return f"Higher {base}" if feature_value > 0 else f"Lower {base}"
 
-# show only those GN divisions in dropdown
+    if feature in {
+        "unemployment_rate", "building_density", "land_area_density",
+        "road_density", "log_population", "avg_victim_age_lag1",
+        "avg_victim_age_lag2", "avg_victim_age_roll4",
+        "female_victim_ratio_lag1", "female_victim_ratio_lag2", "female_victim_ratio_roll4",
+        "urban_ratio_lag1", "urban_ratio_lag2", "urban_ratio_roll4",
+        "holiday_ratio_lag1", "holiday_ratio_lag2", "holiday_ratio_roll4",
+        "rainy_ratio_lag1", "rainy_ratio_lag2", "rainy_ratio_roll4"
+    }:
+        return f"Higher {base}" if feature_value > 0 else f"Lower {base}"
 
-# also use the related crime_type from Component 2 for the selected GN
+    return base
+
+def make_dynamic_global_label(feature, avg_feature_value):
+    base = FEATURE_LABELS.get(feature, feature.replace("_", " ").title())
+
+    if feature == "distance_km":
+        return "Greater Distance to Police Station" if avg_feature_value > 0 else "Shorter Distance to Police Station"
+
+    return f"Higher {base}" if avg_feature_value > 0 else f"Lower {base}"

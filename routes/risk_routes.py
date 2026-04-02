@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify, session
 from flask_login import login_required
-from services.risk_service import run_risk_factor_pipeline, fetch_gn_features
+from services.risk_service import run_risk_factor_pipeline, fetch_latest_feature_row
 
 risk_bp = Blueprint("risk", __name__)
 
@@ -69,7 +69,8 @@ def index():
             )
 
         try:
-            features = fetch_gn_features(selected_gn)
+            features = fetch_latest_feature_row(selected_gn)
+            features["gn_name"] = selected_gn
             result = run_risk_factor_pipeline(crime_type, features)
         except ValueError as e:
             return render_template(
@@ -139,7 +140,8 @@ def load_pattern_results():
         "gn_options": gn_options
     })
 
-@risk_bp.route("/clear-session")
-def clear_session():
-    session.clear()
-    return "Session cleared!"
+# @risk_bp.route("/clear-session")
+# @login_required
+# def clear_session():
+#     session.clear()
+#     return "Session cleared!"
