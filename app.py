@@ -8,6 +8,7 @@ from routes.allocation_routes import allocation_bp
 from routes.hotspot_routes import hotspot_bp
 from routes.pattern_routes import pattern_bp
 from routes.risk_routes import risk_bp
+from routes.records_routes import records_bp
 
 load_dotenv()
 
@@ -32,6 +33,7 @@ def create_app():
     app.register_blueprint(hotspot_bp, url_prefix="/hotspot")
     app.register_blueprint(pattern_bp, url_prefix="/pattern")
     app.register_blueprint(risk_bp, url_prefix="/risk")
+    app.register_blueprint(records_bp, url_prefix="/records")
 
     return app
 

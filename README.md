@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # E-Policing: Integrated Spatio-Temporal Crime Forecasting and Decision Support System
 
 ## Overview
@@ -9,6 +8,7 @@ E-Policing is a comprehensive, data-driven web application designed to assist la
 - **Spatio-Temporal Pattern Analysis**: Detects trends and patterns to identify when and where specific crimes are most likely to occur.
 - **Risk Assessment Module**: Evaluates socio-economic and environmental factors contributing to crime in specific areas to guide strategic interventions.
 - **Optimized Resource Allocation**: Automatically optimizes the deployment of police personnel by analyzing predicted demand and calculating the diminishing marginal returns of adding officers to different areas.
+- **Past Crime Records**: View and filter historical crime data by type, month, and year for in-depth comparative analysis.
 - **Interactive Dashboards**: Provides an intuitive, rich graphical interface to help decision-makers visualize resource distribution, risk areas on maps (GeoJSON), and overall projected crime reduction.
 
 ## Tech Stack
@@ -24,7 +24,7 @@ E-Policing/
 ├── extensions.py           # Shared Flask extensions (e.g., db)
 ├── requirements.txt        # Python dependency list
 ├── .env                    # Environment variables (not tracked by git)
-├── routes/                 # Blueprint routes for auth, allocation, hotspot, pattern, risk
+├── routes/                 # Blueprint routes for auth, allocation, hotspot, pattern, risk, records
 ├── services/               # Core business and ML logic pipeline scripts
 ├── models/                 # Serialized ML models (*.pkl, *.joblib) and inference data
 ├── static/                 # Static assets (CSS, JS, images, map markers)
@@ -76,4 +76,3 @@ By default, the application will run in debug mode at `http://localhost:5000/`.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-=======

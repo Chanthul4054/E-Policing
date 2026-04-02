@@ -183,16 +183,17 @@ body {
 }
 
 .nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.03);
+    background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
+    transform: translateX(4px);
 }
 
 .nav-item.active {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.15), transparent);
     color: var(--accent-color);
     border-left: 3px solid var(--accent-color);
     border-radius: 4px 8px 8px 4px;
-    /* Flatter left side */
+    box-shadow: -2px 0 8px rgba(59, 130, 246, 0.2);
 }
 
 .sidebar.collapsed .nav-item.active {

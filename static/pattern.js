@@ -126,7 +126,7 @@ function renderHeatmap(gnName, patterns) {
             cell.className        = 'heatmap-cell';
             cell.style.background = getCellColor(intensity);
             cell.title            = val > 0
-                ? (t + ' / ' + d + '\nConf. weight: ' + val.toFixed(2))
+                ? (t + ' / ' + d + '\nCrime activity detected')
                 : (t + ' / ' + d + '\nNo patterns');
             grid.appendChild(cell);
         });
