@@ -1,0 +1,15 @@
+{
+    "crime_types": [
+        "burglary",
+        "theft",
+        "vehicle",
+        "robbery",
+        "drugs",
+        "stabbing"
+    ],
+    "model_type": "RandomForest",
+    "time_granularity": "weekly",
+    "unit": "GN Division",
+    "prediction_target": "next-week crime occurrence by GN division",
+    "note": "Rare classes such as vehicle and stabbing may have unstable metrics due to low positive support."
+}
