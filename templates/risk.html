@@ -127,12 +127,15 @@
 
                         {% if gn_options %}
                         <form method="POST" class="risk-filter-panel">
-                            <label for="gn_dropdown">Select Grama Niladhari Division</label>
+                            <label for="gn_dropdown">From Main Crime Patterns Identified</label>
                             <div class="risk-filter-row">
-                                <select id="gn_dropdown" name="gn_selection" class="risk-select">
+                                <select id="gn_dropdown" name="gn_selection" class="risk-select" required>
+                                    <option value="" disabled {% if not selected_key %}selected{% endif %}>
+                                        Choose a GN division and crime type
+                                    </option>                                    
                                     {% for item in gn_options %}
                                         <option value="{{ item.selection_key }}"{% if item.selection_key == selected_key %} selected{% endif %}>
-                                            {{ item.gn_division }} - {{ item.crime_type|title }}
+                                            {{ item.gn_division }} - {{ item.crime_type.replace('_', ' ')|title }}
                                         </option>
                                     {% endfor %}
                                 </select>
@@ -156,56 +159,82 @@
 
                 {% if result %}
                 <section class="risk-section">
-                    <h3 class="risk-section-title">Factors Driving Risk in all GN Divisions across Kandy Police Division</h3>
-                    
-                    <div class="risk-global-grid">
-                        <div class="risk-card">
-                            <div class="risk-chart-surface">
-                                <img src="data:image/png;base64,{{ result.global_waterfall_plot }}"  alt="Global SHAP Plot">
-                            </div>
-                        </div>
+                    <h3 class="risk-section-title">
+                        Main reasons linked with {{ result.crime_label }} risk across Kandy Police Division
+                    </h3>
 
-                        <div class="risk-card">
-                            <div class="risk-card-header">
-                                <h4 class="risk-card-title">Police Division-
-                                    Wide Interpretation</h4>
-                            </div>
-
-                            <div class="risk-insight-stack">
-                                <div class="risk-insight-box primary">
-                                    <h5>Main Finding</h5>
-                                    <p>{{ result.global_interpretation }}</p>
+                    <div class="risk-card">
+                        <div class="risk-global-grid">
+                            <div class="risk-left-col">
+                                <div class="risk-chart-surface">
+                                    <img src="data:image/png;base64,{{ result.global_waterfall_plot }}" alt="Division-wide risk factor chart">
                                 </div>
-
-                                <div class="risk-insight-box success">
-                                    <h5>How to Read this Chart</h5>
-                                    <p>The chart highlights the strongest average drivers influencing risk predictions across all GN divisions.</p>
+                                <div class="risk-narrative">
+                                    <div class="risk-narrative-icon">✦</div>
+                                    <div class="risk-narrative-content">
+                                        <h4>What this means</h4>
+                                        <p>{{ result.global_interpretation }}</p>
+                                    </div>
                                 </div>
 
                                 <div class="risk-insight-box danger">
                                     <h5>Operational Warning</h5>
-                                    <p>Use these global drivers as police-division-level indicators. Local GN explanations may still vary significantly.</p>
+                                    <p>These are police-division-wide patterns. A selected GN division may have different local reasons.</p>
+                                </div>
+                            </div>
+
+                            <div class="risk-global-side">
+                                <div class="risk-insight-stack">
+                                    <div class="risk-insight-box success">
+                                        <h5>How to Read this Chart</h5>
+                                        <p class="risk-legend-item">
+                                            <span class="risk-dot risk-dot-red"></span>
+                                            Red bars push risk higher.
+                                        </p>
+
+                                        <p class="risk-legend-item">
+                                            <span class="risk-dot risk-dot-green"></span>
+                                            Green bars help reduce risk.
+                                        </p>
+                                        {% if result.global_top_features %}
+                                        <div class="risk-feature-help-list">
+                                            {% for f in result.global_top_features %}
+                                                <div class="risk-feature-help-item">
+                                                    <strong>{{ f.label }}</strong>
+                                                    <div class="risk-feature-help-desc">{{ f.description }}</div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>              
 
                 <section class="risk-section">
                     <h3 class="risk-section-title">
-                        GN Division Deep-Dive: <span class="accent">{{ result.gn_division }}</span>
+                        Grama Niladhari Division Deep-Dive: <span class="accent">{{ result.gn_division }}</span>
                     </h3>
 
                     <div class="risk-card">
                         <div class="risk-deep-grid">
                             <div class="risk-left-col">
                                 <div class="risk-mini-meta">
-                                    <span class="risk-mini-label">Factos Affecting {{ result.crime_type }} Risk in {{ result.gn_division }}</span>
+                                    <span class="risk-mini-label">Main Factors Affecting {{ result.crime_label }} Risk in {{ result.gn_division }}</span>
                                     <!--<span class="risk-confidence">SHAP Local Analysis</span>-->
                                 </div>
 
                                 <div class="risk-chart-surface">
                                     <img src="data:image/png;base64,{{ result.local_waterfall_plot }}" alt="Local SHAP Plot">
+                                </div>
+                                <div class="risk-narrative">
+                                    <div class="risk-narrative-icon">✦</div>
+                                    <div class="risk-narrative-content">
+                                        <h4>What this means</h4>
+                                        <p>{{ result.local_interpretation }}</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -213,43 +242,42 @@
                                 <div class="risk-metric-grid">
                                     <div class="risk-metric-card">
                                         <span class="risk-metric-label">Crime Type</span>
-                                        <div class="risk-metric-value">{{ result.crime_type|title }}</div>
+                                        <div class="risk-metric-value">{{ result.crime_label }}</div>
                                     </div>
 
                                     <div class="risk-metric-card highlight">
-                                        <span class="risk-metric-label">{{ result.crime_type|title }} Risk Level for {{ result.gn_division }}</span>
+                                        <span class="risk-metric-label">{{ result.crime_label }} Risk Level for {{ result.gn_division }}</span>
                                         <div class="risk-metric-value">{{ result.risk_level }}</div>
-                                        <div class="risk-metric-subvalue">{{ result.risk_percentage }}%</div>
+                                        <div class="risk-metric-subvalue">Estimated Risk: {{ result.risk_percentage }}%</div>
                                     </div>
+                                </div>
+                                <div class="risk-summary-card">
+                                    <p><strong>{{ result.gn_division }}</strong></p>
+                                    <p>This section explains the main factors increasing or decreasing crime risk in the selected Grama Niladhari division.</p>
                                 </div>
                                 <div class="risk-insight-box success">
                                     <h4>How to Read this Chart</h4>
-                                    <p>Red Bars : Increase Risk</p>
-                                    <p>Green Bars : Decrease Risk</p>
-                                </div>
 
-                                <div class="risk-summary-card">
-                                    <h4>Grama Niladhari Division Summary</h4>
-                                    <p><strong>{{ result.gn_division }}</strong></p>
-                                    <p>This section explains the main factors increasing or decreasing predicted crime risk in the selected Grama Niladhari division.</p>
-                                </div>
+                                    <p class="risk-legend-item">
+                                        <span class="risk-dot risk-dot-red"></span>
+                                        Red bars push risk higher.
+                                    </p>
 
-                                <div class="risk-chip-panel">
-                                    <h4>Top 3 Risk Driving Factors</h4>
-                                    <div class="risk-chip-list">
+                                    <p class="risk-legend-item">
+                                        <span class="risk-dot risk-dot-green"></span>
+                                        Green bars help reduce risk.
+                                    </p>
+                                    {% if result.top_features %}
+                                    <div class="risk-feature-help-list">
                                         {% for f in result.top_features %}
-                                            <span class="risk-chip">{{ f }}</span>
+                                            <div class="risk-feature-help-item">
+                                                <strong>{{ f.label }}</strong>
+                                                <div class="risk-feature-help-desc">{{ f.description }}</div>
+                                            </div>
                                         {% endfor %}
                                     </div>
+                                    {% endif %}
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="risk-narrative">
-                            <div class="risk-narrative-icon">✦</div>
-                            <div class="risk-narrative-content">
-                                <h4>What this means</h4>
-                                <p>{{ result.local_interpretation }}</p>
                             </div>
                         </div>
                     </div>
@@ -257,6 +285,13 @@
                 {% endif %}
             </div>    
         </main>
+    </div>
+    <div id="riskLoadingOverlay" class="risk-loading-overlay" aria-hidden="true">
+        <div class="risk-loading-box">
+            <div class="risk-spinner"></div>
+            <h3>Analyzing crime risk factors...</h3>
+            <p>Please wait a few seconds.</p>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='risk_factor.js') }}"></script>
